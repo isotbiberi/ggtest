@@ -1,0 +1,45 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALIGNMENT_SIZE	Bitmap.cpp	/^enum { ALIGNMENT_SIZE   = 4, };$/;"	e	enum:__anon5	file:
+AVT	ApiController.cpp	/^namespace AVT {$/;"	n	file:
+AVT	ApiController.h	/^namespace AVT {$/;"	n
+AVTBitmap	Bitmap.h	/^} AVTBitmap;$/;"	t	typeref:struct:__anon2
+AVTCreateBitmap	Bitmap.cpp	/^unsigned char AVTCreateBitmap( AVTBitmap * const pBitmap, const void* pBuffer )$/;"	f
+AVTReleaseBitmap	Bitmap.cpp	/^unsigned char AVTReleaseBitmap( AVTBitmap * const pBitmap )$/;"	f
+AVTWriteBitmapToFile	Bitmap.cpp	/^unsigned char AVTWriteBitmapToFile( AVTBitmap const * const pBitmap, char const * const pFileName )$/;"	f
+AVT_BITMAP_H	Bitmap.h	29;"	d
+AVT_VMBAPI_EXAMPLES_APICONTROLLER	ApiController.h	31;"	d
+AcquireSingleImage	ApiController.cpp	/^VmbErrorType ApiController::AcquireSingleImage( const std::string &rStrCameraID, FramePtr &rpFrame )$/;"	f	class:AVT::VmbAPI::Examples::ApiController
+ApiController	ApiController.cpp	/^ApiController::ApiController()$/;"	f	class:AVT::VmbAPI::Examples::ApiController
+ApiController	ApiController.h	/^class ApiController$/;"	c	namespace:AVT::VmbAPI::Examples
+BMP_HEADER_SIZE	Bitmap.cpp	/^enum { BMP_HEADER_SIZE  = 54, };$/;"	e	enum:__anon4	file:
+ColorCode	Bitmap.h	/^} ColorCode;$/;"	t	typeref:enum:__anon1
+ColorCodeBGR24	Bitmap.h	/^    ColorCodeBGR24  = 4,$/;"	e	enum:__anon1
+ColorCodeMono16	Bitmap.h	/^    ColorCodeMono16 = 2,$/;"	e	enum:__anon1
+ColorCodeMono8	Bitmap.h	/^    ColorCodeMono8  = 1,$/;"	e	enum:__anon1
+ColorCodeRGB24	Bitmap.h	/^    ColorCodeRGB24  = 8$/;"	e	enum:__anon1
+ErrorCodeToMessage	ApiController.cpp	/^std::string ApiController::ErrorCodeToMessage( VmbErrorType eErr ) const$/;"	f	class:AVT::VmbAPI::Examples::ApiController
+Examples	ApiController.cpp	/^namespace Examples {$/;"	n	namespace:AVT::VmbAPI	file:
+Examples	ApiController.h	/^namespace Examples {$/;"	n	namespace:AVT::VmbAPI
+GetCameraList	ApiController.cpp	/^CameraPtrVector ApiController::GetCameraList()$/;"	f	class:AVT::VmbAPI::Examples::ApiController
+GetVersion	ApiController.cpp	/^std::string ApiController::GetVersion() const$/;"	f	class:AVT::VmbAPI::Examples::ApiController
+NUM_FRAMES	ApiController.cpp	/^enum { NUM_FRAMES = 3, };$/;"	e	enum:AVT::VmbAPI::Examples::__anon6	file:
+ShutDown	ApiController.cpp	/^void ApiController::ShutDown()$/;"	f	class:AVT::VmbAPI::Examples::ApiController
+StartUp	ApiController.cpp	/^VmbErrorType ApiController::StartUp()$/;"	f	class:AVT::VmbAPI::Examples::ApiController
+StartsWith	program.cpp	/^unsigned char StartsWith(const char *pString, const char *pStart)$/;"	f
+THREE_CHANNEL	Bitmap.cpp	/^enum { THREE_CHANNEL    = 0xC,};$/;"	e	enum:__anon3	file:
+VmbAPI	ApiController.cpp	/^namespace VmbAPI {$/;"	n	namespace:AVT	file:
+VmbAPI	ApiController.h	/^namespace VmbAPI {$/;"	n	namespace:AVT
+buffer	Bitmap.h	/^    void*           buffer;$/;"	m	struct:__anon2
+bufferSize	Bitmap.h	/^    unsigned long   bufferSize;$/;"	m	struct:__anon2
+colorCode	Bitmap.h	/^    ColorCode       colorCode;$/;"	m	struct:__anon2
+height	Bitmap.h	/^    unsigned long   height;$/;"	m	struct:__anon2
+m_pCamera	ApiController.h	/^    CameraPtr m_pCamera;$/;"	m	class:AVT::VmbAPI::Examples::ApiController
+m_system	ApiController.h	/^    VimbaSystem &m_system;$/;"	m	class:AVT::VmbAPI::Examples::ApiController
+main	program.cpp	/^int main( int argc, char* argv[] )$/;"	f
+width	Bitmap.h	/^    unsigned long   width; $/;"	m	struct:__anon2
+~ApiController	ApiController.cpp	/^ApiController::~ApiController()$/;"	f	class:AVT::VmbAPI::Examples::ApiController

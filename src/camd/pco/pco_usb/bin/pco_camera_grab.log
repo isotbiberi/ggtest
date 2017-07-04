@@ -1,0 +1,11 @@
+pco_camera_grab.log logfile started
+16:12:54 22.05.2017
+
+16:12:54.000      3.436ms 0x0000 Open_Cam_Ext: libusb_init done libusb_ctx:0x240a3c0
+16:12:54.000      0.045ms 0x0000 Open_Cam_Ext: libusb version: 01.00.20
+16:12:54.000      0.034ms 0x0000 Open_Cam_Ext: 0 valid usb devices found
+16:12:54.000      0.015ms 0x0000 ERROR Open_Cam_Ext: requested usb device 0x1cb2 number 0 not found
+16:12:54.000      0.221ms 0x0000 ~CPco_com_usb: before Close_Cam()
+16:12:54.000      0.043ms 0x0000 Close_Cam: driver was closed before
+Log ended 16:12.59 22.05.2017
+

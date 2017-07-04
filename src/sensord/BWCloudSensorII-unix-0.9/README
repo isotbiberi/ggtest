@@ -1,0 +1,138 @@
+    Copyright (c) 2007,2008 MyTelescope.com
+    All rights reserved.
+
+    This file is part of the BWCloudSensorII-unix package, which is
+    covered by the GNU General Public License (program files)
+    and the GNU Lesser Public License (library).
+
+
+This is a user-mode unix (currently only Linux) driver for
+the Boltwood CloudSensor-II, a weather station designed for astronomers.
+The current version of the software should be available from:
+    http://sourceforge.net/projects/bwcloudsensorii/
+
+
+The software consists of:
+    - a driver
+    - support libraries
+    - two simple programs: one that allows the interface to be tested,
+      another that probes serial lines looking for a CloudSensor-II device.
+The software was written by MyTelescope.com so the CS-II could be used
+by their system.
+
+
+At present, there is no graphical user interface - if you'd like one,
+you'll need to write one (or encourage someone else to write one!).
+
+To compile the library and test programs:
+    - extract tar file
+    - cd BWCloudSensorII-unix-X.XXX
+    - edit Makefile.local and set/change any parameters
+    - make
+
+To run the test program:
+    cd weather/
+    ./test_bwcsII /dev/usb/tts/XXX
+    # use ? to list possible commands - might be good to read this file too.
+
+About the CloudSensorII device and driver:
+
+    (1) The interface to the computer is via a USB serial line.  When connected
+    to PC running Linux, a tty device should appear in /dev/usb/tts/XXX
+    where XXX is a number (0, 1, 2, etc.).  If you have multiple USB serial
+    devices on your computer, the tty number associated with the CloudSensorII
+    may change when the computer is rebooted (the probeCloudSensorII program
+    can be useful in determining its name).
+
+    (3) The driver logs certain information (the communication between it
+    and the device, events such as application start up and exiting)
+    to files (these are needed if you want to report problems with the
+    hardware and get service from manufacturer; note that they don't
+    support this driver, just the hardware!).  The name of the directory
+    in which these logs are to be kept must be passed to the the driver.
+    Two types of log files are kept: a daily log which has all the reports
+    from the device - these are kept for 7 days, and a permanent log,
+    in which reports for every half hour are kept - this file is never
+    rotated.
+
+    (2) The unix driver for the CloudSensorII is contained in the
+    BWCloudSensorII class (see the .h and .cpp files).  This class
+    requires that the application using it implement a "listener"
+    class - the driver calls methods in this listener class to notify
+    the application of certain events (reports from the device, command
+    completions, errors, etc.).  The base class, BWCloudSensorII_Listener,
+    provides dummy implementations for all the methods, so the application
+    need only override the methods that correspond to the events that
+    it is interested in.  So, to use the driver, the application must
+    both implement and create in instance of this listener class, and
+    then create an instance of the BWCloudSensorII class.
+
+    (3) In general, the communication protocol between the CloudSensorII device
+    and the PC is driven by the device, which acts as a "master" which
+    periodically sends reports and "polls" to which the PC (the "slave")
+    responds - this happens a few times every few seconds.  This basic
+    structure is reflected in the design of this driver which
+    has a loop that waits for the CloudSensorII device to talk to it.
+    The driver is coded so that you may either call this looping method
+    directly (via BWCloudSensorII::readLoop()) or you can code your own
+    loop and periodically call the BWCloudSensorII::checkForData() method.
+
+    (4) The simplest use of the driver is to, having created an instance of
+    the BWCloudSensorII class:
+	- call open(): this must be passed the path of the serial
+	  device the CloudSensorII is connected to, e.g., "/dev/usb/tts/0".
+	- call readLoop(): this causes the driver to start talking to 
+	  and responding to the CloudSensorII.  It will do this until
+	  readStop() is called (so the application had better arrange
+	  a way to call this! the BWCloudSensorII_Listener::csII_readLooping()
+	  method may be useful).
+	- call close(): this closes the serial device.
+
+    (5) The best way to see what kinds of reports the driver provides
+    and what requests can be made is to look at the methods in the
+    BWCloudSensorII and BWCloudSensorII_listener classes.  The .h file
+    also has a number of other "report" classes that contain the data
+    for the various kinds of reports.
+
+    (6) The driver and support libraries are extracted from a larger system
+    that is used by MyTelescope.com.  Very minimal changes have been
+    made to the structure of that support code so that the driver
+    could be made available (without taking up resources) and so that
+    changes to the driver by MyTelescope.com can continue to be easily
+    made available.  An artifact of this is that the error / debugging
+    reporting class (util/Log.h) uses an environment variable, MTROOT, to
+    control where the these log files are stored: they will be placed in
+    $MTROOT/log/XXX.log where XXX is the name of the application program -
+    see how the example programs (test_bwCSII and probeCloudSensorII) use
+    the global "logmsg" instance in their main() functions.  These are
+    distinct from the log files kept by the BWCloudSensorII driver
+    (the location of which is determined by the value passed to that
+    class's constructor).
+
+
+Example programs:
+
+    test_bwCSII:
+	An interactive "shell" that allows the various methods of the
+	BWCloudSensorII driver to be called.
+	Run it using
+	    ./test_bwCSII /dev/usb/tts/XXX
+	and type ? to get a list of commands.  To start with, you
+	can try:
+	    :open
+	    :readLoop
+	(type q to stop the loop).  Reports received from the device
+	are printed to stdout.
+
+    probeCloudSensorII:
+	A program that checks to see if a CloudSensorII is attached to
+	a particular tty device.  The exit code of the program indicates
+	success / failure; if the -v (verbose) flag is used, it will
+	also print information to stdout.
+	For example:
+	    ./probeCloudSensorII -v /dev/usb/tts/0
+
+That's it!  Hope it works well and if you fix any bugs or add any improvements,
+please let us know and we'll try to add them into this release (assuming
+they are generally useful!).
+

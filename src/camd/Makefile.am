@@ -2,7 +2,7 @@
 
 SUBDIRS = urvc2 apogee edtsao si8821 sxccd
 
-bin_PROGRAMS = rts2-camd-miniccd rts2-camd-miniccd-il rts2-camd-dummy rts2-camd-sidecar rts2-camd-azcam rts2-camd-azcam3 rts2-camd-si8821
+bin_PROGRAMS = rts2-camd-miniccd rts2-camd-miniccd-il rts2-camd-dummy rts2-camd-sidecar rts2-camd-azcam rts2-camd-azcam3 rts2-camd-si8821 rts2-camd-zyla rts2-camd-pco rts2-camd-prosilica
 
 noinst_HEADERS = ccd_msg.h reflex.h
 
@@ -16,6 +16,22 @@ rts2_camd_miniccd_il_SOURCES = miniccd_il.cpp
 rts2_camd_dummy_SOURCES = dummy.cpp
 rts2_camd_dummy_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include
 rts2_camd_dummy_LDADD = -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+
+
+rts2_camd_zyla_SOURCES = zyla.cpp zyla/common.cpp zyla/CameraOperations.cpp zyla/CameraOperations.h zyla/FitsOperations.cpp zyla/FitsOperations.h zyla/fitsio.h
+rts2_camd_zyla_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -Izyla
+rts2_camd_zyla_LDADD = -L.libs/ -latcore -latutility -lpthread -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+
+
+rts2_camd_pco_SOURCES = pco.cpp  
+rts2_camd_pco_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -Ipco/pco_common/pco_include -Ipco/pco_common/pco_classes -Ipco/pco_usb/pco_classes
+rts2_camd_pco_LDADD = -L.libs/ -lpthread -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+rts2_camd_pco_LDFLAGS =  pco/pco_common/pco_lib/libpcocom_usb.a pco/pco_common/pco_lib/libpcodisp.a pco/pco_common/pco_lib/libpcolog.a pco/pco_common/pco_lib/libpcocnv.a pco/pco_common/pco_lib/libreorderfunc.a pco/pco_common/pco_lib/libpcocam_usb.a pco/pco_common/pco_lib/libpcofile.a
+
+rts2_camd_prosilica_SOURCES = prosilica.cpp prosilica/VimbaCPP/Examples/SynchronousGrab/Console/Source/ApiController.cpp prosilica/VimbaCPP/Examples/SynchronousGrab/Console/Source/Bitmap.cpp
+#rts2_camd_prosilica_LDFLAGS = prosilica/VimbaCPP/DynamicLib/x86_64bit/libVimbaCPP.so
+rts2_camd_prosilica_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -Iprosilica/VimbaCPP/Examples/SynchronousGrab/Console/Source/ -Iprosilica/VimbaCPP/Include/ -Iprosilica -Iprosilica/VimbaCPP/Examples
+rts2_camd_prosilica_LDADD = -L.libs/ -lVimbaCPP -lVimbaC -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
 
 rts2_camd_sidecar_SOURCES = sidecar.cpp
 

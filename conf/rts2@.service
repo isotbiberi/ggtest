@@ -1,0 +1,15 @@
+# Systemctl config to start single RTS2 service/daemon
+#
+[Unit]
+Description=RTS2 %I
+Documentation=man:rts2(8)
+After=postgresql.service
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/rts2-start %I
+ExecStop=/usr/local/bin/rts2-stop %I
+PIDFile=/var/run/rts2_%i
+
+[Install]
+WantedBy=multi-user.target

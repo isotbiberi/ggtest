@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/PCOApp.ico</file>
+        <file>Resources/arrow-left-2.ico</file>
+        <file>Resources/arrow-left-double-2.ico</file>
+        <file>Resources/arrow-right-2.ico</file>
+        <file>Resources/arrow-right-double-2.ico</file>
+        <file>Resources/document-save-as-5.ico</file>
+        <file>Resources/application-exit.ico</file>
+        <file>Resources/help.ico</file>
+    </qresource>
+</RCC>

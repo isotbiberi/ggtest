@@ -1,0 +1,8 @@
+build Linux
+requirements:
+	Installed QT 4
+	Installed OpenCV3
+		install: libopencv-dev
+
+build OpenCV:
+	install_opencv_build_env.sh

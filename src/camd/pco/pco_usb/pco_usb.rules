@@ -1,0 +1,4 @@
+# links for pco usb cameras
+#
+SUBSYSTEM=="usb" , ATTR{idVendor}=="1cb2" , GROUP="video" , MODE="0666" , SYMLINK+="pco_usb_camera%n"
+
