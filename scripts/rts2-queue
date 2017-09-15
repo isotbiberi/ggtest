@@ -19,7 +19,8 @@ import rts2.rtsapi
 import re
 import time
 import calendar
-
+import pdb
+import traceback
 def parse_time(s, n=time.time(), hour_nextday=False):
 	"""Parses time provided as argument. n is actual time, hour_nextday
 	specify if only hour information should be altered to next day if the time already passed
@@ -110,7 +111,7 @@ def parse_time(s, n=time.time(), hour_nextday=False):
 
 def run():
 	server = 'localhost:8889'
-
+        #pdb.set_trace()
   	parser = OptionParser(usage="""rts2-queue [--unique][--clear][--queue <queue name>][--server <server>][--user <username>][--password <password>][--quiet][--debug] <target1>..
        rts2-queue --with-times [--create <target name> --create-radec "<10:20:30> <+40:20:10>"][--unique][--clear][--queue <queue name>][--server <server>][--user <username>][--password <password>][--debug][--quiet] <target1> <start> <end>..
 
@@ -150,8 +151,9 @@ rts2-queue --queue manual --create Test1 --create-radec '10:20:30 -40:30:20'""")
 	parser.add_option('--create-radec',help="create target with following ra/dec; needs --create option",action='store',dest='create_radec',default=None)
 
 	(options,args)=parser.parse_args()
-
+        #pdb.set_trace()
 	rts2.createProxy(url=options.server, username=options.username, password=options.password, verbose=options.debug)
+        #pdb.set_trace()
 
 	if options.simulate:
 		now = time.time()
@@ -170,6 +172,7 @@ rts2-queue --queue manual --create Test1 --create-radec '10:20:30 -40:30:20'""")
 		print >>sys.stderr, "you have to specify both target name and its coordinates (with --create and --create-radec options)"
 		sys.exit(5)
 
+        #pdb.set_trace()
 		
 	q = None
 	if options.queue:
@@ -185,6 +188,7 @@ rts2-queue --queue manual --create Test1 --create-radec '10:20:30 -40:30:20'""")
 		resp = q.clear()
 		if not options.quiet:
 			print "cleared queue {0}".format(options.queue)
+        #pdb.set_trace()
 
 	n = time.time()
 
@@ -264,6 +268,7 @@ rts2-queue --queue manual --create Test1 --create-radec '10:20:30 -40:30:20'""")
 			qs.load_xml(xml)
 		qs.save(True)
 
+        #pdb.set_trace()
 
 	if not options.quiet:
 
@@ -271,13 +276,15 @@ rts2-queue --queue manual --create Test1 --create-radec '10:20:30 -40:30:20'""")
 			q.load()
 			print "Queue {0}: {1}".format(options.queue, q)
 		else:
-			qs = rts2.Queues(rts2.rtsapi.getProxy())
+                        qs = rts2.Queues(rts2.rtsapi.getProxy())
 			qs.load()
 			for q in qs.queues:
 				print "Queue {0}: {1}".format(qs.queues[q].name, qs.queues[q])
+        #pdb.set_trace()
 
 if __name__ == '__main__':
 	try:
 		run()
 	except Exception,ec:
 		print 'cannot run ', ' '.join(sys.argv), ':', str(ec)
+                #traceback.print_stack(file=sys.stdout)

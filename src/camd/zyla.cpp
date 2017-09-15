@@ -3,9 +3,11 @@
 #include "atutility.h"
 #include "CameraOperations.h"
 #include "FitsOperations.h"
+#include "configuration.h"
+#include "iniparser.h"
 //#include <pthread.h>
 #include <thread>
-
+#include<map>
 namespace rts2camd{
 
 class Zyla:public Camera{
@@ -28,6 +30,10 @@ public:
              //   Andor_Camera *cam = NULL;
                 virtual ~Zyla (void);
 private:
+                rts2core::connections_t orderedConn;
+                rts2core::Connection *connection;
+                std::map<std::string,std::pair<std::string,std::string>> header;
+
                 Andor_Camera *cam = NULL;
                 pthread_t thread[100];
 		int temp_arg[100] ;
@@ -202,7 +208,8 @@ createFits(cam->getBuffer(),0.01);
 void Zyla::newThreadCallback(int *p)
 {
 logStream(MESSAGE_INFO)<<"inside thread value parameter is "<<*p<<sendLog;
-createFits(cam->getBuffer(),0.1);
+
+createFits(cam->getBuffer(),header);
 }
 
 int Zyla::commandAuthorized(rts2core::Connection * conn)
@@ -214,30 +221,141 @@ cam->initializeController();
 cam->prepareAcq();
 
 
-for(int i=0;i<1000;i++)
+for(int i=0;i<1;i++)
 {
 cam->startAcq();
+
+
+/*get values from connection*/
+
+orderedConn = *getConnections();
+logStream(MESSAGE_INFO)<<"Connection size is " << orderedConn.size()<<sendLog;
+rts2core::connections_t::iterator iter;
+
+
+  for (iter = getConnections ()->begin (); iter != getConnections ()->end (); iter++)
+        {
+              logStream(MESSAGE_INFO)<<"client connection is " <<(*iter)->getName()<<sendLog;
+              if(strlen((*iter)->getName())==0)  logStream(MESSAGE_INFO)<<"sanirim bu C1";
+        }
+
+
+connection = getConnection("T0");
+logStream(MESSAGE_INFO)<<"T0 connection is " <<connection->getName()<<sendLog;
+rts2core::ValueAltAz 	* altAz = dynamic_cast<rts2core::ValueAltAz *> (connection->getValue ("TEL_"));
+rts2core::Value *val = connection->getValue ("infotime");
+rts2core::ValueRaDec *  raDec = dynamic_cast<rts2core::ValueRaDec *> (connection->getValue ("TEL"));
+
+
+
+connection = getConnection("W0");
+if(connection)
+{
+rts2core::Value * filter =dynamic_cast<rts2core::Value *>(connection->getValue ("filter"));
+if(filter!=NULL)
+logStream(MESSAGE_INFO)<<"filter is "<< val->getValueInteger()<<sendLog;
+}
+else  logStream(MESSAGE_INFO)<<" there is no filterwheel  connection"<<sendLog;
+
+
+/*Focuser calismiyor crash oluyor*/
+/*
+connection = getConnection("F0");
+
+
+if(connection)
+{
+rts2core::Value * focusPos =dynamic_cast<rts2core::Value *>(connection->getValue ("FOC_POS"));
+if(focusPos!=NULL)
+logStream(MESSAGE_INFO)<<"focuse position is "<< focusPos->getValueInteger()<<sendLog;
+}
+else  logStream(MESSAGE_INFO)<<" there is no focuse position  connection"<<sendLog;
+
+*/
+
+
+/*FOCUSER*/
+
+
+if(val ==NULL)
+logStream(MESSAGE_INFO)<<" info time is null"<<sendLog;
+else
+logStream(MESSAGE_INFO)<<"info time is "<< val->getValueDouble()<<sendLog;
+
+
+
+if(altAz == NULL)
+logStream(MESSAGE_INFO)<<" altAz is null"<<sendLog;
+else
+{
+header["alt"]=std::make_pair("altAz->getAlt()","ALTITUDE TAKEN FROM RTS2");
+header["az"]=std::make_pair(altAz->getAz(),"AZIMUTH TAKEN FROM RTS2");
+//logStream(MESSAGE_INFO)<<"alt is"<<altAz->getAlt()<<" az is " <<altAz->getAz()<<sendLog;
+
+}
+if(raDec == NULL)
+logStream(MESSAGE_INFO)<<" radec is null"<<sendLog;
+else
+{
+header["RA"]=std::make_pair(raDec->getRa(),"RA TAKEN FROM RTS2");
+header["DEC"]=std::make_pair(raDec->getDec(),"DEC TAKEN from RTS2");
+}
+//header["alt"] =  std::make_pair("45", "altitude value");
+//header["az"] =  std::make_pair("34", "azimuth vale");
 //createFits(cam->getBuffer(),0.1);
 std::thread t(&Zyla::newThreadCallback,this,&i);
 t.detach();
 logStream(MESSAGE_INFO)<<"inside the main thread"<<i<<sendLog;
 
 
+//logStream(MESSAGE_INFO)<<"Alt az is " <<" info time is " << val->getValueDouble()<<sendLog;
+
+
+
 /*
-for(int i=0;i<100;i++)
+for(int s=0;s<orderedConn.size();s++)
 {
-cam->startAcq();
-createFits(cam->getBuffer(),0.1);
-//temp_arg[i]=i;
-//int result = pthread_create(&thread[i], NULL, &Zyla::threadHelper, &Zyla);
-//thread t1(task1,"Hello");
-//t1.join();
+logStream(MESSAGE_INFO)<<"Connection name is " << orderedConn[s]-> getName()<<sendLog;
+}
 */
-logStream(MESSAGE_INFO)<<"pos alindi poz numarasi "<<i<<" pivel value "<<cam->getBuffer()[100]<<sendLog;
-}
+/*
+if(orderedConn.size()>0)
+{
+connection = orderedConn[0];
+     
+logStream(MESSAGE_INFO)<<"Connection name is " << connection-> getName()<<sendLog;
+
+    for (rts2core::ValueVector::iterator iter = connection->valueBegin (); iter != connection->valueEnd (); iter++)
+        {
+     logStream(MESSAGE_INFO)<<"value name is " << (*iter)-> getName().c_str()<<"value value is "<< (*iter)-> getValue()<<sendLog;
+
+     }
+*/
+/*get values from connection*/
+
+/*
+      connection = orderedConn[0];
+
+        rts2core::Configuration *config = rts2core::Configuration::instance ();
+
+        std::string  telescop;
+        telescop[0] = '\0';
+        std::string instrume;
+        instrume[0] = '\0';
+        std::string origin;
+        origin[0] = '\0';
+
+       int ret1= config->getString (connection->getName (), "instrume", instrume);
+       int ret2= config->getString (connection->getName (), "telescop", telescop);
+       int ret3= config->getString (connection->getName (), "origin", origin);
+                       
+       logStream(MESSAGE_INFO)<<"instrument  telescop is connection get name is "<<sendLog;
+            
+*/
+//}
 
 }
-
+}
 return Camera::commandAuthorized(conn);
 
 

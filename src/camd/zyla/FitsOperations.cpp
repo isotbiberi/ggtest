@@ -8,7 +8,7 @@
 #include <sstream> // stringstream
 #include <iomanip> // put_time
 #include"FitsOperations.h"
-int createFits(unsigned short *arr, double d_newExposure)
+int createFits(unsigned short *arr, std::map<std::string,std::pair<std::string, std::string>> header)
 {
 	fitsfile *fptr=NULL;
 	int status, ii, jj;
@@ -27,9 +27,21 @@ int createFits(unsigned short *arr, double d_newExposure)
 
 	fits_create_img(fptr, ULONG_IMG, naxis, naxes, &status);
 
-	
-	fits_update_key(fptr, TDOUBLE, "EXPOSURE", &d_newExposure,
-		"Total Exposure Time", &status);
+       // int d_new = 23;
+     //   std::string newone="xxxs";
+//	fits_update_key(fptr, TSTRING, "test", (void *)newone.c_str(),"TSTRING TEST", &status);
+
+        for(auto& t : header)
+	{
+               //d_newExposure =t.second;
+  //             fits_update_key(fptr, TSHORT, "ALT", &d_new,"Total Exposure Time", &status);
+ //fits_update_key(fptr, TSHORT, "AZ", &t.second,"azimuth", &status);
+  fits_update_key(fptr, TSTRING, t.first.c_str(), (void *)t.second.first.c_str(),t.second.second.c_str(), &status);
+
+	}
+ 
+	//fits_update_key(fptr, TDOUBLE, "EXPOSURE", &d_newExposure,
+	//	"Total Exposure Time", &status);
 
 
 	nelements = naxes[0] * naxes[1];

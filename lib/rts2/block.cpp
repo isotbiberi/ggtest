@@ -375,6 +375,7 @@ void Block::setMessageMask (int new_mask)
 
 void Block::oneRunLoop ()
 {
+
 	int ret;
 	struct timespec read_tout;
 	double t_diff;

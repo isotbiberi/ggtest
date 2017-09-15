@@ -52,6 +52,7 @@ void NMonitor::sendCommand ()
 	rts2core::Connection *conn = NULL;
 	comWindow->getWinString (command, curX);
 	command[curX] = '\0';
+        logStream(MESSAGE_INFO)<<"command is "<<sendLog;
 	// try to find ., which show DEVICE.command notation..
 	while (*cmd_top && !isspace (*cmd_top))
 	{
@@ -76,6 +77,8 @@ void NMonitor::sendCommand ()
 		conn->queCommand (oldCommand);
 		comWindow->winclear ();
 		comWindow->printCommand (command);
+                char *test ="12test12";
+                comWindow->printCommand(test);
 		wmove (comWindow->getWriteWindow (), 0, 0);
 	}
 }
@@ -541,6 +544,8 @@ int NMonitor::init ()
 	}
 
 	// init windows
+        logStream(MESSAGE_INFO)<<"ordered conn before device list is " <<orderedConn.size()<<sendLog;
+        std::cerr<<"ordered conn before device list";
 	deviceList = new NDevListWindow (this, &orderedConn);
 	comWindow = new NComWin ();
 	msgwindow = new NMsgWindow ();
@@ -556,12 +561,15 @@ int NMonitor::init ()
 
 	rts2core::connections_t::iterator iter;
 	for (iter = getCentraldConns ()->begin (); iter != getCentraldConns ()->end (); iter++)
-		(*iter)->queCommand (new rts2core::Command (this, "info"));
-
+{		(*iter)->queCommand (new rts2core::Command (this, "info"));
+                //logStream(MESSAGE_INFO)<<"command send ismail"<<sendLog;
+                std::cout<<"command send ismail"<<std::endl;
+}
 	setMessageMask (MESSAGE_MASK_ALL);
 
 	if (!std::isnan (refresh_rate) && refresh_rate >= 0)
 		addTimer (refresh_rate, new rts2core::Event (EVENT_MONITOR_REFRESH));
+         //logStream(MESSAGE_INFO)<<"init sonu "<<sendLog;
 
 	return 0;
 }
@@ -586,7 +594,8 @@ rts2core::ConnClient * NMonitor::createClientConnection (int _centrald_num, char
 
 rts2core::DevClient * NMonitor::createOtherType (rts2core::Connection * conn, int other_device_type)
 {
-	rts2core::DevClient *retC = rts2core::Client::createOtherType (conn, other_device_type);
+         //logStream(MESSAGE_INFO)<<"createother type calisti "<<conn->getName()<<sendLog;
+         rts2core::DevClient *retC = rts2core::Client::createOtherType (conn, other_device_type);
 	if (other_device_type == DEVICE_TYPE_MOUNT && tarArg)
 	{
 		struct ln_equ_posn tarPos;
@@ -638,6 +647,8 @@ void NMonitor::resize ()
 
 void NMonitor::processKey (int key)
 {
+
+        logStream(MESSAGE_INFO)<<"process key"<<sendLog;
 	NWindow *activeWindow = getActiveWindow ();
 	keyRet ret = RKEY_HANDLED;
 	switch (key)
