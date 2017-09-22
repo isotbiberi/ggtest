@@ -1,0 +1,3 @@
+11:22:24.421: Error receiving data from remote device: Interrupted system call
+!
+12:02:08.929: Error receiving data from remote device: Connection closed on socket 8!

@@ -130,23 +130,28 @@ void NDeviceWindow::printValue (rts2core::Value * value)
 				{
 					LibnovaDeg v_rd (((rts2core::ValueRaDec *) value)->getRa ());
 					LibnovaDeg v_dd (((rts2core::ValueRaDec *) value)->getDec ());
-					_os << v_rd << " " << v_dd;
+					_os << v_rd << "  " << v_dd;
 				}
 				else if (value->getValueDisplayType () == RTS2_DT_DEG_DIST_180)
 				{
 					LibnovaDeg180 v_rd (((rts2core::ValueRaDec *) value)->getRa ());
 					LibnovaDeg90 v_dd (((rts2core::ValueRaDec *) value)->getDec ());
-					_os << v_rd << " " << v_dd;
+					_os << v_rd << "  " << v_dd;
+
 				}
 				else if (value->getValueDisplayType () == RTS2_DT_ARCSEC)
 				{
 					double v_rd ();
 					_os << std::fixed << std::setprecision (3) << ((rts2core::ValueRaDec *) value)->getRa () * 3600 << "\" " << ((rts2core::ValueRaDec *) value)->getDec () * 3600 << "\"";
-				}
+
+                                 }
 				else 
 				{
-					LibnovaRaDec v_radec (((rts2core::ValueRaDec *) value)->getRa (), ((rts2core::ValueRaDec *) value)->getDec ());
-					_os << v_radec;
+			        	LibnovaRaDec v_radec (((rts2core::ValueRaDec *) value)->getRa (), ((rts2core::ValueRaDec *) value)->getDec ());
+                                    // LibnovaRaDec v_radec (11.07944, 61.6506);
+
+				_os << v_radec << " iso ra is "<<((rts2core::ValueRaDec *) value)->getRa ()<<" dec is "<<((rts2core::ValueRaDec *) value)->getDec ()<<"v_radec ra"<<v_radec.getRa()<<" v_radec dec is " <<v_radec.getDec();
+                                   //_os<<"ismail";
 				}
 				printValue (value->getName ().c_str (), _os.str().c_str (), value->isWritable ());
 			}
