@@ -28,8 +28,8 @@ int createFits(unsigned short *arr, std::map<std::string,std::pair<std::string, 
 	fits_create_img(fptr, ULONG_IMG, naxis, naxes, &status);
 
        // int d_new = 23;
-     //   std::string newone="xxxs";
-//	fits_update_key(fptr, TSTRING, "test", (void *)newone.c_str(),"TSTRING TEST", &status);
+       // std::string newone="xxxs";
+       //	fits_update_key(fptr, TSTRING, "test", (void *)newone.c_str(),"TSTRING TEST", &status);
 
         for(auto& t : header)
 	{
@@ -37,6 +37,7 @@ int createFits(unsigned short *arr, std::map<std::string,std::pair<std::string, 
   //             fits_update_key(fptr, TSHORT, "ALT", &d_new,"Total Exposure Time", &status);
  //fits_update_key(fptr, TSHORT, "AZ", &t.second,"azimuth", &status);
   fits_update_key(fptr, TSTRING, t.first.c_str(), (void *)t.second.first.c_str(),t.second.second.c_str(), &status);
+ 
 
 	}
  

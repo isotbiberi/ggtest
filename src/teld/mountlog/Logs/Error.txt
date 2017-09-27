@@ -1,3 +1,6 @@
 11:22:24.421: Error receiving data from remote device: Interrupted system call
 !
 12:02:08.929: Error receiving data from remote device: Connection closed on socket 8!
+16:11:06.753: Error receiving data from remote device: Connection closed on socket 16!
+16:12:51.730: Error receiving data from remote device: Connection closed on socket 8!
+18:10:24.447: Error receiving data from remote device: Connection closed on socket 8!

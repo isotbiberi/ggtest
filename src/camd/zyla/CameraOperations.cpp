@@ -297,7 +297,7 @@ void Andor_Camera::startAcq()
 			logStream(MESSAGE_INFO) << "software trigger is applied"<<sendLog;
 	}
 //unsigned char * Buffer2;
-	THROW_IF_NOT_SUCCESS(AT_WaitBuffer(m_camera_handle, &Buffer, &BufferSize, 1000), "Cannot Get Frame");
+	THROW_IF_NOT_SUCCESS(AT_WaitBuffer(m_camera_handle, &Buffer, &BufferSize, AT_INFINITE), "Cannot Get Frame");
         logStream(MESSAGE_INFO) << "image taken in for loop"<<sendLog;
 
 
@@ -903,7 +903,7 @@ m_real_camera(false),
 m_detector_type("un-inited"),
 m_detector_serial("un-inited"),
 //	m_detector_size(1, 1),
-m_exp_time(0.03),
+m_exp_time(1),
 //		m_bitflow_path(bitflow_path),
 	//	m_camera_number(camera_number),
 	m_camera_handle(AT_HANDLE_UNINITIALISED),

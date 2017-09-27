@@ -33,7 +33,7 @@ private:
                 rts2core::connections_t orderedConn;
                 rts2core::Connection *connection;
                 std::map<std::string,std::pair<std::string,std::string>> header;
-
+                rts2core::ValueAltAz    * altAz;
                 Andor_Camera *cam = NULL;
                 pthread_t thread[100];
 		int temp_arg[100] ;
@@ -60,7 +60,7 @@ private:
                  return  cam->getBuffer();
  
                  }
-               
+
                */
                 virtual int initChips()
                   { 
@@ -240,9 +240,9 @@ rts2core::connections_t::iterator iter;
         }
 
 
-connection = getConnection("T0");
+connection = getConnection("ddm160");
 logStream(MESSAGE_INFO)<<"T0 connection is " <<connection->getName()<<sendLog;
-rts2core::ValueAltAz 	* altAz = dynamic_cast<rts2core::ValueAltAz *> (connection->getValue ("TEL_"));
+altAz = dynamic_cast<rts2core::ValueAltAz *> (connection->getValue ("TEL_"));
 rts2core::Value *val = connection->getValue ("infotime");
 rts2core::ValueRaDec *  raDec = dynamic_cast<rts2core::ValueRaDec *> (connection->getValue ("TEL"));
 
@@ -288,24 +288,47 @@ if(altAz == NULL)
 logStream(MESSAGE_INFO)<<" altAz is null"<<sendLog;
 else
 {
-header["alt"]=std::make_pair("altAz->getAlt()","ALTITUDE TAKEN FROM RTS2");
-header["az"]=std::make_pair(altAz->getAz(),"AZIMUTH TAKEN FROM RTS2");
-//logStream(MESSAGE_INFO)<<"alt is"<<altAz->getAlt()<<" az is " <<altAz->getAz()<<sendLog;
+//alt=altAz->getAlt();
+std::ostringstream dblToString1,dblToString2;
+dblToString1 << altAz->getAlt();
+std::string alt = dblToString1.str();
+dblToString2 << altAz->getAz();
+std::string az = dblToString2.str();
+
+header["alt"]=std::make_pair(alt,"ALTITUDE TAKEN FROM RTS2");
+header["az"]=std::make_pair(az,"AZIMUTH TAKEN FROM RTS2");
+
+logStream(MESSAGE_INFO)<<"alt is bla bla  az is bla bla " <<sendLog;
+logStream(MESSAGE_INFO)<<"alt is"<<altAz->getAlt()<<" az is " <<altAz->getAz()<<sendLog;
 
 }
 if(raDec == NULL)
 logStream(MESSAGE_INFO)<<" radec is null"<<sendLog;
 else
 {
-header["RA"]=std::make_pair(raDec->getRa(),"RA TAKEN FROM RTS2");
-header["DEC"]=std::make_pair(raDec->getDec(),"DEC TAKEN from RTS2");
+std::ostringstream dblToString1,dblToString2;
+dblToString1 << raDec->getRa();
+std::string ra = dblToString1.str();
+dblToString2 << raDec->getDec();
+std::string dec = dblToString2.str();
+
+header["RA"]=std::make_pair(ra,"RA TAKEN FROM RTS2");
+header["DEC"]=std::make_pair(dec,"DEC TAKEN from RTS2");
 }
 //header["alt"] =  std::make_pair("45", "altitude value");
 //header["az"] =  std::make_pair("34", "azimuth vale");
 //createFits(cam->getBuffer(),0.1);
-std::thread t(&Zyla::newThreadCallback,this,&i);
-t.detach();
-logStream(MESSAGE_INFO)<<"inside the main thread"<<i<<sendLog;
+
+/*thread kullanmak icin*/
+
+//std::thread t(&Zyla::newThreadCallback,this,&i);
+//t.detach();
+/*thread kullanmak icin*/
+
+createFits(cam->getBuffer(),header);
+
+
+//logStream(MESSAGE_INFO)<<"inside the main thread"<<i<<sendLog;
 
 
 //logStream(MESSAGE_INFO)<<"Alt az is " <<" info time is " << val->getValueDouble()<<sendLog;
@@ -355,6 +378,8 @@ logStream(MESSAGE_INFO)<<"Connection name is " << connection-> getName()<<sendLo
 //}
 
 }
+cam->stopAcq();
+
 }
 return Camera::commandAuthorized(conn);
 
