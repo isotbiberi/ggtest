@@ -35,6 +35,8 @@ private:
                 std::map<std::string,std::pair<std::string,std::string>> header;
                 rts2core::ValueAltAz    * altAz;
                 Andor_Camera *cam = NULL;
+                //cam->initializeController();
+
                 pthread_t thread[100];
 		int temp_arg[100] ;
                 
@@ -62,8 +64,12 @@ private:
                  }
 
                */
+                int getHeader();
                 virtual int initChips()
-                  { 
+                  {
+                  //cam=new Andor_Camera(0);
+                  //cam->initializeController();
+ 
                   setSize (2560,2160, 0,0);
                   return Camera::initChips ();
                   }
@@ -191,7 +197,7 @@ int Zyla::initHardware()
 cam=new Andor_Camera(0);
 //cam->initializeController();
 //cam->prepareAcq();
- return initChips ();
+return initChips ();
 
 }
 
@@ -217,116 +223,31 @@ int Zyla::commandAuthorized(rts2core::Connection * conn)
 if(conn->isCommand("fast"))
 {
 logStream(MESSAGE_INFO)<<"fast capture started"<<sendLog;
-cam->initializeController();
-cam->prepareAcq();
 
+//logStream(MESSAGE_INFO)<<"zyla cpp setting exp time "<<sendLog;
+
+
+cam->initializeController();
+cam->m_exp_time=1.1;
+cam->setNumberOfFrames(10);
+cam->afterInitialization();
+//logStream(MESSAGE_INFO)<<"zyla cpp setting exp time "<<sendLog;
+
+cam->prepareAcq();
+double exptime;
+//cam->getExpTime(exptime);
+logStream(MESSAGE_INFO)<<exptime<<sendLog;
 
 for(int i=0;i<1;i++)
 {
 cam->startAcq();
 
 
-/*get values from connection*/
-
-orderedConn = *getConnections();
-logStream(MESSAGE_INFO)<<"Connection size is " << orderedConn.size()<<sendLog;
-rts2core::connections_t::iterator iter;
-
-
-  for (iter = getConnections ()->begin (); iter != getConnections ()->end (); iter++)
-        {
-              logStream(MESSAGE_INFO)<<"client connection is " <<(*iter)->getName()<<sendLog;
-              if(strlen((*iter)->getName())==0)  logStream(MESSAGE_INFO)<<"sanirim bu C1";
-        }
-
-
-connection = getConnection("ddm160");
-logStream(MESSAGE_INFO)<<"T0 connection is " <<connection->getName()<<sendLog;
-altAz = dynamic_cast<rts2core::ValueAltAz *> (connection->getValue ("TEL_"));
-rts2core::Value *val = connection->getValue ("infotime");
-rts2core::ValueRaDec *  raDec = dynamic_cast<rts2core::ValueRaDec *> (connection->getValue ("TEL"));
-
-
-
-connection = getConnection("W0");
-if(connection)
+getHeader();
+for(int k=0;k<=cam->getNumberOfFrames();k++)
 {
-rts2core::Value * filter =dynamic_cast<rts2core::Value *>(connection->getValue ("filter"));
-if(filter!=NULL)
-logStream(MESSAGE_INFO)<<"filter is "<< val->getValueInteger()<<sendLog;
+createFits(cam->getFitsBuffer(k),header);
 }
-else  logStream(MESSAGE_INFO)<<" there is no filterwheel  connection"<<sendLog;
-
-
-/*Focuser calismiyor crash oluyor*/
-/*
-connection = getConnection("F0");
-
-
-if(connection)
-{
-rts2core::Value * focusPos =dynamic_cast<rts2core::Value *>(connection->getValue ("FOC_POS"));
-if(focusPos!=NULL)
-logStream(MESSAGE_INFO)<<"focuse position is "<< focusPos->getValueInteger()<<sendLog;
-}
-else  logStream(MESSAGE_INFO)<<" there is no focuse position  connection"<<sendLog;
-
-*/
-
-
-/*FOCUSER*/
-
-
-if(val ==NULL)
-logStream(MESSAGE_INFO)<<" info time is null"<<sendLog;
-else
-logStream(MESSAGE_INFO)<<"info time is "<< val->getValueDouble()<<sendLog;
-
-
-
-if(altAz == NULL)
-logStream(MESSAGE_INFO)<<" altAz is null"<<sendLog;
-else
-{
-//alt=altAz->getAlt();
-std::ostringstream dblToString1,dblToString2;
-dblToString1 << altAz->getAlt();
-std::string alt = dblToString1.str();
-dblToString2 << altAz->getAz();
-std::string az = dblToString2.str();
-
-header["alt"]=std::make_pair(alt,"ALTITUDE TAKEN FROM RTS2");
-header["az"]=std::make_pair(az,"AZIMUTH TAKEN FROM RTS2");
-
-logStream(MESSAGE_INFO)<<"alt is bla bla  az is bla bla " <<sendLog;
-logStream(MESSAGE_INFO)<<"alt is"<<altAz->getAlt()<<" az is " <<altAz->getAz()<<sendLog;
-
-}
-if(raDec == NULL)
-logStream(MESSAGE_INFO)<<" radec is null"<<sendLog;
-else
-{
-std::ostringstream dblToString1,dblToString2;
-dblToString1 << raDec->getRa();
-std::string ra = dblToString1.str();
-dblToString2 << raDec->getDec();
-std::string dec = dblToString2.str();
-
-header["RA"]=std::make_pair(ra,"RA TAKEN FROM RTS2");
-header["DEC"]=std::make_pair(dec,"DEC TAKEN from RTS2");
-}
-//header["alt"] =  std::make_pair("45", "altitude value");
-//header["az"] =  std::make_pair("34", "azimuth vale");
-//createFits(cam->getBuffer(),0.1);
-
-/*thread kullanmak icin*/
-
-//std::thread t(&Zyla::newThreadCallback,this,&i);
-//t.detach();
-/*thread kullanmak icin*/
-
-createFits(cam->getBuffer(),header);
-
 
 //logStream(MESSAGE_INFO)<<"inside the main thread"<<i<<sendLog;
 
@@ -390,7 +311,7 @@ int Zyla::startExposure()
 
 logStream (MESSAGE_INFO) << " Zyla startExposure calisti quedExpnumber is  "<<quedExpNumber->getValueInteger() <<sendLog;
 //realTimeDataTransferCount =0;
-cam->initializeController();
+//cam->initializeController();
 cam->prepareAcq();
 //for(int imageCount=0;imageCount<10;imageCount++)
 //{
@@ -430,7 +351,123 @@ if(ret<0)
 
 return -2;
 }
+int Zyla::getHeader()
+{
+	/*get values from connection*/
+   double expTime;
+   cam->getExpTime(expTime);
+   std::ostringstream exposureTime;
+   exposureTime<<expTime;
+   header["expTime"]=std::make_pair(exposureTime.str(),"Exposure time in seconds taken from zyla");
 
+	/*
+	orderedConn = *getConnections();
+	logStream(MESSAGE_INFO)<<"Connection size is " << orderedConn.size()<<sendLog;
+	rts2core::connections_t::iterator iter;
+
+
+	  for (iter = getConnections ()->begin (); iter != getConnections ()->end (); iter++)
+	        {
+	              logStream(MESSAGE_INFO)<<"client connection is " <<(*iter)->getName()<<sendLog;
+	              if(strlen((*iter)->getName())==0)  logStream(MESSAGE_INFO)<<"sanirim bu C1";
+	        }
+
+	*/
+
+	/*
+	connection = getConnection("ddm160");
+	if(connection)
+	{
+	logStream(MESSAGE_INFO)<<"T0 connection is " <<connection->getName()<<sendLog;
+	altAz = dynamic_cast<rts2core::ValueAltAz *> (connection->getValue ("TEL_"));
+	rts2core::Value *val = connection->getValue ("infotime");
+	rts2core::ValueRaDec *  raDec = dynamic_cast<rts2core::ValueRaDec *> (connection->getValue ("TEL"));
+	}
+
+	*/
+
+	/*
+	connection = getConnection("W0");
+	if(connection)
+	{
+	rts2core::Value * filter =dynamic_cast<rts2core::Value *>(connection->getValue ("filter"));
+	if(filter!=NULL)
+	logStream(MESSAGE_INFO)<<"filter is "<< val->getValueInteger()<<sendLog;
+	}
+	else  logStream(MESSAGE_INFO)<<" there is no filterwheel  connection"<<sendLog;
+	*/
+
+	/*Focuser calismiyor crash oluyor*/
+	/*
+	connection = getConnection("F0");
+
+
+	if(connection)
+	{
+	rts2core::Value * focusPos =dynamic_cast<rts2core::Value *>(connection->getValue ("FOC_POS"));
+	if(focusPos!=NULL)
+	logStream(MESSAGE_INFO)<<"focuse position is "<< focusPos->getValueInteger()<<sendLog;
+	}
+	else  logStream(MESSAGE_INFO)<<" there is no focuse position  connection"<<sendLog;
+
+	*/
+
+
+	/*FOCUSER*/
+
+	/*
+	if(val ==NULL)
+	logStream(MESSAGE_INFO)<<" info time is null"<<sendLog;
+	else
+	logStream(MESSAGE_INFO)<<"info time is "<< val->getValueDouble()<<sendLog;
+
+
+
+	if(altAz == NULL)
+	logStream(MESSAGE_INFO)<<" altAz is null"<<sendLog;
+	else
+	{
+	//alt=altAz->getAlt();
+	std::ostringstream dblToString1,dblToString2;
+	dblToString1 << altAz->getAlt();
+	std::string alt = dblToString1.str();
+	dblToString2 << altAz->getAz();
+	std::string az = dblToString2.str();
+
+	header["alt"]=std::make_pair(alt,"ALTITUDE TAKEN FROM RTS2");
+	header["az"]=std::make_pair(az,"AZIMUTH TAKEN FROM RTS2");
+
+	logStream(MESSAGE_INFO)<<"alt is bla bla  az is bla bla " <<sendLog;
+	logStream(MESSAGE_INFO)<<"alt is"<<altAz->getAlt()<<" az is " <<altAz->getAz()<<sendLog;
+
+	}
+	if(raDec == NULL)
+	logStream(MESSAGE_INFO)<<" radec is null"<<sendLog;
+	else
+	{
+	std::ostringstream dblToString1,dblToString2;
+	dblToString1 << raDec->getRa();
+	std::string ra = dblToString1.str();
+	dblToString2 << raDec->getDec();
+	std::string dec = dblToString2.str();
+
+	header["RA"]=std::make_pair(ra,"RA TAKEN FROM RTS2");
+	header["DEC"]=std::make_pair(dec,"DEC TAKEN from RTS2");
+	}
+
+
+	*/
+
+	//header["alt"] =  std::make_pair("45", "altitude value");
+	//header["az"] =  std::make_pair("34", "azimuth vale");
+	//createFits(cam->getBuffer(),0.1);
+
+	/*thread kullanmak icin*/
+
+	//std::thread t(&Zyla::newThreadCallback,this,&i);
+	//t.detach();
+	/*thread kullanmak icin*/
+}
 int Zyla::stopExposure ()
 {
 /*

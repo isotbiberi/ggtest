@@ -111,9 +111,9 @@ void Andor_Camera::initializeController()
 
         //std::cout << "Found " << numCameras << " camera" << ((numCameras>1) ? "s" : "")<<"\n";^M
 
-                logStream(MESSAGE_INFO) << "Get all attached cameras"<<sendLog;
-                logStream(MESSAGE_INFO) << "Found " << numCameras << " camera" << ((numCameras>1) ? "s" : "")<<sendLog;
-                logStream(MESSAGE_INFO) << "Try to set current camera to number " << m_camera_number<<sendLog;
+                logStream(MESSAGE_DEBUG) << "Get all attached cameras"<<sendLog;
+                logStream(MESSAGE_DEBUG) << "Found " << numCameras << " camera" << ((numCameras>1) ? "s" : "")<<sendLog;
+                logStream(MESSAGE_DEBUG) << "Try to set current camera to number " << m_camera_number<<sendLog;
 
 
  if (m_camera_number < numCameras && m_camera_number >= 0) {
@@ -126,10 +126,14 @@ void Andor_Camera::initializeController()
                 //std::cout << "Invalid camera number "
                 //      << m_camera_number << ", there is "
                 //      << numCameras << " available";
-                        logStream(MESSAGE_INFO) << "Invalid camera number "
+                        logStream(MESSAGE_DEBUG) << "Invalid camera number "
                                 << m_camera_number << ", there is "
                                 << numCameras << " available"<<sendLog;
         }
+
+
+
+
         // --- Get Camera model (and all other parameters which are not changing during camera setup and usage )
         AT_WC   model[1024];
         THROW_IF_NOT_SUCCESS(getString(CameraModel, model, 1024),
@@ -137,7 +141,7 @@ void Andor_Camera::initializeController()
 
         m_detector_model = WStringToString(std::wstring(model));
 
-                logStream(MESSAGE_INFO) << "camera model is " << m_detector_model << sendLog;
+                logStream(MESSAGE_DEBUG) << "camera model is " << m_detector_model << sendLog;
 
 
 
@@ -150,7 +154,7 @@ void Andor_Camera::initializeController()
                 m_detector_model += " (SN : " + the_serial + ", firmware " + the_fw + ")";
 
 
-                        logStream(MESSAGE_INFO) << "Camera is ready: type " << m_detector_type << ", model " << m_detector_model << sendLog;
+                        logStream(MESSAGE_DEBUG) << "Camera is ready: type " << m_detector_type << ", model " << m_detector_model << sendLog;
 
         }
         else {
@@ -158,15 +162,12 @@ void Andor_Camera::initializeController()
                 m_detector_type = std::string("Simulator");
 
 
-                        logStream(MESSAGE_INFO) << "The camera is indeed the SIMULATED camera, all exception for invalid parameter name will be ignored!!!"<<sendLog;
+                        logStream(MESSAGE_DEBUG) << "The camera is indeed the SIMULATED camera, all exception for invalid parameter name will be ignored!!!"<<sendLog;
 
-                        logStream(MESSAGE_INFO) << "BE VERY CAREFULL : The andor SDK3 camera that you are connected to is a SIMULATED CAMERA !!!"<<sendLog;
+                        logStream(MESSAGE_DEBUG) << "BE VERY CAREFULL : The andor SDK3 camera that you are connected to is a SIMULATED CAMERA !!!"<<sendLog;
 }
 
 	
-	A3_BitDepth		the_bd = m_bit_depth;
-	A3_SimpleGain 	the_simple_gain = m_simple_gain;
-	A3_ReadOutRate	the_rate = m_adc_rate;
 
 	// Carefully crafting the order, since some are affecting others...
 	
@@ -174,8 +175,19 @@ void Andor_Camera::initializeController()
 //	std::cout << "exptime is " << m_exp_time <<" shutter mode is"<<m_electronic_shutter_mode<<" triggermode is "<<m_trig_mode<<" simple gain is "<<the_simple_gain<<" adcarate is"<<the_rate<< std::endl;
 
 
-		logStream(MESSAGE_INFO) << "exptime is " << m_exp_time << " shutter mode is" << m_electronic_shutter_mode << " triggermode is " << m_trig_mode << " simple gain is " << the_simple_gain << " adcarate is" << the_rate << sendLog;
+	//logStream(MESSAGE_INFO) << "exptime is " << m_exp_time << " shutter mode is" << m_electronic_shutter_mode << " triggermode is " << m_trig_mode << " simple gain is " << the_simple_gain << " adcarate is" << the_rate << sendLog;
 
+}
+
+
+void Andor_Camera::afterInitialization()
+{
+
+	A3_BitDepth	the_bd = m_bit_depth;
+	A3_SimpleGain 	the_simple_gain = m_simple_gain;
+	A3_ReadOutRate	the_rate = m_adc_rate;
+
+	setExpTime(m_exp_time);
 	setMetaData(true);
 	setMetaDataTimeStamp(true);
 	setElectronicShutterMode(m_electronic_shutter_mode);
@@ -185,8 +197,8 @@ void Andor_Camera::initializeController()
 	setBitDepth(the_bd);
 	setCooler(m_cooler);
 	setTemperatureSP(m_temperature_sp);
-	setExpTime(m_exp_time);
-        setSpuriousNoiseFilter(false);
+	//setExpTime(m_exp_time);
+	setSpuriousNoiseFilter(false);
 
 	AT_64	the_chip_width, the_chip_height;
 	getInt(SensorWidth, &the_chip_width);
@@ -233,12 +245,15 @@ void Andor_Camera::prepareAcq()
 
 		
  	logStream(MESSAGE_INFO) << "Flushing the queue of the framegrabber"<<sendLog;
-	setEnumString(CycleMode, L"Continuous");
-	AT_WC the_string[256];
-	getEnumString(CycleMode, the_string, 256);
+	//setEnumString(CycleMode, L"Continuous");
+ 	setEnumString(CycleMode, L"Fixed");
+ 	setInt(FrameCount, 100);
 
-	logStream(MESSAGE_INFO) << "Tried to set the acq is Fixed mode " << WStringToString(std::wstring(the_string))<<sendLog;
-	AT_Flush(m_camera_handle);
+	AT_WC the_string[256];
+   	getEnumString(CycleMode, the_string, 256);
+    logStream(MESSAGE_INFO) << "Tried to set the acq is Fixed mode " << WStringToString(std::wstring(the_string))<<sendLog;
+	
+    AT_Flush(m_camera_handle);
 	createBuffers(m_camera_handle);
         
 	unpackedBuffer = new unsigned short[the_sdk_frame_dim.height*the_sdk_frame_dim.width];
@@ -265,12 +280,12 @@ unsigned short* Andor_Camera::getFitsBuffer(int count)
 }
 void Andor_Camera::startAcq()
 {
-      //   int BufferSize = 11059200;
-     //    unsigned char* UserBuffer = new unsigned char[BufferSize];      
+         int BufferSize = 11059200;
+         unsigned char* UserBuffer = new unsigned char[BufferSize];      
 
-      //   THROW_IF_NOT_SUCCESS(AT_QueueBuffer(m_camera_handle, UserBuffer, BufferSize),
-       //         "Cannot Queue the frame buffer");
-       //  logStream(MESSAGE_INFO) << "after queue buffer"<<sendLog;
+         //THROW_IF_NOT_SUCCESS(AT_QueueBuffer(m_camera_handle, UserBuffer, BufferSize),
+          //      "Cannot Queue the frame buffer");
+         //logStream(MESSAGE_INFO) << "after queue buffer"<<sendLog;
 
 
 
@@ -300,6 +315,11 @@ void Andor_Camera::startAcq()
 	THROW_IF_NOT_SUCCESS(AT_WaitBuffer(m_camera_handle, &Buffer, &BufferSize, AT_INFINITE), "Cannot Get Frame");
         logStream(MESSAGE_INFO) << "image taken in for loop"<<sendLog;
 
+        bool cameraIsAcquiring=false;
+        getBool(CameraAcquiring,&cameraIsAcquiring);
+        logStream(MESSAGE_INFO) <<"before while"<< cameraIsAcquiring<<sendLog;
+       while(m_image_index<m_nb_frames_to_collect)
+       {
 
 unpackedBuffer = (unsigned short *)Buffer;
 
@@ -326,24 +346,19 @@ logStream(MESSAGE_INFO) << "convertbuffer return is "<<returnCode;
 	//delete[] UserBuffer;
 
 
-	THROW_IF_NOT_SUCCESS(AT_QueueBuffer(m_camera_handle, Buffer, BufferSize),"Cannot Queue the frame buffer");
+	THROW_IF_NOT_SUCCESS(AT_QueueBuffer(m_camera_handle, UserBuffer, BufferSize),"Cannot Queue the frame buffer");
 
-        logStream(MESSAGE_INFO) << "after queue buffer"<<sendLog;
+        logStream(MESSAGE_INFO) << "after queue buffer image index is"<<(long long)m_image_index<<sendLog;
 
-	
-
-	/*
-
-	std::cout << "Resuming the action of the acquisition thread";
-	AutoMutex    the_lock(m_cond.mutex());
-	m_acq_thread_waiting = false;
-	m_cond.broadcast();
-
-	*/
+        getBool(CameraAcquiring,&cameraIsAcquiring);
+       }//while acquiring
 
 		logStream(MESSAGE_INFO) << "Done, the acquisition is now started and the frame retrieving should take place in parallel in a second thread"<<sendLog;
-
-
+		getBool(CameraAcquiring,&cameraIsAcquiring);
+		logStream(MESSAGE_INFO) << cameraIsAcquiring<<sendLog;
+		stopAcq();
+		getBool(CameraAcquiring,&cameraIsAcquiring);
+		 logStream(MESSAGE_INFO) <<"after stopAcq"<< cameraIsAcquiring<<sendLog;
 }
 void Andor_Camera::stopAcq()
 {
@@ -454,7 +469,14 @@ unsigned char* Andor_Camera::QueueBuffer(int _handle) {
 	return acqBuffer;
 }
 
-
+void Andor_Camera::setNumberOfFrames(size_t totalFrames)
+{
+	m_nb_frames_to_collect = totalFrames;
+}
+size_t Andor_Camera::getNumberOfFrames()
+{
+	return m_nb_frames_to_collect;
+}
 
 void Andor_Camera::getSdkFrameDim(SdkFrameDim &frame_dim, bool last)
 {
@@ -564,7 +586,7 @@ void Andor_Camera::setTriggerMode(A3_TriggerMode iMode)
 					<< "\n\twhile requesting " << iMode<<sendLog;
 		}
 	}
-	else { // Simulated camera -> setting it forcibly to «Advanced»
+	else { // Simulated camera -> setting it forcibly to ï¿½Advancedï¿½
 		int the_mode;
 		setEnumIndex(TriggerMode, 5);
 		getEnumIndex(TriggerMode, &the_mode);
@@ -894,7 +916,7 @@ Andor_Camera::Andor_Camera(int camera_number) :
    //	m_acq_thread_waiting(true),
 	 //m_acq_thread_running(false),
 //		m_acq_thread_should_quit(false),
-m_nb_frames_to_collect(1),
+m_nb_frames_to_collect(100),
 m_image_index(0),
 m_buffer_ringing(false),
 m_status(Ready),
@@ -903,7 +925,7 @@ m_real_camera(false),
 m_detector_type("un-inited"),
 m_detector_serial("un-inited"),
 //	m_detector_size(1, 1),
-m_exp_time(1),
+m_exp_time(5.6),//exp time in seconds
 //		m_bitflow_path(bitflow_path),
 	//	m_camera_number(camera_number),
 	m_camera_handle(AT_HANDLE_UNINITIALISED),
@@ -1147,7 +1169,7 @@ int Andor_Camera::getEnumIndexByString(const AT_WC* Feature, AT_WC* String, int 
 {
 	
 
-	int       i_Err;
+	int         i_Err;
 	int   		i_enumCount;
 	int     	i_enumIndex;
 	const int i_maxStringLen = 1024;

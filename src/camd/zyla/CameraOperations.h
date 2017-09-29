@@ -59,9 +59,11 @@ public:
 		const AT_WC* output_encoding;
 		bool is_encoded;
 		bool is_strided;
+
 	};
 	SdkFrameDim   the_sdk_frame_dim;
 	/*ismail ekledi*/
+	double		          m_exp_time;
 	int BufferSize;
 	AT_64 ImageHeight;
 	AT_64 ImageWidth;
@@ -95,11 +97,11 @@ public:
 	int getHwBitDepth(int *bit_depth);
 	void initialize();
 	int getIntSystem(const AT_WC*, AT_64*);
-	
+
 	void getSerialNumber(std::string &) const;
 	void getFirmwareVersion(std::string &) const;
 	void initializeController();
-	void setElectronicShutterMode(A3_ShutterMode iMode);  // à exporter (avec le get)
+	void setElectronicShutterMode(A3_ShutterMode iMode);  // ï¿½ exporter (avec le get)
 	void setTriggerMode(A3_TriggerMode iMode);
 	void getTriggerMode(A3_TriggerMode &oMode) const;
 	void getTriggerModeString(std::string &oMode) const;
@@ -146,6 +148,9 @@ public:
 	unsigned short * getBuffer();
         unsigned short * getConvertedBuffer();
 	unsigned short * getFitsBuffer(int);
+	void afterInitialization();
+	void setNumberOfFrames(size_t);
+	size_t getNumberOfFrames();
 	int imageCount;
 	Andor_Camera(int);
 //	~Andor_Camera();
@@ -177,7 +182,7 @@ private:
 	std::string                 m_detector_type;
 	std::string		  m_detector_serial;
 	//Size			  m_detector_size;
-	double		          m_exp_time;
+
 
 
     int                         m_camera_number;
