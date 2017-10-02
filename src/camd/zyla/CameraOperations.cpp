@@ -186,13 +186,23 @@ void Andor_Camera::afterInitialization()
 	A3_BitDepth	the_bd = m_bit_depth;
 	A3_SimpleGain 	the_simple_gain = m_simple_gain;
 	A3_ReadOutRate	the_rate = m_adc_rate;
+       // bool test ;
+       // getIsAcquiring(test);
+      //  logStream(MESSAGE_INFO)<<"is acquiring is  " <<test<<sendLog;
 
-	setExpTime(m_exp_time);
-	setMetaData(true);
+    //	setExpTime(m_exp_time);
+	//logStream(MESSAGE_INFO)<<"setting the exptime to " <<m_exp_time<<sendLog;
+        
+
+        setMetaData(true);
 	setMetaDataTimeStamp(true);
-	setElectronicShutterMode(m_electronic_shutter_mode);
-	setTriggerMode(m_trig_mode);
-	setSimpleGain(the_simple_gain);
+	
+        setElectronicShutterMode(m_electronic_shutter_mode);
+
+
+//	setTriggerMode(m_trig_mode);//bunu secince setExptime yapamadık
+	
+       setSimpleGain(the_simple_gain);
 	setAdcRate(the_rate);
 	setBitDepth(the_bd);
 	setCooler(m_cooler);
@@ -203,6 +213,7 @@ void Andor_Camera::afterInitialization()
 	AT_64	the_chip_width, the_chip_height;
 	getInt(SensorWidth, &the_chip_width);
 	getInt(SensorHeight, &the_chip_height);
+
 }
 /*!
 @brief Preparing the object and memory for an acquisition sequence
@@ -247,7 +258,7 @@ void Andor_Camera::prepareAcq()
  	logStream(MESSAGE_INFO) << "Flushing the queue of the framegrabber"<<sendLog;
 	//setEnumString(CycleMode, L"Continuous");
  	setEnumString(CycleMode, L"Fixed");
- 	setInt(FrameCount, 100);
+ //	setInt(FrameCount, 100);
 
 	AT_WC the_string[256];
    	getEnumString(CycleMode, the_string, 256);

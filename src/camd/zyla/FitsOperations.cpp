@@ -8,6 +8,8 @@
 #include <sstream> // stringstream
 #include <iomanip> // put_time
 #include"FitsOperations.h"
+#include<iomanip>
+#include <sys/time.h>
 int createFits(unsigned short *arr, std::map<std::string,std::pair<std::string, std::string>> header)
 {
 	fitsfile *fptr=NULL;
@@ -110,3 +112,49 @@ std::string return_current_time_and_date()
 	return str_frac.str();
 
 }
+void waitMicroSec(long microsec)
+{
+timeval   timeout = {0 /* seconds */, microsec /* and microseconds */};
+if (select(0, NULL, NULL, NULL, &timeout) != 0)
+{
+      // Need to deal with errors like EINTR
+}
+
+
+}
+
+
+
+void   printTimeStamp()
+{
+
+
+ struct timeval tv;
+ struct tm* ptm;
+ char time_string[40];
+ long milliseconds;
+
+ /* Obtain the time of day, and convert it to a tm struct. */
+gettimeofday (&tv, NULL);
+ ptm = localtime (&tv.tv_sec);
+ /* Format the date and time, down to a single second. */
+ strftime (time_string, sizeof (time_string), "%Y-%m-%d %H:%M:%S", ptm);
+ /* Compute milliseconds from microseconds. */
+ milliseconds = tv.tv_usec / 1000;
+ /* Print the formatted time, in seconds, followed by a decimal point
+   and the milliseconds. */
+ printf ("%s.%03ld\n", time_string, milliseconds);
+
+
+
+}
+
+
+    uint64_t GetTimeStamp() {
+    struct timeval tv;
+    gettimeofday(&tv,NULL);
+    return tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
+}
+
+
+

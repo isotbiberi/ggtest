@@ -223,32 +223,52 @@ int Zyla::commandAuthorized(rts2core::Connection * conn)
 if(conn->isCommand("fast"))
 {
 logStream(MESSAGE_INFO)<<"fast capture started"<<sendLog;
+ double exptime;
+ long numberOfExposures; 
+if (conn->paramNextDouble (&exptime) || conn->paramNextLong (&numberOfExposures) || !conn->paramEnd ())
+                                return -2;
+ 
+logStream(MESSAGE_INFO)<<"exptime is set to  "<<exptime<<"number of exposure is " << numberOfExposures<<sendLog;
 
-//logStream(MESSAGE_INFO)<<"zyla cpp setting exp time "<<sendLog;
+if(blockingExposure ())
+
+logStream(MESSAGE_INFO)<<"exposure is blocked"<<sendLog;
+
+else
+
+logStream(MESSAGE_INFO)<<"exposure is NOT blocked"<<sendLog;
+
+
+logStream(MESSAGE_INFO)<<"device state is "<<std::hex <<getState()<<sendLog;
 
 
 cam->initializeController();
-cam->m_exp_time=1.1;
-cam->setNumberOfFrames(10);
+cam->setExpTime(exptime);
+//cam->m_exp_time=exptime; //in seconds
+cam->setNumberOfFrames(numberOfExposures);
 cam->afterInitialization();
 //logStream(MESSAGE_INFO)<<"zyla cpp setting exp time "<<sendLog;
 
 cam->prepareAcq();
-double exptime;
+//double exptime;
 //cam->getExpTime(exptime);
-logStream(MESSAGE_INFO)<<exptime<<sendLog;
+//logStream(MESSAGE_INFO)<<exptime<<sendLog;
 
-for(int i=0;i<1;i++)
-{
+//for(int i=0;i<1;i++)
+//{
+//maskState (CAM_MASK_EXPOSE | CAM_MASK_READING | BOP_TEL_MOVE, CAM_NOEXPOSURE | CAM_READING,
+//                           "chip extended readout started");
+
 cam->startAcq();
 
-
 getHeader();
-for(int k=0;k<=cam->getNumberOfFrames();k++)
+
+for(int k=0;k<=cam->getNumberOfFrames()-1;k++)
 {
 createFits(cam->getFitsBuffer(k),header);
 }
 
+cam->stopAcq();
 //logStream(MESSAGE_INFO)<<"inside the main thread"<<i<<sendLog;
 
 
@@ -298,8 +318,8 @@ logStream(MESSAGE_INFO)<<"Connection name is " << connection-> getName()<<sendLo
 */
 //}
 
-}
-cam->stopAcq();
+//}
+//cam->stopAcq();//fixed oldugunda stop demelimiyiz?
 
 }
 return Camera::commandAuthorized(conn);

@@ -52,7 +52,7 @@ void NMonitor::sendCommand ()
 	rts2core::Connection *conn = NULL;
 	comWindow->getWinString (command, curX);
 	command[curX] = '\0';
-        logStream(MESSAGE_INFO)<<"command is "<<sendLog;
+        //logStream(MESSAGE_INFO)<<"command is "<<sendLog;
 	// try to find ., which show DEVICE.command notation..
 	while (*cmd_top && !isspace (*cmd_top))
 	{
@@ -648,7 +648,7 @@ void NMonitor::resize ()
 void NMonitor::processKey (int key)
 {
 
-        logStream(MESSAGE_INFO)<<"process key"<<sendLog;
+        //logStream(MESSAGE_INFO)<<"process key"<<sendLog;
 	NWindow *activeWindow = getActiveWindow ();
 	keyRet ret = RKEY_HANDLED;
 	switch (key)
