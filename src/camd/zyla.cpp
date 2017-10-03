@@ -259,6 +259,10 @@ cam->prepareAcq();
 //maskState (CAM_MASK_EXPOSE | CAM_MASK_READING | BOP_TEL_MOVE, CAM_NOEXPOSURE | CAM_READING,
 //                           "chip extended readout started");
 
+//  maskState (CAM_MASK_EXPOSE | CAM_MASK_READING | BOP_TEL_MOVE, CAM_EXPOSING | CAM_NOTREADING,
+  //                         "extended readout finished");
+
+
 cam->startAcq();
 
 getHeader();
