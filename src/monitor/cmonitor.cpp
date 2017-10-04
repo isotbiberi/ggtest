@@ -8,20 +8,31 @@
 #include "command.h"
 
 using namespace std;
+#define EVENT_MOVE_OK              RTS2_LOCAL_EVENT+53
+#define EVENT_EXPOSURE_OK          RTS2_LOCAL_EVENT+54
+#define EVENT_CCD_READY         RTS2_LOCAL_EVENT+55
+#define EVENT_MOUNT_READY         RTS2_LOCAL_EVENT+56
 
-class Rts2CMonitor:public rts2core::Client
+
+
+class  Rts2CMonitor:public rts2core::Client
 {
 	protected:
 		virtual rts2core::ConnClient * createClientConnection (char *_deviceName);
                 rts2core::connections_t orderedConn;
-                 rts2core::Connection *connection;
+                rts2core::Connection *connection;
+                rts2core::Connection *ccdConnection;
+                rts2core::Connection *mountConnection;
+
 
 	public:
+
 		Rts2CMonitor (int in_argc, char **in_argv):rts2core::Client (in_argc, in_argv, "cmonitor") {}
 		virtual int idle ();
 		virtual int run ();
                 virtual int init(); 
         //        virtual rts2core::ConnClient *createClientConnection (int _centrald_num, char *_deviceName);
+
                 virtual rts2core::DevClient *createOtherType (rts2core::Connection * conn, int other_device_type);
                 virtual rts2core::ConnCentraldClient *createCentralConn ();
                 void commandReturn (rts2core::Command * cmd, int cmd_status);
@@ -30,7 +41,10 @@ class Rts2CMonitor:public rts2core::Client
                         std::map <std::string, std::list <std::string> > initCommands;
                         virtual void addPollSocks ();
                         virtual void pollSuccess ();
-
+                        virtual void postEvent (rts2core::Event *event);
+                        bool ccdReady = false;
+                        bool mountReady = false;
+                        void startAcquisition();
 } ;
 
 
@@ -113,8 +127,8 @@ rts2core::DevClient * Rts2CMonitor::createOtherType (rts2core::Connection * conn
 
         // queue in commands
       
-/*
 
+/*
         std::string telCon ="T0";
         std::string camCon ="C0";
         std::list<std::string> mountCommandsString;
@@ -134,10 +148,35 @@ rts2core::DevClient * Rts2CMonitor::createOtherType (rts2core::Connection * conn
         if (iter != initCommands.end ())
         {
                 for (std::list <std::string>::iterator ci = iter->second.begin (); ci != iter->second.end (); ci++)
-                        conn->queCommand (new rts2core::Command (this, ci->c_str ()));
+                     // conn->queCommand (new rts2core::Command (this, ci->c_str ()));
+                conn->queCommand (new rts2core::CommandMove (this, (rts2core::DevClientTelescope *) retC, 50, 50));
+
         }
         //getStatesTest(conn);
 */
+
+       if (other_device_type == DEVICE_TYPE_MOUNT)
+        {
+                 
+                 mountConnection = conn;
+                 //conn->queCommand (new rts2core::Command (this, "altaz 20 20"));
+                 
+                 //mountConnection->queCommand (new rts2core::CommandMoveAltAz (this, (rts2core::DevClientTelescope *) retC,50 ,50));
+                 //struct ln_hrz_posn *hrz = (struct ln_hrz_posn *) event->getArg ();
+                 //mountConnection->queCommand (new rts2core::CommandMoveAltAz (mountConnection->getMaster (),  (rts2core::DevClientTelescope *) retC, 20, 90), BOP_TEL_MOVE);
+                 //sleep(2);
+                 postEvent (new rts2core::Event (EVENT_MOUNT_READY));
+
+        }
+
+               if (other_device_type == DEVICE_TYPE_CCD)
+        {
+            ccdConnection = conn; 
+           // conn->queCommand (new rts2core::Command (this, "fast 11 11"));
+           postEvent(new rts2core::Event (EVENT_CCD_READY));
+
+       }
+
         return retC;
 }
 
@@ -192,6 +231,64 @@ int Rts2CMonitor::idle ()
 	return rts2core::Client::idle ();
 }
 
+void Rts2CMonitor::postEvent (rts2core::Event *event)
+{
+        switch (event->getType ())
+        {
+                case EVENT_MOVE_OK :
+                logStream(MESSAGE_INFO)<<"post event olustu event move ok"<<sendLog;
+                if(!ccdReady)
+               {
+                logStream(MESSAGE_INFO)<<"ccd not ready"<<sendLog;
+
+               } 
+               //if(!ccdReady) logStream(MESSAGE_INFO)<<"ccd is not ready"<<sendLog;
+                else
+                ccdConnection->queCommand (new rts2core::Command (this, "fast 11 1"));
+                //sleep(2);
+                postEvent (new rts2core::Event (EVENT_EXPOSURE_OK));
+ 
+                break;   
+ 
+                case EVENT_EXPOSURE_OK :
+                logStream(MESSAGE_INFO)<<"post event olustu event exposure ok"<<sendLog;
+                mountConnection->queCommand (new rts2core::Command (this, "altaz 20 20"));
+                //sleep(2);
+                //postEvent (new rts2core::Event (EVENT_MOVE_OK));
+                
+
+
+                case EVENT_CCD_READY :
+                logStream(MESSAGE_INFO)<<"post event ccd is ready"<<sendLog;
+                ccdReady = 1;
+                if(mountReady)
+                startAcquisition();
+                else
+                postEvent (new rts2core::Event (EVENT_MOUNT_READY));
+ 
+                break;
+                
+                case EVENT_MOUNT_READY :
+                logStream(MESSAGE_INFO)<<"post event ccd is ready"<<sendLog;
+                mountReady = 1;
+                if(ccdReady)
+                startAcquisition();
+                else
+                postEvent (new rts2core::Event (EVENT_CCD_READY));
+
+                break; 
+
+        return;
+        }
+         //logStream(MESSAGE_INFO)<<"post event olustu"<<sendLog;
+
+        rts2core::Client::postEvent (event);
+}
+
+
+
+
+
 
 int Rts2CMonitor::init ()
 {
@@ -213,7 +310,7 @@ return 0;
 void Rts2CMonitor::addPollSocks ()
 {
         rts2core::Client::addPollSocks ();
-     logStream (MESSAGE_ERROR) << "add pollSocks calisti " <<  sendLog;
+     //logStream (MESSAGE_ERROR) << "add pollSocks calisti " <<  sendLog;
    
      // add stdin for ncurses input
    //     addPollFD (1, POLLIN | POLLPRI);
@@ -224,7 +321,7 @@ void Rts2CMonitor::pollSuccess ()
 {
         rts2core::Client::pollSuccess ();
 
-logStream (MESSAGE_ERROR) << "pollSuccess calisti " <<  sendLog;
+//logStream (MESSAGE_ERROR) << "pollSuccess calisti " <<  sendLog;
 
 /*
         while (1)
@@ -237,7 +334,12 @@ logStream (MESSAGE_ERROR) << "pollSuccess calisti " <<  sendLog;
 */
 }
 
+void Rts2CMonitor::startAcquisition()
+{
 
+mountConnection->queCommand (new rts2core::Command (this, "altaz 20 20"));
+
+}
 
 
 
@@ -260,7 +362,7 @@ orderedConn = *getConnections();
 
 //sleep(5000);
 //orderedConn = *getConnections();
-logStream (MESSAGE_ERROR) << "size of connection " <<orderedConn.size()<<  sendLog;
+//logStream (MESSAGE_ERROR) << "size of connection " <<orderedConn.size()<<  sendLog;
 /*
 if(orderedConn.size()>0)
 {
@@ -281,6 +383,8 @@ if(orderedConn.size()>0)
 
 	}
 */
+
+/*
 
         std::string telCon ="T0";
         std::string camCon ="C0";
@@ -312,7 +416,7 @@ if(orderedConn.size()>0)
         }
 
 
-
+*/
 
    sleep(1);
 

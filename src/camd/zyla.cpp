@@ -222,6 +222,15 @@ int Zyla::commandAuthorized(rts2core::Connection * conn)
 {
 if(conn->isCommand("fast"))
 {
+
+/*
+if (getDeviceBopState () & BOP_EXPOSURE)
+logStream(MESSAGE_INFO)<<"Capture should be blocked"<<sendLog;
+else logStream(MESSAGE_INFO)<<"Capture should NOT be blocked"<<sendLog;
+
+*/
+
+
 logStream(MESSAGE_INFO)<<"fast capture started"<<sendLog;
  double exptime;
  long numberOfExposures; 
