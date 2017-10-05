@@ -14,7 +14,7 @@ static const char* return_from_error_code(int error_code);
 {									\
   int ret_code = command;						\
   if ( AT_SUCCESS != ret_code ){\
-logStream(MESSAGE_INFO) << error_prefix << " "<<return_from_error_code(ret_code)<<sendLog; \
+logStream(MESSAGE_DEBUG) << error_prefix << " "<<return_from_error_code(ret_code)<<sendLog; \
 }\
 }
 
@@ -109,11 +109,10 @@ void Andor_Camera::initializeController()
         THROW_IF_NOT_SUCCESS(getIntSystem(DeviceCount, &numCameras),
                 "No camera present!");
 
-        //std::cout << "Found " << numCameras << " camera" << ((numCameras>1) ? "s" : "")<<"\n";^M
 
-                logStream(MESSAGE_DEBUG) << "Get all attached cameras"<<sendLog;
-                logStream(MESSAGE_DEBUG) << "Found " << numCameras << " camera" << ((numCameras>1) ? "s" : "")<<sendLog;
-                logStream(MESSAGE_DEBUG) << "Try to set current camera to number " << m_camera_number<<sendLog;
+        //        logStream(MESSAGE_DEBUG) << "Get all attached cameras"<<sendLog;
+        //        logStream(MESSAGE_DEBUG) << "Found " << numCameras << " camera" << ((numCameras>1) ? "s" : "")<<sendLog;
+        //        logStream(MESSAGE_DEBUG) << "Try to set current camera to number " << m_camera_number<<sendLog;
 
 
  if (m_camera_number < numCameras && m_camera_number >= 0) {
@@ -252,17 +251,17 @@ void Andor_Camera::prepareAcq()
 
 
 	if (!m_real_camera) 
-			logStream(MESSAGE_INFO) << "BE VERY CAREFULL : The andor SDK3 camera that you are connected to is a SIMULATED CAMERA !!!"<<sendLog;
+			logStream(MESSAGE_DEBUG) << "BE VERY CAREFULL : The andor SDK3 camera that you are connected to is a SIMULATED CAMERA !!!"<<sendLog;
 
 		
- 	logStream(MESSAGE_INFO) << "Flushing the queue of the framegrabber"<<sendLog;
+ 	logStream(MESSAGE_DEBUG) << "Flushing the queue of the framegrabber"<<sendLog;
 	//setEnumString(CycleMode, L"Continuous");
  	setEnumString(CycleMode, L"Fixed");
  //	setInt(FrameCount, 100);
 
 	AT_WC the_string[256];
    	getEnumString(CycleMode, the_string, 256);
-    logStream(MESSAGE_INFO) << "Tried to set the acq is Fixed mode " << WStringToString(std::wstring(the_string))<<sendLog;
+    logStream(MESSAGE_DEBUG) << "Tried to set the acq is Fixed mode " << WStringToString(std::wstring(the_string))<<sendLog;
 	
     AT_Flush(m_camera_handle);
 	createBuffers(m_camera_handle);
@@ -302,10 +301,10 @@ void Andor_Camera::startAcq()
 
 	if (!m_real_camera) {
 		//std::cout << "BE VERY CAREFULL : The andor SDK3 camera that you are connected to is a SIMULATED CAMERA !!!";
-			logStream(MESSAGE_INFO) << "BE VERY CAREFULL : The andor SDK3 camera that you are connected to is a SIMULATED CAMERA !!!"<<sendLog;
+			logStream(MESSAGE_DEBUG) << "BE VERY CAREFULL : The andor SDK3 camera that you are connected to is a SIMULATED CAMERA !!!"<<sendLog;
 	
 
-		logStream(MESSAGE_INFO) << "Starting the acquisition by the camera (or triggering when in software trigger mode)"<<sendLog;
+		logStream(MESSAGE_DEBUG) << "Starting the acquisition by the camera (or triggering when in software trigger mode)"<<sendLog;
 	}
         if (0 == m_image_index) {
 		// Setting the start timestamp of the buffer :
@@ -313,22 +312,22 @@ void Andor_Camera::startAcq()
 		// Sending the start command to the SDK :
 		THROW_IF_NOT_SUCCESS(AT_Command(m_camera_handle, L"AcquisitionStart"), "Acquisition can not startted");
 		//sendCommand(AcquisitionStart);
-			logStream(MESSAGE_INFO) << "Acquisition start command run"<<sendLog;
+			logStream(MESSAGE_DEBUG) << "Acquisition start command run"<<sendLog;
 	}
 
 	if (Software == m_trig_mode) {
 		// If we are in software trigger mode, the call to startAcq serves as the trigger :
 		//sendCommand(SoftwareTrigger);
 		THROW_IF_NOT_SUCCESS(AT_Command(m_camera_handle, L"SoftwareTrigger"), "SoftwareTrigger can not be applied");
-			logStream(MESSAGE_INFO) << "software trigger is applied"<<sendLog;
+			logStream(MESSAGE_DEBUG) << "software trigger is applied"<<sendLog;
 	}
 //unsigned char * Buffer2;
 	THROW_IF_NOT_SUCCESS(AT_WaitBuffer(m_camera_handle, &Buffer, &BufferSize, AT_INFINITE), "Cannot Get Frame");
-        logStream(MESSAGE_INFO) << "image taken in for loop"<<sendLog;
+        logStream(MESSAGE_DEBUG) << "image taken in for loop"<<sendLog;
 
         bool cameraIsAcquiring=false;
         getBool(CameraAcquiring,&cameraIsAcquiring);
-        logStream(MESSAGE_INFO) <<"before while"<< cameraIsAcquiring<<sendLog;
+        logStream(MESSAGE_DEBUG) <<"before while"<< cameraIsAcquiring<<sendLog;
        while(m_image_index<m_nb_frames_to_collect)
        {
 
@@ -359,17 +358,17 @@ logStream(MESSAGE_INFO) << "convertbuffer return is "<<returnCode;
 
 	THROW_IF_NOT_SUCCESS(AT_QueueBuffer(m_camera_handle, UserBuffer, BufferSize),"Cannot Queue the frame buffer");
 
-        logStream(MESSAGE_INFO) << "after queue buffer image index is"<<(long long)m_image_index<<sendLog;
+        logStream(MESSAGE_DEBUG) << "after queue buffer image index is"<<(long long)m_image_index<<sendLog;
 
         getBool(CameraAcquiring,&cameraIsAcquiring);
        }//while acquiring
 
-		logStream(MESSAGE_INFO) << "Done, the acquisition is now started and the frame retrieving should take place in parallel in a second thread"<<sendLog;
+		logStream(MESSAGE_DEBUG) << "Done, the acquisition is now started and the frame retrieving should take place in parallel in a second thread"<<sendLog;
 		getBool(CameraAcquiring,&cameraIsAcquiring);
-		logStream(MESSAGE_INFO) << cameraIsAcquiring<<sendLog;
+		logStream(MESSAGE_DEBUG) << cameraIsAcquiring<<sendLog;
 		stopAcq();
 		getBool(CameraAcquiring,&cameraIsAcquiring);
-		 logStream(MESSAGE_INFO) <<"after stopAcq"<< cameraIsAcquiring<<sendLog;
+		 logStream(MESSAGE_DEBUG) <<"after stopAcq"<< cameraIsAcquiring<<sendLog;
 }
 void Andor_Camera::stopAcq()
 {
@@ -501,7 +500,7 @@ void Andor_Camera::getSdkFrameDim(SdkFrameDim &frame_dim, bool last)
 
 		//std::cout << "Getting the basic information from the camera : image size (in bytes) and pixel encoding.";
 
-			logStream(MESSAGE_INFO) << "Getting the basic information from the camera : image size (in bytes) and pixel encoding."<<sendLog;
+			logStream(MESSAGE_DEBUG) << "Getting the basic information from the camera : image size (in bytes) and pixel encoding."<<sendLog;
 		getInt(ImageSizeBytes, &the_frame_dim.size);
 		getEnumIndex(PixelEncoding, (int *)&the_frame_dim.encoding);
 		getFloat(BytesPerPixel, &the_frame_dim.bytes_per_pixel);
@@ -511,7 +510,7 @@ void Andor_Camera::getSdkFrameDim(SdkFrameDim &frame_dim, bool last)
 	//		<< ", the pixel encoding index is " << the_frame_dim.encoding
 	//		<< " and finally byte per pixel " << the_frame_dim.bytes_per_pixel;
 
-			logStream(MESSAGE_INFO) << "The image size in bytes is " << the_frame_dim.size << ", the pixel encoding index is " << the_frame_dim.encoding << " and finally byte per pixel " << the_frame_dim.bytes_per_pixel<<sendLog;
+			logStream(MESSAGE_DEBUG) << "The image size in bytes is " << the_frame_dim.size << ", the pixel encoding index is " << the_frame_dim.encoding << " and finally byte per pixel " << the_frame_dim.bytes_per_pixel<<sendLog;
 		the_frame_dim.is_encoded = the_frame_dim.encoding == Mono12Packed;
 
 		// Indeed it seems LIMA is not having the difference between width and stride.
@@ -617,8 +616,7 @@ void Andor_Camera::setSimpleGain(A3_SimpleGain i_gain)
 		THROW_IF_NOT_SUCCESS(setEnumIndex(SimplePreAmpGainControl, i_gain),"simple preampgain control cant get");
 	}
 	else {
-		//std::cout << "SimplePreAmpGainControl not implemented, emulating it in software";
-			logStream(MESSAGE_INFO) << "SimplePreAmpGainControl not implemented, emulating it in software"<<sendLog;
+			logStream(MESSAGE_DEBUG) << "SimplePreAmpGainControl not implemented, emulating it in software"<<sendLog;
 
 		A3_ShutterMode		the_shutter;
 
@@ -666,7 +664,7 @@ void Andor_Camera::setAdcRate(A3_ReadOutRate iRate)
 		//		<< "\n\tGot " << m_adc_rate << " back,"
 		//		<< "\n\twhile requesting " << iRate;
 
-				logStream(MESSAGE_INFO) << "Proof-reading the ADC readout rate :"
+				logStream(MESSAGE_DEBUG) << "Proof-reading the ADC readout rate :"
 					<< "\n\tGot " << m_adc_rate << " back,"
 					<< "\n\twhile requesting " << iRate<<sendLog;
 
@@ -679,8 +677,7 @@ void Andor_Camera::setAdcRate(A3_ReadOutRate iRate)
 		THROW_IF_NOT_SUCCESS(setEnumIndex(PixelReadoutRate, 0),"cant set pixel read out rate");
 		getEnumIndex(PixelReadoutRate, &the_rate);
 		m_adc_rate = static_cast<A3_ReadOutRate>(the_rate);
-		//std::cout << "The SIMCAM has only one rate setting (550MHz), making sure that's what we are doing now";
-			logStream(MESSAGE_INFO) << "The SIMCAM has only one rate setting (550MHz), making sure that's what we are doing now"<<sendLog;
+			logStream(MESSAGE_DEBUG) << "The SIMCAM has only one rate setting (550MHz), making sure that's what we are doing now"<<sendLog;
 	}
 }
 void Andor_Camera::setBitDepth(A3_BitDepth iMode)
@@ -695,7 +692,7 @@ void Andor_Camera::setBitDepth(A3_BitDepth iMode)
 	//		<< "\n\tGot " << m_bit_depth << " back,"
 	//		<< "\n\twhile requesting " << iMode;
 
-		logStream(MESSAGE_INFO) <<"Proof-reading the image bit-depth :"
+		logStream(MESSAGE_DEBUG) <<"Proof-reading the image bit-depth :"
 						<< "\n\tGot " << m_bit_depth << " back,"
 						<< "\n\twhile requesting " << iMode<<sendLog;
 	}
@@ -735,10 +732,8 @@ void Andor_Camera::setCooler(bool flag)
 	setBool(SensorCooling, flag);
 	getBool(SensorCooling, &m_cooler);
 	if (flag != m_cooler) {
-	//	std::cout << "Failed to properly set the cooler : requested " << flag << ", but got " << m_cooler;
-	//	std::cout << "Failed to properly set the cooler";
 
-			logStream(MESSAGE_INFO) << "Failed to properly set the cooler : requested " << flag << ", but got " << m_cooler<<sendLog;
+			logStream(MESSAGE_DEBUG) << "Failed to properly set the cooler : requested " << flag << ", but got " << m_cooler<<sendLog;
 	}
 }
 
@@ -757,17 +752,15 @@ void Andor_Camera::setTemperatureSP(double temp)
 		getFloat(TargetSensorTemperature, &m_temperature_sp);
 		if ((m_temperature_sp - temp) > 0.1 || (m_temperature_sp - temp) < -0.1) {
 
-				logStream(MESSAGE_INFO) << "Proof-reading temperature set-point : "
+				logStream(MESSAGE_DEBUG) << "Proof-reading temperature set-point : "
 					<< "\n\tproof-read = " << m_temperature_sp
 					<< "\n\twhile asked to be = " << temp
 				     << "Failed on setting temperature set-point"<<sendLog;
 
-
 		}
 	}
 	else {
-		//std::cout << "This camera has no temperature set-point control !";
-      	logStream(MESSAGE_INFO) << "This camera has no temperature set-point control !"<<sendLog;
+      	logStream(MESSAGE_DEBUG) << "This camera has no temperature set-point control !"<<sendLog;
 
 		m_temperature_control_available = false;
 	}
@@ -775,17 +768,16 @@ void Andor_Camera::setTemperatureSP(double temp)
 
 bool Andor_Camera::propImplemented(const AT_WC * iPropName) const
 {
-	
+
 	AT_BOOL		b_exists;
 
 	int ret_code;
 	if (AT_SUCCESS != (ret_code = AT_IsImplemented(m_camera_handle, iPropName, &b_exists))) {
-	//	std::cout << "Error in printInfoForProp : " << return_from_error_code(ret_code);
-			logStream(MESSAGE_INFO) << "Error in printInfoForProp : " << return_from_error_code(ret_code)<<sendLog;
+			logStream(MESSAGE_DEBUG) << "Error in printInfoForProp : " << return_from_error_code(ret_code)<<sendLog;
 
 		return false;
 	}
-		logStream(MESSAGE_INFO) << "\tIsImplemented = " << atBoolToString(b_exists)<<sendLog;
+		logStream(MESSAGE_DEBUG) << "\tIsImplemented = " << atBoolToString(b_exists)<<sendLog;
 	return b_exists;
 }
 
@@ -878,7 +870,7 @@ void Andor_Camera::setSpuriousNoiseFilter(bool i_filter)
 	bool		the_bool;
 	getBool(SpuriousNoiseFilter, &the_bool);
 	if (i_filter != the_bool) {
-			logStream(MESSAGE_INFO) << "Failed to properly set the spurious noise filter mode : requested " << i_filter << ", but got " << the_bool<<sendLog;
+			logStream(MESSAGE_DEBUG) << "Failed to properly set the spurious noise filter mode : requested " << i_filter << ", but got " << the_bool<<sendLog;
 }
 }
 
@@ -1242,7 +1234,7 @@ int Andor_Camera::getHwBitDepth(int *bit_depth)
 	if ((the_err_code != AT_ERR_NOTIMPLEMENTED) || m_real_camera)
 		return the_err_code;
 
-	logStream(MESSAGE_INFO) << "Get BitDepth not implemented for simulated camera: "
+	logStream(MESSAGE_DEBUG) << "Get BitDepth not implemented for simulated camera: "
 		<< "fixing b16"<<sendLog;
 	*bit_depth = b16;
 	return AT_SUCCESS;

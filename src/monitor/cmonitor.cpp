@@ -12,7 +12,8 @@ using namespace std;
 #define EVENT_EXPOSURE_OK          RTS2_LOCAL_EVENT+54
 #define EVENT_CCD_READY         RTS2_LOCAL_EVENT+55
 #define EVENT_MOUNT_READY         RTS2_LOCAL_EVENT+56
-
+#define EVENT_STOP_PROGRAM	RTS2_LOCAL_EVENT+57
+#define EVENT_MOVE_EXPOSE_COMPLETED RTS2_LOCAL_EVENT+58
 
 
 class  Rts2CMonitor:public rts2core::Client
@@ -44,7 +45,8 @@ class  Rts2CMonitor:public rts2core::Client
                         virtual void postEvent (rts2core::Event *event);
                         bool ccdReady = false;
                         bool mountReady = false;
-                        void startAcquisition();
+                        void startAcquisition(long num);
+                        long exposeNumber=0;
 } ;
 
 
@@ -159,6 +161,7 @@ rts2core::DevClient * Rts2CMonitor::createOtherType (rts2core::Connection * conn
         {
                  
                  mountConnection = conn;
+                 mountReady = true;
                  //conn->queCommand (new rts2core::Command (this, "altaz 20 20"));
                  
                  //mountConnection->queCommand (new rts2core::CommandMoveAltAz (this, (rts2core::DevClientTelescope *) retC,50 ,50));
@@ -171,7 +174,8 @@ rts2core::DevClient * Rts2CMonitor::createOtherType (rts2core::Connection * conn
 
                if (other_device_type == DEVICE_TYPE_CCD)
         {
-            ccdConnection = conn; 
+            ccdConnection = conn;
+            ccdReady=true; 
            // conn->queCommand (new rts2core::Command (this, "fast 11 11"));
            postEvent(new rts2core::Event (EVENT_CCD_READY));
 
@@ -236,6 +240,7 @@ void Rts2CMonitor::postEvent (rts2core::Event *event)
         switch (event->getType ())
         {
                 case EVENT_MOVE_OK :
+                /*
                 logStream(MESSAGE_INFO)<<"post event olustu event move ok"<<sendLog;
                 if(!ccdReady)
                {
@@ -256,25 +261,36 @@ void Rts2CMonitor::postEvent (rts2core::Event *event)
                 //sleep(2);
                 //postEvent (new rts2core::Event (EVENT_MOVE_OK));
                 
-
+                */
 
                 case EVENT_CCD_READY :
-                logStream(MESSAGE_INFO)<<"post event ccd is ready"<<sendLog;
-                ccdReady = 1;
-                if(mountReady)
-                startAcquisition();
+                logStream(MESSAGE_INFO)<<"posted ccd_ready event"<<sendLog;
+                //ccdReady = true;
+                if(mountReady&&ccdReady)
+                startAcquisition(0);
                 else
-                postEvent (new rts2core::Event (EVENT_MOUNT_READY));
+                if(!mountReady)postEvent (new rts2core::Event (EVENT_MOUNT_READY));
  
                 break;
                 
                 case EVENT_MOUNT_READY :
-                logStream(MESSAGE_INFO)<<"post event ccd is ready"<<sendLog;
-                mountReady = 1;
-                if(ccdReady)
-                startAcquisition();
+                logStream(MESSAGE_INFO)<<"posted mount_ready event"<<sendLog;
+                //mountReady = true;
+                if(ccdReady&&mountReady)
+                startAcquisition(0);
                 else
-                postEvent (new rts2core::Event (EVENT_CCD_READY));
+                if(!ccdReady)postEvent (new rts2core::Event (EVENT_CCD_READY));
+
+                break;
+                
+                case EVENT_STOP_PROGRAM:
+                endRunLoop ();
+
+
+                case EVENT_MOVE_EXPOSE_COMPLETED:
+                exposeNumber++;
+                startAcquisition(exposeNumber);
+
 
                 break; 
 
@@ -334,10 +350,20 @@ void Rts2CMonitor::pollSuccess ()
 */
 }
 
-void Rts2CMonitor::startAcquisition()
+void Rts2CMonitor::startAcquisition(long move_expose_number)
 {
 
+logStream(MESSAGE_INFO)<<"Acquisition number is "<<move_expose_number<<sendLog;
 mountConnection->queCommand (new rts2core::Command (this, "altaz 20 20"));
+ccdConnection->queCommand (new rts2core::Command (this, "fast 1 1"));
+//sleep(1);
+if(move_expose_number < 2)
+postEvent (new rts2core::Event (EVENT_MOVE_EXPOSE_COMPLETED));
+
+
+//postEvent (new rts2core::Event (EVENT_STOP_PROGRAM));
+
+
 
 }
 
@@ -351,7 +377,7 @@ int Rts2CMonitor::run ()
         //createClientConnection("T0");
         //conn->queCommand (new rts2core::Command (this,"altaz 10 10"));
         
-orderedConn = *getConnections();
+//orderedConn = *getConnections();
 
 //while(orderedConn.size()<=0)
 //{
