@@ -1,0 +1,135 @@
+SIMPLE  =                    T / conform to FITS standard                       BITPIX  =                   16 / unsigned short data                            NAXIS   =                    2 / number of axes                                 NAXIS1  =                  200 / length of data axis                            NAXIS2  =                  100 / length of data axis                            EXTEND  =                    T / this is FITS with extensions                   HISTORY Created with RTS2 version 0.9.5 build on Jul  3 2017 14:19:00.          CTIME   =           1507635910 / exposure start (seconds since 1.1.1970)        USEC    =               446165 / exposure start micro seconds                   JD      =     2458036.98970421 / Modified Julian Date                           DATE-OBS= '2017-10-10T11:45:10.446' / start of exposure                         EXPOSURE=                   2. / exposure length in seconds                     EXPTIME =                   2. / exposure length in seconds                     INSTRUME= 'RTS2 spectograph'   / name of the data acqusition instrument         TELESCOP= 'RTS2 Xm '           / name of the data acqusition telescope          ORIGIN  = 'XXXXX   '           / organisation responsible for data              SCRIPREP=                    0 / script loop count                              SCRIPT  = ' for 10 { E 2 } '   / script used to take this images                SCR_COMM= '        '           / comment recorded for this script               COMM_NUM=                    0 / comment order within current script            CCD_TYPE= 'Dummy   '           / camera type                                    CCD_SER = '1       '           / camera serial number                           CCD_CHIP= '        '           / camera chip type                               IMAGETYP= 'object  '           / IRAF based image type                          OBJECT  = '        '           / target object name                             SLITPOSX=                  -1. / [pixels] slit position along dithering axis    SLITPOSY=                  -1. / [pixels] slit position along dithering axis    BINNING = '1x1     '           / [pixelX x pixelY] chip binning                 BINX    =                    1 / [pixels] binning along X axis                  BINY    =                    1 / [pixels] binning along X axis                  CCD_TEMP=             31.91297 / CCD temperature                                READOUT =                   0. / readout sleep in sec                           GEN_TYPE= 'astar   '           / data generation algorithm                      SHUTTER =                    0 / shutter state (0 - opened, 1 - closed)         CCD_AIR =             32.01656 / detector air temperature                       COOLING =                    F / camera cooling start/stop                      CCD_SET = -9.1191291391491E-36 / CCD set temperature                            MNT_NAME= 'T0      '           / name of mount                                  LATITUDE=             39.96972 / observatory latitude                           LONGITUD=             33.07389 / observatory longitude                          ALTITUDE=                1167. / observatory altitude                           ORIRA   =     207.417123812862 / original position (epoch) RA                   ORIDEC  =    -27.1953873751575 / original position (epoch) DEC                  OEPOCH  =                2000. / epoch (2000,..)                                PMRA    =                   0. / proper motion/year RA                          PMDEC   =                   0. / proper motion/year DEC                         OFFSRA  =                   0. / object offset RA                               OFFSDEC =                   0. / object offset DEC                              DRATERA =                   0. / [deg/hour] differential tracking rate RA       DRATEDEC=                   0. / [deg/hour] differential tracking rate DEC      TRACKING= 'off     '           / telescope tracking                             SKYSPDRA= -9.1191291391491E-36 / [deg/hour] tracking speeds vector (in RA/DEC) RHIERARCH SKYSPDDEC = -9.1191291391491E-36 / [deg/hour] tracking speeds vector (iOBJRA   =     207.417123812862 / telescope FOV center position (J2000) - with ofOBJDEC  =    -27.1953873751575 / telescope FOV center position (J2000) - with ofTARRA   =     207.417123812862 / target position with computed corrections (precTARDEC  =    -27.1953873751575 / target position with computed corrections (precCORR_RA =                   0. / correction from closed loop RA                 CORR_DEC=                   0. / correction from closed loop DEC                HIERARCH MO_RTS2RA =        0. / [deg] RTS2 model offsets RA                    HIERARCH MO_RTS2DEC =       0. / [deg] RTS2 model offsets DEC                   TELRA   =     207.417123812862 / mount position (from sensors, sky coordinates) TELDEC  =    -27.1953873751575 / mount position (from sensors, sky coordinates) JD_HELIO=     2458036.98441278 / heliocentric JD                                TEL_ALT =     19.9901077143687 / horizontal telescope coordinates altitude      TEL_AZ  =     20.0341040054696 / horizontal telescope coordinates azimuth       HIERARCH mpec_difRA =       0. / [degrees/hour] calculated MPEC differential traHIERARCH mpec_difDEC =      0. / [degrees/hour] calculated MPEC differential traPARKTIME= -9.1191291391491E-36 / Time of last mount park                        AIRMASS =     2.91062123540445 / Airmass of target location                     HA      =     21.2201385750825 / Location hour angle                            LST     =     228.637262387945 / Local Sidereal Time                            MOVE_NUM=                    3 / number of movements performed by the driver; usCORR_IMG=                    0 / ID of last image used for correction           MNT_ROTA=                   0. / mount rotang                                   MNT_FLIP=                    0 / telescope flip                                 MNT_INFO=     1507635910.44348 / time when mount informations were collected    SUN_ALT =     34.3412050893876 / solar altitude                                 SUN_AZ  =     40.7391355282266 / solar azimuth                                  CAM_FILT=                    0 / filter used for image                          BZERO   =                32768 / offset data range to that of unsigned short    BSCALE  =                    1 / default scaling factor                         AVERAGE =            539.98215 / average value of image                         STDEV   =     1224.72749166146 / standard deviation value of image              CROTA2  =                   0. / rotational angle                               FILTER  = 'UNK     '           / camera filter as string                        DATE    = '2017-10-10T11:45:12.454' / creation date                             END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ¥#Ðü°èAâ–È‹‚­€ÿ`¸„kUw‚à‚‚ _€ÿ‚iÕ‚!?ð«‚óêt–O\TÃÛn! Ê=ž¹‚#y”]~„Í.€‚‚$‚‚‚ ßPp	³“dPIØxo|»‚¹gª‚ì	Ä‚ ±‚œ¦ûv`&ìpàZÚ
+©ˆ‚‚‚€úÞOªÕ¹s#€ÿ
+Å«‚‚‚	[ò=‚ì¤fæŽ‹ÎC‚$‚Ól,ýr<‚#"¹‚4œEà\‚
+§‚JgoÛ‚‚%‚‚)Ìe[£ÝžÚÆÛÄ‚R‚‚Eì¹&€û›ózò&rêV)¸Â‚0äÁü™_×ñIº‚•—Á˜™7f±·3Þ‚##'Ìì‚ªÖÙ‹‚_óû§e—‚Õ†f¿Hq½\šë`ÿ‚‚°¿Æ%‚# Kñ‚ø0s‚"x¥Žó‚Õ*zš3àtË€þßÙÊ‚
+×Ð0¢¬Ù‚%‚!î!sm¶Œ;–<k‚Ý¤Ñ+Äw0}+‚b‚¬˜…2¡82œ Y‚t‚|µ‡¾€ûxu¥$§C¡ÝÇÒ¸µ>¢wS¯¿Z‚¯ÔÿdaËeß‚‚	È/„€ü1‚ìX‚‚Õ¦4_@”HöC"‚­‰¨‚CÉ‚&l°ò‚ç‚ñ®=N‚úÉS7¢‚€Êí.o€üw‚¤„‚.Q‚‚7Ñ¤{‚%núÜÇ‚‚Cÿu‚Çƒ†›)g´\N‚<D‚ï‚‚‚æ¹´Õ®þ¯€ýíP‡‚f‚†–T¥$·ù	ù,æ‚ÐÓë¼”KD#ù‚#˜‚†a á‚+rà;Eþmæß«ÚN€ÿ˜)l#•Â‚  "[‚	B8U€üy¡‚í­Á‚gG¿»RÅ.jô ”‚0‚YC$<‹c˜ŽãiªÇ	R)Ê«ôÿ‚ÃyŠ±À™­‚ãØ6IÕÝþï ƒ‘+‚ „E	‚€ÿµž@)ß»#n`ì‰£b‚Êëpüß‚Z‚6iôZoƒþ‚Ê‚„£1€û‚—í{­jã‹©‚‚bòE?µc€þ—<‚;#‚ÅÍ"Æ¿ÀGþýÙ‚µþê‚‹ÙõÝ´Àõ5±•‚	Ú5¢uÉ¼Â¢”v‚hàŽŒé‚ @‚ï‚$•‚¿eK‚ ‚€ÿœzà2\Í“òÂŸ5}È@‚!÷‚½Ò¥€üéö‚ãü‚YQÔ’o9‚‚‚‚Yá ˜ÊÈj°_0b‚@Ã‚4‚#/‚¤‚ Î†ÿª‚‚‚	zÕ„‚y&]Œz:ô[A‚$H‚!T2‹þ-3_äH‚%ÈÉÔ&¼(S‚ 2åtr³ÕºÈÔà‚Ð#5‚VoLb-›bü>€ü‚ ?UúwIðÎ‚%„pÔ?aSŠº@æ“#8ŒM£(él€ý:‡L/L¦€úÕ‚€rI3â]]ñïrm‰F0üIq]œ|“ï‚ðÂ€ûJÊte‚­ŠÖ‚î¢Ú:À"É‚YŸ1Ñ‚Ô'q‹hÝ¸‚‚$vˆ'zQÏ/‘iW5P·Ûˆb¸6Ùª”a€ûÚé‚	Ø:r;gò“€û€þY:Ö‚‚8R­uè·)l%KÔ' ˜
+ßØƒ‚ O/Q’µ°Òf Ç¥øO‚ º‚$uÜ9{OJ4Ó/!€ýÃWT/‚‚
+‚S…ªÿWÿú‚æ‚$‚ øt×õ \
+9/‚ŒgyL‚Ó× ¬	y€ü9‚"úÓÉÙ€Óç‚‚£ðƒ‚‚‚7ù¯‚s6‚$ò½€û‚#‚Ñ<»…ÂiG-V>Ö!ÇÂ€þ¤‚ þ-ïKjîð$ íC™†Ó‚$"EUsŠ›+Ï Õ©x‚	sÉN<çV‚|ú0”m¼Alå^¸Ø"MN÷ó€ý{E‚õ‚5×‘Ã‚‚ú‚`ÊÓOejáˆ“Üd‚àæ"Èµ‚ÇîoåŒ^Ø`çö‹í ”,‘P»€þ_qi;,)cúä{Ø†C!EÕ†‚$G‚Ø‚GŸžÍ¤‚‚Kƒ ‚‚þb"€ú®þ†¬‚ÔÅû†¥‚	Ô¸ƒM`*‚JÑÓ÷‚²ÐQÚÑ‚²1Œ¡‚,vl×ZiãnÐëŸ)áï‚ôÓã)}‚
+)‚–a€G²Ž¹dïÛÔ­$~sÊ®.”‰€ü7æ;»ûêï¼%JÔr‚<Aè‚¹‚t·€ý;%>6Ê€þx_ÿ$É3O‚‚Èö$Ô0–ðƒ‚ý…@‚V|½Zú‚#4r!‚«w÷“Ç¾óßôdí¿îJ–‚	Ö¯#É‚¦`@z^{ó…Xy‚*‚‚"÷ªð±y.x‚#É°‚y9¯„eèçþGQ$J> ï‚ÓB%\õ‚€ýH%lJ½ö¶È¸w ‚˜÷è+‚
+‚·!Bã„e²pi‚›wGì}ÜÕúW¶l)Á/?ó‚ÐF2Ðž‚‚!¼^Bƒs`‚)Û‡Ì"¶gWû5p‚$?]¯‚‚Ï
+èËÍ!‚*šN
+Êdë+‚çyD¼´»¶ÞÝûgë‚üßâ£‚ÐÓ{‚%ãc©Qu–ôáÕ‚we;/;WœN³‚p‚/k‚„œçÿ‚ Íô¯*F‚k{1É‚8‚« ‚!ž‚Óa6ÅøÀ<ºšO”BriäêJ‡â‰€g¦†b}~÷å»—·VÙKöæ&‚
+‹•‚$JZIØØ2„Y¿ì}EN‚‚ë“7Ÿä§¤!Ó‰³C‡‚¤×¶ÁŠîéˆ‚@¤2•€[‚P‚ Ø_‚W‡0æzH‚‚$€ú®ÀŠwæM‚Ò”„‚‚
+‚$dþO?±´Ç‚þÏ0R‚(Q‚Ý‚‚/ØÖ„D™iN~h¹V½þ‚L ögxŸžÑ˜Ì€ü„‚‚¹ÌÉÎ+‚A›<Æ‚	û‚"¡Ô‚
+óNÚ5ÍTÙxò€{\‚pPŸ‚GH‚ê#/Î‚%,IÓ€üñRÏ"‚Œ¤Nq‚¤‚9[…Î¯‚ó®\"4^‚Œ˜1€ÿÛWwÐ‚hây§‚P=Ž/
+@'ziaÞ\ôítg‚$}mÙÛê„·-AÛ_‚¢;³‚à‚ñ×'‚ž¢Xœ‚%ËPÛÛmÄ‚"~y[o…‚õÇ‘m$Ke‚n_ºÅ½1Åcˆzù>í˜:F‚œ»w{‹‚þB8=8¬Z\‚‚€û©'Ç‚µçú‚Y0K±òÈXç‚02tCäÔ¥ÑÊ§U÷IB‡k[UcpŒ´€üYW	·î$;<m€ú‚‚Ñ»› êH‚/RO‹»Å‚JÇP¨×‚ÇßÖñ‚ ‚9‚!‚,Ì¡ÎÒ’‚!€üÇMR,‚‚$4¿{âpc„*P% ‚Âò”jŸ¢‚š¤¤îü×Øô‚‚WÏ‚Á-Ûƒ4é‚ZÜµ'K€úÌó‚Ar	H3èÔ«m~‰±˜êÒ®e¾4¶¾‚ƒ›"û‚#21‚ ;FÏí¹'PÈßïŒôœý©€•ä.ÅšÐîpÎ€ú”‚‚!Ö%Êåøô‡±½‚€4Wãó¡¥€üAÒ	z
+€þZÛ†×SE©!Ò4åÆº‚Õ‚Ý>åXêç ‚
+”°t‚ÁxIÍ.Õ~‡‚!®Í<nnýhïb¯~&q‚$
+‚®…úJ‚‚ùv˜ô}!œÀ–‚—‚	`€ýr‚ža€¯F	Y‚?Q€þÍ‚%Ä…ë5p\€Ãø³Ÿp‚‚%€ú;	\h¢À¼g©¤’HWƒzºœ‚ WºÒ‚3‚2B3}±:€úKF¼¸õ;%Eƒ¡Å tØM^‚q>•^fÎâ‚‚âB0x‚ º ‚ŠÅ¥§ä ‚!–sZêž¦Y‚‚¿‚	‚{&!ú'Ž	Ln™‚‚ÖFvÎQ‚N±ø;¹’«‚KÓèS‚Qc'Å‚¹‚"õÒ9ê‘…WTÜðybÞË¡‚%‚øb˜>7+;‚T#ê‚¯IÑ§\ˆqÜð)‚Ð÷£é‚'FD4$ž^BbL÷±T£3·ªmýÙõÝ„P®žËjg‚”‚>ÝH‘¯‚ ì,}9½ñqÀóü‚|‚‚ €û(Æl–¦‚{ë¾ÊWG¤z·¢¹OmÏÇ€ú‚ {‚}5ºïÑ;Ð'i÷^¶u‚€ÿÊ]rt€þ‚¡‚‚#‚{È›DtÝ‚¡ä^r‚î¦ û«Ñ2‚$6Þ‚€ýÜo‚
+1€{Œ7p‚"ÕÊGÅÐK{VI¡’Ï¹K±½€ú¡8€üº¤9±6àU„Y‚!/|F±Ø–-E?ì–÷ƒž÷€ÿÝ‚qB|~6,ÙÁ‹Õ÷‚‚"‚¿’µ‚Ø||©‚‚ {‚×e‚"ú0¥‚µá!i}³Nš×4¬g_éœ‚Ê–d±HÏŸq£Ö‚™eØÀÕ/Nó„î‚5€ý”¢úfÀã1!Âö<öt‚í‚YŸ®Õ‚‚3ËéoÎX‚ó,X‚iÄ‚G‚\:áI™Zý§	ÙƒC~G¸'¥ª‚ Ø‚‡ÈK&ßWIÇ¥=€ýæ‚%MZY$‚i‚e³\²EŠ2ö„‚Ø‚³€þl\b‚¦Ç¥e€û‚‚	ImH‚Ð‚"4‚¿‚$Ñ¬±ÕÅ‚$‚®$º.¼‚%Ÿ]lî:ÊbQÝ[‚Ügâ<eóDwæø¢{·y~¹›#‚"ó‚Xä½d[€þ žj‚èèÚ»d0ÂvGÞˆ‚1‚^ñˆîOi Šn±‚v¥Õ8Zj£‚ Þë‚¼‚#h‚!ïðƒ·óÞ,úC¡‚úŽXz=—Û®F»€þ–Á‚¼HÏ‚î‚¾‚!ç‚œÉÜ€û0H˜‚ü²2‘Ç6‚8þr”Áì´¡´¢:¯d%ý0~§‚ T4,ì‚ißA,0Üó‚"jo±‚°:QÑf^©m¸‚!‚²P(å(üoT%üQ–F‚ƒüÚ¨Š+‡ê€ý{wSª6pµdFÙÚO‚%_vqBÿGf´ööÎ€üþ/ì‚±=/5z¥ñåò¤™²xG‚õ¿4Î‚ ]ÝqßI;¥$òéZ=‚ù€üÒw›ô‚‚#êÛ1’ÂØöy$‚3sÞž‚¢ÿ‚æÞìè‹>^YHStE)}°ò0E[]~Õ{7Meà'X ‚cqbÈÐ±‚"ýOTÊ‹&gì‰ì›‚€þïJä‚©^‚ÍÇN
+j‚$Áf™€só$”YP‚ àÈÂÅÌŒ‚Š‚šï_B´R‚²‚AÖÇ#[ò¾»šá‚<~£‚‚”rm<ÓQÓa©®‚žõÊ–ôhcŒ€ý† ådC=‚+'}¤šŒæGã“®g¢‚‚F‚ˆZñ§]R®¼÷`¥€ý€ü¨ŽhOK‚‚¸‚$€ž‚ÍxèðCj(œ‚K3ð±Þóàu HävšÀT,¿ÛÑ¯‚<EKµ5í®†€úxÞE/™ÁVçÒ\ßâ:h>|pŠ‰ÁÄˆÍ$ˆ;AkqàÎ¢z‚­mg>®Öƒ ‚”ç3JÚ]Ø‚ Ÿ‚E‚ÚS¿Væ5nœ©Ûà1Œ==²*Øt7‚Ä‚Iwñïqà%kz‚+”¾ŸAUñyç	¼t:nïwYi©‚4rVL-‚½­‚ï£h.êÃ‚%=…	‚ ÿIHÈÆ¨0	,D¤r—Øû/_à‚$‚]f¶!¶eÆ?i‚Ž¶CÆC^‚î× ¬¶‚fµbÉ‚!‚ñ °0•Pv‚?‚
+‚û‚!4›?™†K‚­ýŸŽ>.ö‚*ðÙ0z‚ÌÐ`«‚Dë@×a†Kî“œÖsP¯¸„€ ´JSëË=‘u£eî¹+	k“•¼[2%¬aÛ?ì6å{†@+V×§‚ ô‚ÈˆØù±H‚QÉ‚$}O_2•&nT§ûmíÊŸ®¤m›Gû¹‚%ÎDG81Ÿ‚/‚"2”/ÍÁ£€ûBxo	€®¾‚"©‚÷=‚ ˆ-ß¿ÒÁôÏùc‚ €þ¢F‚ ‚VZ‚iÊ‚‚¯Ù0•S¾ÈWuÔ&¨€ü"“„Ëà_½ÀÉ‚"m‚‚#‚#¶.’‚ò5‚#$°ÒPÔTæÖ|S4"™å$4ˆ =ü€þ:ùºnf¥;¡¢f+N½‚¨}¶€ÿ×ñ(ëe‚‚ŸvâL‚# ÔlŒT­ý‚8%²Ô	ÓÚçŸ‚¬‚
+ö›ƒG±?šË=Àz¯&Õ73¬+rØã†ó>;´ã:Ç‚Ü$<hjÜ­vŽ7£>tÝð¦)¢dÀ2‚EìÁic_ä¡&þX:†ÕÏÃR‚
+Ý¾:Y€ý‚ c5Þ®€üz‚ãWîKþ‚#1/¯‚‚L8òdIª€ý‰‚
+ cG<û>œóIY%ª€ýÔ4<]°Z‚‚©˜‚|‚%uÊ;—Ÿ€mÏm˜ç‚œóË×
+ø+¹-®Ü·¦î¦>ÞçÜXBïÌ‚6>Ø.á¦‚ “¶‚	fèœ™‚$O™Ñ­Q\fÄ\‚jN¯Mk­'‚>
+D ­ä‚×ƒ,	Ûuõ§+Š„©†ý€þ^R©YÂgAt{Éþ­Ø³(‚ÄB´(ÌØá™¯:®´Ÿ‚Ê":f‚á‚%¹˜‚F´ÏRN]‚!q3Ü‚é‚™w–z¿ºˆ)CA‚²$@,ù˜€1‚|¨-2“‚*mÆ†`‚7;©5¥B{×‚2M‚´ûìi‚u„¾‚‚‚$‚#‚5'ºFL:Í‚«Á#ÿ¯ÞÕÐ¥èœ”F4q:2o&ÆªTÜ?¡
+Öp¼rš–€üREÓýd•sÿâ®J‚#æ¿$†D~=‰‚%F‚
+‚#YÌoù<r&ˆ€þó»xÌw ‚uí·ŸM‚‚$‘d‚$ÞMÛ¬Û$€‚¬€Â°MW‚ Õ	‚$ü¨Ê$ƒÈ»îÆsÕ)ÈŠT"‚÷Õ‚	”_1ñh+¡xÌNËpy)‚ßˆŽ·Û‚‚‚{ã²^Q‚•[ÆÄÙéká¾ù–µ²‚%É·~£[”`‚ø·‚hÚ;	y‚ùê‚#b¥€úy‚¶‚Y'¬ÝA)Ü¯ ‚‚‚# Uÿ;Åœ<’ø%‡,S‚›<€üQÒ‚ø‚ýÔ‚3Þ#O‚îò6‚^	ë;gþ$‚'3í1À"‚n=õxv­¡Ì§j˜ãRüóeÂÓ›3µ¶`ï}˜‚	ÀúŒ‚Ê‚UQ‡€ûÿ÷š½#qŠ˜=¯Ñù?ÂÃª¦áEzH#-~vº€PŒ‚!‚¶lx €‚c	Ã6OÕÿ‚ZÓ¥‚ ‚!Ï‚%)(vê®ÌP©º‚‚w€ÿq‡È®Üx‡ÎØ‚|Xçwç¦07kå‚
+ÁiŸ¨`²¶Ý·>Z¶‚!ØÊ‹€ÿ êížó®€ýëéÐ+,IÚ“‚kJ”sô‹¦ /&Uý‚ùÊ¢‚Îhˆ‘ºÄao1>à‚Ø-‚¦6}']²:Š‚}âá‚%ÚŠh=‚!€þÀèGø UÞ6H_rËŒÖXÌ:@ã¾€ýŸ¾Ý ‚!€ÿ‡úÆI˜P$ô`nÙè‚ Š§Êaecd‚
+€û‚‚‚¹ß,	8€ûŸ‹S‚fã€ú‚ˆaRñË7óî%û‚eþÙ‚‚-%‚KË€þÝ‚$‚
+á‚
+CEe‚¢‚àÎÞÆîŸ¡BŒ‡v¸nÇ]s[W£;¶`‡‚!uyžW3Fÿ3y¶|‚øŒ™‚ ‚‚67Sy-º‚(	YÌg“‚}l·ë¾ÑÜ‚HB#"x`_‚¹Þ#M¿R]‚‚%ÊŒ‚"ÿ‚!ßÅ¹òpp×¿¹1èá¯"¦â‚ Ï	š€üm“€û‚%‚:þ‚‚©ì‚‚ ž­³Õpo_˜‚Ukµe‚·Øx¸ðx­Q€þõ ðãhjÔà}S´b¯€ú‚‚‚¯Ì^B—Ýõ¢m¦‚”qÀ´àcþì†V¿Ï·Ã€û@j`‰‚Y„&Ì:|Êõ6Ö2œ¿k¼ÛeöÂø‚	t2mVPÌà|së†³B*ƒ‚¼”}V‚‚€‚®‰Ú’‚‚‚4=¬‚¿‚%ß³€üP1Ò‚µüÏè*‚"q¹×‚	—ÄéÑ‚oÆ¡n€Ç€û‚‚‚	)ëÿäôÕŽ‚˜¾‚‚R½óð\¶œ> <æuÃ‡w€¯T‚n#·‚*œ‚ôµ‚¿‚ž60¥y‚‚ ~q;‚‚DŽ5&‚^äàp‚Wh&‚$‚ë‚€û z	–œ€Ø{a‚"‚œ#î‚‚©Kû‚º‚¸õ÷¨^ùÏsNí‚ëd‚	åDšÐçÄ˜Â«‚€ü©`;/‚ê”Ù”‚[ióÅMk…—‚/YªÎ‚"0ð‚·ò”‚‚Ö'ášÁ•¨j‚k	@Ý•ÝÃËHs~>‚$“‚C6Îäþ=óá7t'Gº‚
+âr¨‡‰ö‚œO›f+tQ±ì‰‚	‚ë^‚h‚ý%j³úPp¥¯‚‚á‚!`ÿM‚Åc{ÐFf•hÊ‰ÖÃ`‚æ‚‚$S»­?§i;‚BŽÿ‚÷U¸Á(†f·7‚Þ¨‚ ô¦MŠ.“Ô‚æ<ùÎ(a,ï¹0!ö9‚Qý’KÌŸ0GBëè<«€ÿT>¼F%‚>LÖ}lÀÕC,€û‚E  “´iXv«‚
+|Á9–‚ûâ‚€ûÂ,Ns¯À_‚
+@`ú‹‚‚ ‚%–dX‚‚<i±|‚RÂ~S^°¨Ø:BëŸ&‚€û˜è‚!—X`õEP´‚Ž”qæ0ö•ÂGÁ‚;·‚
+	)<o‚$ˆÅ¦ ±‚açî{VI£‚€ý·'ÖI"h-2—p§–ÿF¨‚ò"§ë‰i³‚Æ‚€ýCï‚‚±?@‚ sx‘ê‚%ÃF°ºØ<‚<«‘!Ko%•8,p.J€üt‚"í‚Ž²‚–P.!‚G‚ &%Ø½>€þišEœ‚zì‚ôW‚¼@xH(‚ž]‰ª‚µÖhmKlz»‚Æ2÷‚%ä‚VÎ¬œ úËs&‚³’d%‚ØvG-.ùD ‚Cë‚
+ “ºeèÐÞñý»‚(êœ—QÏ©†£ôŒ˜Q|¸ë‚Õ€Q—+
+cÌè‚$û¬‚#µ0ù9½w#‚ {lß@YŽÇ± øÁi‚h,‚ =ß‚‚	®SÜî‚-ü‚#”ÜÛîD}yJOº+ƒíÆ¦€þé‰²@{tQ —N» qõOôH d4Oí€ü[Ž¨_R‚nSm{ÍÅ¢>‚7E‚%®N|cô Íö•+€þ´‘VÇƒË‚ ÷ Ç–È‚‹‚,ŠGÞ‚°­ŒX¶]ôÂŽùQ€ú)‚„û‚U‚"»òÅ¡W¥Ôç‚! €ú¬'‚äðÙ€Y¬ØYÜÐã±Ã®Y‚M‚ =ù®€þ‚ª¥‚0Òu?ô‚ž{Êþ2t»êÔrq¹ÆLý™‚‚€…i»-ä×Ä€þ¥¶¢€ûZz4Õ‚$îêq9~ŒU°g2ó¹z‰í8:‹<æåè}:‚",Q‚!‚!l5šƒÇö	‚ÁŸfˆÞ¦‚‚!fá(”‚"%ÇM Âi’ý‚	‚ŸÚ®â)‹~Ïø‚‡x‚‚å‚=‚ˆ:)9ñüÒÉàÈB•Ò÷Q‚]Ö«/¾®š•mŽÙ\‚‚u€µ‚Wa»‚­ÜÕ‚¹¶>BNQ÷îì?W ¡M“‚r‚¬dL‚‚%e‚‚‚Õ³øhÆˆ¬‚Ü‚à¥Ë‚%‚E¡)ß˜¢Ô‚€ú‚fêXàx+"¹Õp³é‚Xèø£c€ü]‚¥€úŒsx8×ÿ¶‚€ûÕ›ÖÞ‚c¡‚ÂdÚ@ÎÝ£ª]µ«ïÇ¾=Ý|ø¶Ú¸èPh¡<Òn†ÿµ.·2ß‚îdä€ý€û°à}‚q‘7TŽqûÐ‚õ“~Ï"³`[lT#×¹ÚD”˜Í‚‚
+‚]ra2…*‚‚¯Â=€ý|°X¥aq9‹„°€ý+—†kˆí£¬MÔ E^<f¡@é,ži“‚©¯{:8×ŒN8ýÝ€ÿ{dR*‚
+žŽ!‚
+gÏ<‚ÕûÁ_QÎ Ö‚Q<5‚•–WîÆ;f/bL?Ï‚!µ1‹Õ—â~“ehÕ¡þð”m`ñ6£6nõ{ñ‚Ô‚:µ«‚#Ãy@‚!‚
+
+RqZxg´Ü‚
+úÓ‚©³€üéB®æVKPÖX–Ñ<§:•‚›€ÿr‚¾‚“Ì€ÿY‚¢¶Æÿ‚‚¯9ŽZ|›‚	‚‚ˆ¸Ÿ%Ô¥B¬"°<î‰å^Msác‚Ór Ëú€úÚ\¹â‚å‘Ÿ)*J‚¹oÞÒÓ Žo<è‚¼Â‚×~û–‚VždÎ¿µÆS€þ~ ×Š'@‚ =‚Â[jYyR*‹'Ç{ƒ?‚î‚«}´‚‚3žyxP‚²EtQÌ6ãù‚8W# 
+Ô£Å³€ÿØ˜8P«·Ï‚’êÞ8š
+‚
+ÖóÞ³Ö/5ç‚
+ß†—ä9
+‚"¼´9™!€ý‚;£‚Sã‚‚ï‚¾‚%)‚	‚‚{Í‹Ê¶"XõÁ€øÊ`GP3¡‰‚!‚5§æŽ;ñ´Í–Dõõ‘O‚6µ€úƒ‚3€ÿ‚ KŽþW¶Û’7œ¶ËÝ‚Z…‚¤Uî¾ìª€üÔª†ºã‹µ	‚ Žf°Cÿîå”‚ô€ü‚rWÛ
+ù»!¨?®<€ýø`yÅªRjè€û‚Ûõ‚ÈBB}SgP‚þ.12‚DGOÃ‚ÿ‚yCßz+•J7“_»ìÍ‚Û6ë‚T‚õeÚÆ‚$‚%Bß›tOìYö" ‚Ú‚ ë	á‚±LQÖU‚ÔU‚´jdz‚÷ÚÒ‚ ‚ J	Ü€ÿ‚¢Ëˆ±VÚ‚	
+‚áe‚×zªä€þ‚$¶ßÐ°¹‚ Àp‚%ª‚OzÆ¬/©¹?†tª{&€ÿ€ÿIéGyé‚}‚Êó‚Oå€ÿ¥:Ë,pOëµÛ::1g@6¶A‚ƒûŽ‡ì3UÞˆãU‰:ËÞ€ÿ[“@œË®â‚>ë"I-‚Ý»ä‚‚œyY‡`èÇ¡Íf‚‚àœÄÁàŠê‚Ú‚ú‘³¸ƒ¤.‚¯Žd‚Q‚!øÙa‚ÇDÇ=‚c‚$s(‚'!Õ¿ÛgYœ‚%‚cÿ\pú.#6ñ€ä	i"âQ‚‚x¾©- Ì£Ìv®
+O‚€$©`5uæ‚ „)’‚s{üò€€ú'Äù‚
+L‚	47c^V‚Ä‘b…Œìµ®X¡€üÚxôôÿô‚ \³ÿ@‚ã{ ßr~‚
+v‚	q<™‚%›€üO”÷mÆt€üÆNC¦ÄÂ2}E‚‚ Áæk‚YkzumÐ‚>ôV‚
+‚Ñ‚¨‚%*(
+ôðBL‚Ž)‚ *‚FI·‰Ä€ÿ3­C‚
+(‚µ‘´@ÀÅ‹‚bkv‘F§€“µÐ$n*R‚"sZ‚¢D–·Ü%ývñ‚‚ÙNM*æš×Ag‚2†`bß\Ü=X]Ú‚‚íÐÚr„Å´ï9e
+GÓ€ü3bè‚Åž‚üi¼ì„œ³‚GhfÑq_;FËL”xN‚±·Û¤VT°9*‚ ü‚~rªs¿‚ßkdìÐ¦uù§ô"›ßQ€þ«´OÛ®%ÒžV€8I:©´ S5ÏÁ16‚#‚€û ¶Uô? L‚%ýÒ7!‚çÜ‚‚ë€ûÎb2‚`"sb)‹‚„Z8‚‚Š‚Ù6‚#‚·€úª$ë«ø(ãÞ‚+÷½ðš‚€ù“f¬ÐŠ‡ùo‚pÉ6O‚dËù‚ýË”–§ŒŸ_n‚âÿs¶I“§¿7ÁûŒ¯:ŸU—,ß¥ÆP',õ/’‚£~Ä|÷UÌe‚e£ž;
+({¯ƒ!µIÌVŸù‰n‚!P¬y‚KKÕ·'4ÌVDúØùWA‚ ‚‘ÇD
+šÔ£ÏÖ)#Ë3u‚‚€ýAñZ‹Å_‚#TZ‚ë€ü0û‚
+U´JÝ×ƒ,Îk9óo€¾Ï‚]âL[­G‚¯}×&aG‚—Óï‚ ‚—fdÛ €ü…`AßÂWg‚3‚f‚Î‚jÄ	‚rþ‚RpBrÚ‚$‚Ý„€Ë9à€ý¦É7
+"Àß~)‚öï#x›-Ž‚•‚:(è>ÕŒ{Mœ¤‚VÃ‚Úó‚ªûÖÓNèIùÞkhÍs©û6î«ÈDÿ>îí›ŒæOYÍ‚ /}®„@ý‚µQƒ\Ê2‚üä©½í‚„cuE¸Õ‚’‚
+qh·‚NÒ®¥0‚J=+‚Ú3Ÿ¢€þ‚—JžF=
++´+šF$î‚Øn)Ã¾lçð†É¥ÀC!âGT˜«¡Û¼ÓjîG¶‚¯Ê„Þh%)‚±ø“KºcÈc‚N‚¸‚¸€üÙ‚¹Ë‚Bp{€ûÞŸ'‚Þà€ûü¼:^}²bÔ‚!ÖP‚j‚"ø³lM´%óá[šô\¥Ê‚¾‚
+V€û‚~Õ†y†ÜT÷Ù&„zJHû^©o,‚‚ü‚´á4Ðã(“ª¨‚ a‚ñO:…h‹Ó=ïV³‚!;¨ø7´T‚qx‚
+€ü¿‚dœÐ~¦‚%¾h#ß¬‚9‚Qèèq‚%vË‚î‚#Ó ¼²Š2\‚ß[§ìÊÑ¥PÅ»´‚Rv^Qó8»'6hMø‚!ÝWÆë¹H±]‚ 0³¿òNßuËÍ™!‚.N¢‚˜Y€ûö€úì‰IxìC¯z‚	{24‚‚RÁvy§«ÎÊ#JÀÂªÁ’«ˆ‚"ú‚é=€ü‚á4Ôwp÷‚ŸÂ?ð]‚t‚%t€ú‡qúh4‚þw‚é2)‚‚B`W×2OóØ‚¢P‚‚Oi‚Ýàò‚å‚#lÚç¥‚
+ÐŒ&ê‚CÒ‚!ä]Ù•³Œj‚Y÷Ž=øOèÝ‚%O‚
+
+éS/•O<Só b-)õ(‚Gœñ‚	ýñ2á‚M¤/‚…ÄmR>z»r©Š‚µ¹‚#’‚š²€úe•þ1Îº‚"8C~SÎÆ€úb»ÚË Ê[àÈóÁ<€Â¨‚šàÄ.óÀmÆä<gå¥‰{Z.¢€þ\Í]‚#‚ã¿“Ù3MwhÜ11|‚têÛ‚ M0T‚ØY‚ N‚Ñ…ë‚Ø<NùUŒ‡€ú‚KÛ‚ž‚/€ûÄŽ‚Ù•Aë‡S—‚}Å[Ñ˜¶Ü£=¤€þZ‚F	‚¤€üÄD‰¢ž€úŽ½~.‚*Ì¯‚JÓ$õØ¹)¸ÈvÎ×aMÙ€ÿh‚#Ž‚›y3‚­+Tá€þ¥Ž)t@è¤ÿ‹‚ §<[û‚a=‚ö'_¦ÉN.ûlˆ¶q ‚fc ?ô€ûí]ÂÄ‚‚!”Œú´/"è”KÁ‚Xç†à'ïçm¾è4ÏýÖêÝÒXê8-ynU<yðÖì‚6§ hvÄ+±mPˆ?ös	§ƒ}‚ÅýÌ-‚}‚ó¹ ýÀ‚M^‚Òkgö†¬Ç‚ ¶×/^ß‚‚$ˆ‚ò‡Éâp‚‹üóü=Ä]ïf8€¿šL‚$TYAW‘'#´´òp€ÿê’À_f‚€þÊÍj‚(‡¢ÉÚ ‚#©?km”Ï€üa%²—ì‚‚É‚©pa‹žïA£­?·1„€üLø—‚"úÿ‚€ÿÎsñÁR”¸‚‚‚g„èuÌf€ý‚‚$4p€û‡B˜ƒrŸ‚wHlB‚ÅÝ¢¡Ã›‚!^]óËaßÊ›*Ë€üs>†¶€ÿ‰NüQ8›àÑV€ÿù»cÇ`Ê€@±ÖB€þ‚Ï•¬Ô‚$º€ýû‚;p‚ ‚!ÌR“Ÿ‚üAN¡ÈYçS
+X€ÿÙó±ˆòE‹Ç1Ì+È¦þ‚ x‚‚¿6‘a•R»¥]‚«ç6ž³‚U¹Ömëx‚Äs[‚#Ü—ŽçÙ³Í85ŽuÙýâv‘’êV‚Ý‚!^ê¿èó1Q‚?Åø7lr‚ †&‚"]‚sô{7%g‚ Ëß8e¢ù‚â‚½´$Å‚
+%É‚‰²SX„u…«?é‡èõ€þ»íç¨…uÓŽJsA‚SÑ§­¶Ž£'é‚µ«Ò¹Aš{ï‚%÷Ž‚í‚.â4‚dè‚‚ ‚x ƒ‘.Gméø}¹þ‚	¹Ï€!¼Hñ=Ño€ÿ»i‚oi¤£¶‚g‰ê£ÌÃ†_l‚†/Žú:Ñ¦¯×<‚¼Oh ú‚¼íSÿÉ¥á)‚(k1F‚ †¬³]õ‚ w€ú‚c½æ¼âÀÚ…?–µ%ÄÌ–ü‚q‚x‚#•Ž[dU‰‚UƒW‚C‚Õ‚
+Ï5$?ñO‚	—ìß‰7Â‚42q•‚ñ ‚!Š:Ô/ï¸‚€ÿâögýç÷ƒÙI¼$å3±:‚"ØÊ7òxl»
+JÀón‘‚uÿÜ6ÐñÀ„V¯‚ É‹ÏÅ=t‚	òHË‚™eÐ‚ý¯\Öe™04‚K‘•%€ú8·Ð‚úà‚
+‚¯ö¢‚ ‰ò*ì£–`€þÌš‚‚¾ÛÝœ°‚V”ô_Ä‚?j‚p1‰‚—Ž³x«þÏ$–…‚ähª³ÎÎR¯è˜‚ Î‚+2ôÈÆ‚Úø‚Þ‚"Ž=‚ SÂ‚‚O·¬¨@n;lPý‚YïgÁ ½œc›¼8 šŽ½ ‚•0²9Œ‚ ÿpj‚Þ‚$‚ÉšA>·‚}¾x‚UŸ€û42TÆqæ©‡aƒþÑs¶Ýr”€‚ÜÅ¥»=™²	ÔÇAg¸ï‚+t‚‚î®º:(ÿàÓ•‚‚¨‚‰5‚!7‚<@Dû
+5‚;°‚xÙ¹Àõçš¯•	†¸x‚ót'Ð·n‚Œ~*‚Ààqß3‚“ó®bµ#‚$2°ñþ ¿LÎi‚	^pšù4JD‚„2‡Qçð‚‚â;Á‚<®f‚‚J WÀ¡í”ÜÞÐœ‚2óÙ€üÚÄäëè€ú‡ØÉ`³YÒº·m5~‚‚–¿Â±û‚dýº»€ñ¼‚£×±‚
+3?=‚‚ úRR3ïùË‚„ áîwv÷üÂÐä?p#º¶gŸ;÷¦”®]‚S9bù‚!*Kr€û_IÄ	‚
+~$uÊ¤·œ$%§Ù‰†Éî‚Ä‚,‚!‘`¿ m£ò±6‚ ‚…¾}¯ê€ÿcM‹p‚SQ¼M„ÓH‚‚–Œ§Mä-Ä¸âB¦!¬ú²‚"ñ‚Nˆ3Ø5‚ÍHj>Ïýì‚#‚ª+Héük}’¸Qµ‚	¬?»çÈc
+§à‚mÝ‚‚‚‚@Òô±ßLr¤CÇN‚M”¦6‚I‘‚3‚½ý¦S‚Ð,ô…ÖŒxfxÌ‚ ‚$á‚‚azç›Z´1 ÅOY¦‚%lÙô÷‰‚^‚LÜ¯'Ûk>ÄL¥y”Ô±št‚ú‚ ‚AÓÔ7ºw‚-Î‚R­fþÍ{‚ ‚Í×Š¸_™¦ïH¿‚	!ðCö‚-‚0àP	ˆÒ®ÂÕ`'÷‚Œ‚’ÝàÒåÃè‚ŽÜl9Æ£‚ ‚²‚Êºfjq”;j€û)‚‚¾çÌ\©²ð¶i6õ
+àðlLÒ^qÕ­³®â‚#ÃÉ»„o‚€üèÄk‚$”|Þ^„%±1,‚J¤Åþ1æ‡‚ã$½y¯q½	3[{2öþ‚/\ç“I×äôv¼ 6‚ ‚ H·týÅë•Õ‚%÷*1Ç#ýe@¾ÿo¾^ëTd€üx^‚"Ç‚qŸ»6j6‚›m­¤—„‚ÝéG‘«WÜ‚Z/NVýDÎv‚‚
+‹JqëŽ‚$j€ÿƒTã¦Ÿ¶oV¦Ï‹ú cÔà‚%¹EJÚ¼C»€IÚÅ÷ÝqÍ'ÍMü3"‚œA²VAE¢‘€ú9§Cú’‚âž¹´µq€ÿ\žÒ¯u‚ØR‚‚‚ß;+[Ó+šUto]‚c†‚#ÓnØx‚…bkàºóÚ ­‚Ñ‚É‚ƒ‚$Qø\96{Å4)á¨‚3•g;ýØ‚"’¦×-ÍãpÀŸo‚rÑ+¯'öéV±l8ë‚¦ßX€ýL‚Ú^‚)øãÏBÕ‚‚Ñ×”wb‚¶'é6.¢•2õt‚-ˆoP¸BaŠéƒ~É/ŸzÊ‚ã«®‚nê‚YRæÔ@‚7µEõýX1b»æëð`@”X€ý‚‚ŽÑ	a@ß§4‚7ìÞ‚$w‚¹8ÆƒŸ‚‚ý‚ä‚ §‚ šKGTø‚K
+‚ÁœÏÛ=-U$%,>‚‚ë€‚ ò‚ %N‚$› 	~¸.ÏÑ»x‡þ¬â€ýØ‚‚‚áa‚®[Ç°
+=+ÁéNá“‚%v‚†O—CRI2l@w€ûz\¯ÜnQg~•˜ž1\ò‚õòiáS¾Sœ‚£Õ^éïÛëCu€ú†Ìg‚<‚„s=PfÖóvn!‚`ÊÈÄ‘yRÛ’ÍÛ‚t‚¶€ýcA¹qSÜ!!-–H ü‚î›€Z‚Ø‡€ñ€ú‚_‹‚È–3\‚´F¤‚l{ö5‚P•‚ªsˆvù]e2ïX‚ _’6F‚%PU´œ‚ ‘‚UbL¸¹8Á>±$º„‡‚%½PW˜µïÕ‚ï€ÿ1}¡‚ŠgQ®¹‚Aøª…ƒÕ‚6¥w@ó‚%	ø1tC|‚°ÔŒD¾ÔC4Ÿ‚T‡/sÂð$å‚åð‚®>:ðà¯x^+Â˜Ðºò2ð@?ŒjLb=-òqCý”·#
+‚TÒ‚!€ÿgî81~Äî‚<+€ý€^LÖP$DeâhŽòñéžíï‚µÄ…áäNÒ€û€ÕåâÔ•þßxº"‚‡‚Ð á™‚q¡ìúV˜ûÜHW›‚ð— ‚~‚)ÉÉ‚ E€þ*Lð€þ©c‚ _²1‚¾=‚Ý"ÞOÈÑÔÐ¹‚Þ]§ØxòÝ¨¨¬È‚‡ž¾‚
+7‚÷‚€ÿ¯DÎ[‚x‚ý1R~‚ÐKÆSjH‚4fÙ€ÿ€û‚‚ø‚‚‚+¶ã$	Ù€û@€)ÜÑö	‚*SVF\G‚$>‚&¢â`;ñ<Â;‚n‚Š*‚ º„0‚‘’(×Iu‚ò‹¿-Ì‹F‚l¬ÞG‚ ð3„‚ D€ú‚Ý)€ŽxükEax–Ä‚¤òYž¼’€ý·¥ï §L‡Ë]‚ÅŒhÔ€ýÍK‚	wð ‚ó1Ž‚GXN‚_Ü‚w‚ à‚
+cŽ‚p5‚$Ž‡‚‚R‚õ º^‚½#0‰‚“”‚Žçô÷PÜBŒÛÖ‚½¼F‹lÚï‚¼†¬ó€ýà–ªèªO‚‚-gç‚
+[ ¨Ÿ‚Tûw‚\€þä`ŸýÄaXÝ‚®Éíºü/|à‚[zgÔ<„ÅŸ‰ƒ‚£€ýÜBe€úQÂÉWŸNÙZå´»þ	€ü‚ä?j„äù‚Äw‚z¿PŽ¿¨+cÇ‰‚	‚==Û÷ÿ³‚‚™Æ‚	$‚Ý¤.‚$‚%óOŽý¿öŸ#Ú•f‚K8÷‚Óxæõ[‚Ö‚#UG‚"TLè¨$‚yÉ¬-9‚%‹*‚"jJÐè
+Ÿ‚!P7‚¬„‚‚ŸAÉ!l&¡ØÔOÊÿàûû$¦‚/ +vH$€üÒ‚	Lb­tÔÙ‚ê‹É0¢úx‚$*‚%‚`‚"’›E¼ž‚Ü‚D	¾óè³·NWÐ„‚ ¥R£ÀR€ûwŒ“‚×)‘Ï‚‚‚€ÿ€ý²øì?Š4Ÿwà	Ð]Ï€üóÑyY>l
+n‚àUøÓZû`-Â¦½ÜøVš²eD‚FãæÆ€þ's‚‚Îé»¿‚"6[¢úÅÌn9XÙ„IîÐ®p#³ƒQ s8Õ7úÞüö‚1rïJ•¾QôrÛ:†$îýN{Z¥‚Ôä1‚¸‚ç‰‚
+‚‚ÓC‚C‚FT€ü/”ˆY]_­ßÀ-;n‚rZªbF‚‚ _‚
+=B+Uœ-Š¼ên‚"r(¼¥i—âeˆ/k¤f‚
+ª&5‚ÉijÚ€ÿ.#€û§Q¾'ÀÉÄ}	æ¢—‚‚T‚%‚&ZäõÉ(ªÎ]ÓÐ‚
+€þhÅ×—Å¸Œ³Ó¦‚ÓËì‚  ªÐÏÙTx#‚!‘Ñ£äôÄU“Vç!h	Þû¸€bê3½=JÄfEÑýS|{Kmåv/‚ž‚9²òøÍM5‘†øÔ×—‚"B‚OÅng‚ŽÚÖ‚
+‚½fˆ´¥€wèÓ³T4…‚‚"‚>8‚	†¥ú‚Z«ÿDC?ÓýëîW=°ö‚?U‚*R–$Qz±üO¥1‚{Å(‚!Š‚SÎ¨^ž¤ù{Õ%ŽîÂ¹D‚lð'GJ¨l‚×hzÎÂ"P€úÆä¥š:TÆÎbb;€¬1òw^Ç‚‡·¿öh’4¾“‚}u½leŽÎÐ‚U‚ÒÒAís)Nî0·Qõ$,L<¨‚¯ÄP‚$ï€ýSÑÕ€ÿ‚yò„‚‚¡¨ù‚Ò€ÿ>‚®(žL~½p}†tÖ2$Ü%Ç0H“º3„6V	HßŒÏÃ»H‚‚a—kÜH£‚€þÎ§4‚õ+Ÿ‡¬Õf+<õý]å‚C!Š´‚Ø2äÝ‚e‚þè€ûõ­‚?‚‚YgÑL±ùÜ?×x•GY‚:1\€ü;]÷Ò‚ã‚‚ÿs‚ëÓQ—‚%‚kÜ"E ·’ÿ“ÓõÕM,§‚%e‚‚#>e‚8¢‚ôC	éÇ­Ã5ZÔ
+€ü7¸€ûU‚#‚S;X:Fqyî‰šÜXãìr§Ž‚%DÉY‚Ói‚!‚€û‚"A‚$‚š:HÛ‡¿.O#ÎŒ÷ú_ùW-QÜœLÈžI‚9„Ýˆ9>!n”J Ò©r¦¼×z‚à­F—#˜9Èè#?€ü®‚#Ší<²5Ö‚RP¯‚É0˜z°57ÙÓaL‚HÄE¢Œ‡.È8‚!Áý2÷o³‚‚ï¿¶œ€ú‚‰‚ R?ž°Ò ät?öpÔ’G‚d½›ìšd†*‚‡j‘‚ê)bÈ‚i‡P¯XÇ^ð‚E.«æ‚  %€P‚cuym`=†¦)l‚¶ÃŸ‚d‚ßS"‚‚‚‚€ÿiUQ¿–Ðý‚“g”ÂÚ…Sw€þBâ‚€û‚‚‚þ‚BO#™‚ÀD‚!—2‚Í+¹,„1ÍóÏ‚	¾ý—ößDS‚
+	|ÖŸ[~Ð‚°/ç‚û‚ ¬Þ‚#Eµâ…/›ªyô¾^lÎàG ‚+(‚‚ô·Ìò‚[‚¿ç5lóvÙ®™€úÊ‚ÝF!ö:,äê‹‚ Çíâ`®ø›‚ b¥€ÿ0‚"Þä–ß‰°Ø@ü‚ ü÷a€ú˜(âÿÝµuØ‚‚ Ý'‚–‚Ov½‚‚Ô‚«+ç‚+Z‚4ù£¯«šªbÈ¡þµ(&0Éx'€ýXñ‚‰%w_‚‚ ‚‹•™ó7Ìó#úÿP£r‚!Ÿ(‚%ý‚‚a‚"ß…‚ÚtgI‚5‡‚T+Ü.ç×ù‚ÓrÒJÂ±.¿k¹›‚o‚ ý€ü‚%,-Û`´ˆ„ë‚™˜&¨5ÝÜú#ppH}R¾xp•zpÇ­%<ÉË(‚¦È}ÒJ¸Š³x‚‚û0›M¦
+Í‚ØUà—ì‚ <‚åé¼=•‚û€ú‚b´g?‘=u‚"8‚õ“°‚ŠGøJ¦vb§fË5Ó‚Ì‚aÙ^öÀRÆ-hP9Fá‡˜­˜€þ‚ Æj¦‚‘¨	ø\‘0-+ˆù_÷$ž‚€ÿ7‚êˆ¼ïc]4‚9S{èbNú…Q€ÿ‚%dæO‚‚4‚%…‚³Ð‚‚
+‚¾7]€ ±¤tüy€ÿ€ûäëQÇÊŒ¯å·ÆE0p=µTN’ÔS‡$)‚)+Æ‚ƒg¾‚‚~¦ò;•	÷ð.\¶úoÉ'ýóWÞ‚"‰~‚‚ì°‚â‚í-OÈ^‚““€ûõ#û?ó€üÁZü¾éU¯Õ:±‚HË|cÕÈ°¸5±ˆ_‡Î,ŠëôêÁŒ®‚]V‚‚¥€ýÁ€ûfp!€ûßC³B©‚Û¤Û©hw‚m,T…ˆCzG	³Œ0ÁŽ‚‚2Ž5"Dà‚ô#U‚
+Èt(Ÿ¾©­‚Å½™,ó4Àäâ‚®‚ùØ‚#Ç‚R¬‚!‚!Ãp#=	Óñ‚rˆŽ¤VÉ?é€û
+r‚)FÑ&‚­š¨z8‚¤{QF‚$ÊÕI1Ž‚!0n‰_º5Œ¨è‚kfZe‚Ün=€üm‚Ø‚1ãÅ‚	0|¿xû‚¾½öà7n"÷ãeú*M¬„i$L&Ze©‚ ä¿õÉWš–×.‚ÿ€ÿÈ?ÿù’…‚‚õ‚$%|‡ÔvFnE‚ÌØŠåI;‚.‚ýZøÑóW±ê&°‚HÜbÖŠÞ‚"ÿ€ý‚¥Üvd€ÿ·W4ÒP"ã‚ oÄ¬€ú«ûÜ‚¬AÌ¨Ð–Å†‚Œ£aÆP·Ø]ß–79‚‚ì‚‡ÂÂuH‚	ö€ýñeÉRQÓäû„%Ì7ˆ†ÓÆÆ¹£Œ )<€w ¢G$n³óÆ‚¡„à¶‚‚] nêúŠŽ¸‚Ã KqÆë›yiÚ_‚9¡"€ÿ‚HtÉ‰-±%ÀäL‚‚	ï\©µý¾	Asn+²ŽÒÚ”±€ý‚T qˆ×’³qQ‚\4Ï¿ä_—}nÞöã‚‚L¼7æH:Î¢`²¾‰‚
+žìG…‚­‚"[‚!Û+ßÅ´\òò¬œ(m¼2„H÷‚+oÙK½9)D6Š@‚¼‚%¶J‚üœ!pÉ’‚‚RÑ‚	ƒ¼ÔÞü‚€ühB€ý€þBºOM¬j#"’šñ€þ¥Ì‚!ýx‚[™›
+Qq‚T„Wœ‡[ä±Í‚!5öÖÂ’UiŽ-èm\‚Ÿ´ZŽ‚äë…F!CgØUÔ‘‚<A¨Õ‚=ÐÚ°9™ßÊúG³¸‚4[G‚·\Á"C‚iò²‚äõ·˜€÷®‚°Sóþ‚†‚‚$eZ²‚‚Ó2°„€þ=kè€ý[”ü‚ˆB^b(ëL%(oƒÞtÌ-Ž‚ä‚‚	€û^Ìa§5‚À.m‚#W-E€X¹‚WãGìÂß¦L~SÉ¹DÝSy%QÖXœ1·0ÎJp‹—6(£‚Ô±€ûÓ‘Uw% /‚ZÖÐ¹M‚Kƒ‚ ‚ Ók…E¨´ïžcz²d(À¦I:ÛÎ3‚
+ÏÒë‚!0æ‚‚
+,{*Ú	‚Srt‚Ý¢w#S¸‚€üò‚ÖÄ.›¿e\´IŽ	zCs‘î‚IkŒÇ”åYrç%gB‚xyÍåß`Lt‘˜•‚‚+Ð“J‚!‚©ÝF‚!ŸrbèNn9Ì‚"tÊå0Hj:CÌŽ!Å{Ð}ÇË‚"åg}‚$—‚!•‚€þ:Ñ”q‚‚±=‚XÒ‚$(ë{õx‚ž7P‚!6e“2‚€7+ÑŒ%±i¤w¿uD„÷‚J€ü”ˆSÄ¾€ýýšƒ¶´æàq;#‚¹?µ	Š‚£	*¦£¸ÿW˜/šCÉ)ì‚zpÁS Ñã±a)â‚ÒuçæÓZü‚mq& /‚‰±‚Ÿ€ÿ¬þ_Ä5‚ ‚4já‚,Öøû‚-Æ×o‚ƒ²	aÀG¹Áõ‰È"ðÔ‚ñ³‚¼²©j‚%»D‚GTêd‚‚#¶‚‡Y¥#¸Eê§iµ5RLî‚¼í—‚Jå5#*!ç ®.Dì‚mÿž©,ñq‡9¦i‰f¥ÕÃ·—É@¸Øt‚ý:må®F^1y)©ˆ·è€úKu¥ï‚UŒò0ã…‚1bårÕ¥€ú‚"‚	2uá‚Ê£‚ËõbJ¾H¦%ës[¨þDà;-‚±/‚™nm·7]nô\‚OÐËuc‚‚}ÂNÍ6‚‚W‚F O3»œ»ãã‚‰‚‚€þ‰!8H‚ø,8 G‚£ð³e€ýÇ€ú ]ä^EGP$KßK‰< ‚ n?‚»bú9v‚OÑP­	‚U\=®‚"Ñ€þ‚‚\^æ‚Æ»1¥:!ûHø&ü‚;è7ž€ÿ½&€üi>V]‚¹ÁÌ±aaè~‚€ý¦ãLy‚"[%‚™É‚0õ‚Ÿ‚üq‚¬t‚‚	ùü‚y¹3ø£[-ÏFÍr6‚C*€\+cå ‚‚ö‚Yˆ‚‚UjÝ‚3ÕS‚JƒØ_šj™4ÚÎ‚ ûP‚"è‚%€ý«ß¶‚2W‚°xÂ‚ÒQ<4¶Óig{|aP‚¸MÕ·P[q‚ñ`"WÐ0Õl'‚Äi½TÂ—„€þîp½Nl€ÆSK st]ª×•/-Š84'Õ¾+ž	î¹.€ÿµãY‚êÒT!ö‚4a·Ð—Ø‚€ü‚)Æ×[>æ$þ‚A‚ª€ÿ8Šï‚å‚áÅ&Vüº	Ú½€úòìÆ¤!‚dKäY“Ã‚
+™‚ncí0X®‚”éU“° Š‚¹ä‚½‚¬‚Ê‚?‚Á‚‰‚t¦‚d‚jS,°‚®‚˜‚b=²À£òÑ¡¯e‚QÚÿ_€û:®…Ø†È‚:˜Y~%‚€û‚Ê£€þT‚‚f9Í@ÏB‚¼NonÛƒñyRcØÖŽÑØ†vU‹Ð>~~%X'2 õô†=ª‚Uvc­ß^HîÔ>l9‚°½ é^5‚"‚LñÓÙ	WÄdÓ‚OÛ‚fŠ*ØÊbaq%ƒ¬!bÿ‚³€ümQfYX®}®dj‚ô›Í™½‚î˜#tV“‚7‚Çþ‚Ê‚Í‚k‚aƒS‚ß‚a‚A‚Û‚ ‚Héo‚X‚,Ÿ‰'^‚¤d$³’Ñ›³gÖp‚	9š	€üM¹rj®ÞVñáC‚(’…S ‚€þÁªkØZâ»šVËœª_‚‚‚ÎL™N‡'}‚ ²ÖªÚá/ “‚)9ú§ê3—ß!?,Þ€@A‚:ú´[h´±qà(±µÖuïG/‚Œ;EU£‹Ìq÷~…‚Ö©_‘Ø‚ ˆg‚Õœ‚<Þ€ý‡§‚°¿€üÇùìYŒž‚ùÓ‚
+l|«Û‚õƒ‚Š‚ãƒƒFƒýƒõ„ ƒ·ƒƒ_‚…‚2‚©‚‚Š˜ípò?;¯Døix‚“ð4£‚¹¬%8‚Høn«‚h‚±Â½ìþD
+Ñ´ˆÇ"€ÿ’\¨s‚/ùmêj@‚ßñÿ"Í‹êdRÃ®bn=ðeõ¨Èx‚"¾­öà‚!º%; ‚yÙ‚ø7•ÍŸ‚	‚j‚P9¢‚·ž·?nr:ž|©ƒˆ€ý‘<‚cZ þÆâ‚
+ÛBJW;‚üø!EEbOêäþGG‚ß‰ìê‚‚!ñ²ÝãÃ“€ÿ‚ðAõÈ‚$‚ w‚~‹´ö‚ªƒ„4ƒ¼„þ…V……ª…È… …„ƒ¼ƒ„‚Ä‚ö‚G‚ÆÜÞ‚#ºä‚#‚5.P…šH·j‚€þÝ.‰5ÓÕ‚"ï ¥€û»Vï­›dü-Ô‚	ØÁF<Ü‚‚ù1‚‚LyÍs‘M““‚ð©×wNRð1k£ø·æ¯ÖƒKÃa	‚®\„DNË‚"Ìñ‚ ‚	,†€ÿ Gµ;‚#ŒÀyÝ‰‚!fì€ˆÕ.{‚% v©²‘®ÙÞ=‚ÛVvÖ‹.9‡š€ÿ‚€ü½00ETR‚üí‚ ‚	‚±‚¬‚½ƒ/ƒ©…'†1†z‡‡‡,‡M‡Ð‡S‡É†”…¦…G„Žƒ™ƒ\ƒ‚x­e‚<cÖ‚ÄIýQ¤fP‚06‚±m‚»ŽÃ/‡Áf¥ªµªT§H£~Ÿ"—‚y¢ô¯ßä;'ÅJé.‚òduÐ‚ `¥l‚ó‚fl‚S€!:‚\g¬¬*àš‚"‚Šö‚¢0‚\‚…Î‚c€û†ê#§€þ	‚
+k»›v˜›‚€ük‚	¤¢r’ÀÕq}fˆóL©uQ¸YÂMð8Êû×?õÙ±ÙX-%ñô‚ <‚X©|ÞwÑeû‚Aa‚'ëƒƒ„A„ð…²†Oˆˆ×Š[Šª‹m‹Ö‹	ŠO‰»ˆ/‡Y†@…/ƒÅ‚ë‚º‚’‚‚‚AÈ‚"‚Ñ¬Á†
+B(£!€ý·îžd§RÀâëlÈÀ‚®¶2¬R¾¼æØ‚‚4‚’[‚¶‚Ü.W]‡‚Mdè‚Pp|‚¨9AÆ‚%‚ ¥‚.~ƒ4Fá˜ÔÙ¹€û{‚mòkTuu“½“·À‚ì*‚
+W®‚!àéBœ[‚P‚‚mp‚á=R¹ÍªPè‚‚ Ô³„;€í€þÈc`¾¹T¶Ëé‚öÿ¡ž„ø`¢àê –…ÁÌ‚”‚Rƒ5„„ü†Ž‡MˆêŠ™‹ðÚ¸ÚëŽSŒ‰‹jŠ9ˆ†D„åƒ’‚É‚,ß‚Êþ2*éŒå0âþ—ÿ‚w
+‚ëØ«â ½þó„­ª«Õi”þFQ×ãf°ÂyÓsóîú¦t·­Ì‚‚TŠŸùµžÒ‚õ„À6]µ
+‚ÿ‚’M•`€ÿì@‚Ð™%¤)ÉQ™ÛÌÕðe‚mù‚KeAæ…§ìLíåm˜Y™ˆ=m”Ü#;Œ‚E÷‚_?ÕRšQ ó‚‚:‚6ÚŸÄ‚‚3Ôw>Ô1‚R‚ ‚!ƒƒf…†Zˆ5‰jŒ 7¶’Á•:•5•®”ÿ“Œ‘dÿžŠ1ˆâ†8…y„lƒ,ó‚¢;‚Bh#<\;•Kpº#‚‚ „Ñ^¾!$å‚[‚‚˜‚ ãÕ]H?†‹¢È€úó»‚›µ{GËß‚ò‚
+ÊÚ‚ Ã‚Ÿ½¾N‚ ‚”s#s‚	<‚ÞÄV€ÿi‚6‚ µ‚‚»³ç4K€‰Eg‚#Íàö.‚=ùð‚)õK@à‡;ox!‚?WiÎ£×ÌJ’àÇØ-‚
+«‚#ìÛó‚!­Ÿ6‚"‚^€ýGFZ·‚‚iÁ(‚{I¦4‰£‚Øö‚±ƒ„;…ÑˆŠ'€“ã–'™üœ2œÄœÀ›öšì—G”%‘
+ŽLŠ¾ˆ†„Þƒü‚¸‚â²^¢Á¼þ$Œâ÷^¿‚6ž2[Þuüy+±b¸fÍ©©ñ‚…­‚°Õxn_µ‚—‚Ë»f¢˜ÅÆ‚ W§‚µsüÑÿƒÃ‰s‚‚çK«Ôéœz~‚‚"”{Â4U‚A‚‚ýQ×¨*5E¹Ù¿¤Ï€öT/¹ö°Ù­¬.IæŠBg‚¾û‡î
+Ó‚él’óýí€ü½³¨q:/¥‰‚	Ò‚$wö‚Ëd‚Üa „iYQ‚#—‚S‚sƒƒ·…Ã†±‰—Œ²‰”†˜þœý â¤U¥¥€£ú¢~žÑšø–>’(®Š=‡ž†„ƒTƒ¶‚GÞÑå‚¦‚{‚²ñd¨‚$Ë´þpŸ.ñÃv†‚‚bâ‚Ä—‚Bs\V‚=‚Ó§ÑMªÄÄøÛH‚Á7YË‚ Ni‘/²‚’‚ìÖö™WaEª†õH%‚¼Ãj³_§‚¡<tr ‚‚
+‚åºæY‚!¥®uìÙ\‚p€úR€ý_ÿ‚i{-ãŽ¥ê‡ŠÙF™¥Á$¶IŸ|€ý‚ds‚½w<—h¬‚œj.‚­‚1×‹ð‚q‚¡‚ƒ@„x†¥ˆl‹s;”Ž™Ÿ]£î¨ã¬n®¸®b­M©ð¥è¡6›–‘cT‰Œ‡o…„Dƒ‚&w×‚Ž‚*ÄöZ‚¸™ßù‚+|‚#• o\ç‚µ…‚0uµ‰._‚,€úß‚r¿E‚#ðÇ‚!`BjÂaÔÀìÊ÷<YnÌŽÔ¶ÁÕo)µç0N.Õ)‚š€ü‚öÃÈš”‚ú‚	±c¸A€þh¶-‚#xdK†˜j5Èð.<‚0âùæWhË,LV•‚
+žšM.ÎJ­œ«‚JMÖ~Ã´®ˆnÝ÷‚p€‚‚!UÉ§Óâ)‚ —jÆƒ„…%†½‰ìI’¸˜„ž{¤Ž«±µ¸¸f¶­²D­«§` š¯”†„‹+‡ï…º„I‚¾‚Ò‚2œ}×¤ñòPÍxsbû±‚v9‚€úÝ‚‚wºfê‚‚‚¡1Z‚‚‚ÞÓ,†%¥î€ú1×wqÅw(µX¦JÅjfµ`G0—¨x„‚%¶dP5-Qm‚
+Îäª ‚:“Š‚÷Ù>‚ÛÇ
+-%‚YáR¯‚…‚dj°#‚Ö.0ª¿UˆÌ¯‚‚P¶|‚‚7JŸ.Ö€˜
+ÂçØC‚\‚Lës[’€üU‚S_«ÕWš‚«*wØ‚1‚Tƒ-ƒå…¸‡ïŠÑ÷”ù›„£#ªÐ±Â¸-¾CÀÙÀ¾¼ºß´k­w¥^®—Ð‘ÏŒ0‰†ã„/ƒ¿‚€‚wŽ‚L&Ýo$‡Õ•gÍ)[q:©
+¤1T¿Æª‚ïpc¬¶bÆeÓïòƒ_‚ñ&~XÖŽ‚‚èœ€þ‚<®ò‚%0¸¶˜X‚"F"ïÏˆÝš•ûÇ‚.wƒ^F®c!ñ‚‚ü‚$¨Âî¤‚‚m¸y%-‚€ûú‚/KfA°²õ‚ÙÀ‚Í—ý÷”õ€þ}ær9C(žÔiw‚‚ ë‚ã†ùŠ‚$Ñ[€ÿ+öû/M»§cþ&¼ ‚	‚N‚ƒ ƒæ†/ˆª‹í‘Q—Ÿ4¦Œ¯„¸¿UÄÂÇãÇÜÆ7Áxºð²_ªA¡™k“FŽ‰h‡"„’ƒ‚w‚¡pñ‚%µ‚=‚vÿè4“cT-DÈ‚ˆù€	ÿ;‚	[€ü€ú€û­‚ÐL‚ %ÕZ¿´ó)ÿ–!bi§qC¶³&‚Ë(‚ÌÜ€úÆ†L³¬xc‚}œ‚
+­vzÔÞêU)‚â4‚ˆcõ/õû¦‰-™ò±I·•ü‚ªëÛ‚‚èòØ‚#Ð:`Ÿo€oE Ô4 O¼ð‚,Ç‚Lßý,ÕÀ‚%ˆ½ÐÉ‚$I~¾^…*ÈFØ‚_‚„‚ƒƒÈ„	†‰³ŒÉ’H™¡B©|²[»©ÃiÉ¦ÌŠÍÊÒÅu¾yµÜ¬è£S›ý”4Ž¾‹‡Õ…EƒÕƒ.‚$_ó1’ž˜n0Ç/Œ‚¿æ•<™ÓØ±½Áy
+È†õª€ümÁ›
+Ñ2?8(‚‚$Ä˜q?JŒX‚#‚U3ÁsÀ‚$Â‚¿8oÏ‚§‚"Öô!t‚¿ì/‚Rì{†µ"–O¹”‚—-*‚‚Žò<>Àd¹¯€ýå‚×LÛ-Ùýè‚n•‚5‚‚P‚å“Ç€ý[
+‚àõï’¥Æú|ˆÖð¡EÓ¬SêëOï9‚‚/‚¹ƒK…F†Ÿ‰Ï’±™’¢ª#³b½¶ÅxË‘ÏRÏÌˆÇ¼À¸·‡®?¤åœ”ªKŠ]‡r…ƒq‚e‚¤‚FÄ‚PEû«ÔÖÛÔÕ‰u©»¥-¸P€ýb®'ûÎž ‚	¿‚Ê-Ú‚s­š!^OüßL¼u÷ï!óoÕ‚!E~šla4Zg‚!àÂ–‚€úìß¥Ð‚ ‚š€ÿhwÛdÂ3‚›i§~¢:‚‚0„‚‚ë|‡ðë‚¦)¡ß°U ‚‚¦x€æš™‚	¼xåó‚ÎÕ\”,é_‚È‚ CÄ.ù‚ Uóý‚EWÁåö¦Pwpp‚ƒ[„À†8‰/ç’@™Õ¡’©È³¼mÄUÉõÍùÎÓÌ}ÆŸ¿¶5­‚£ûœq”ÜŠŠŒ‡Ï„îƒìƒQ‚‚‚óÃå‚±¯7î¼þ«qÜ‚‚®Yî/.‚ qêæÇ{-ž>ò[*}‚hF€þ¶v‚¤}à,Ü¨M‚Ü'^¡‚ ‚"¤:‚‚kkðÙ¸ûÞÝ‹.¸
+²r=i‚!V×½»S«ÁPÍ?º‚ ‚µ¾ënuQ¢a/€¥ž{û-Ò†X+Ü€ÿpGÀ•#Æ…ß_K'Ú£Ðè‚‚BŠ~ÃŸSöLéV«‚°e[K‚ „‚cFbÕ³Ž‚*‚Ò„ä…Þ‰ŸŒQ‘ã˜Ÿà§Ž±¹‹ÀäÆÑÊ–Ë4ÈAÃÖ¼b´ZªÚ¢æšß”+ŽÎ‰¼‡À„ƒÞ‚™Ð‚S®‚5‚€‘üéµªm M€û®B­€˜„-LM?Dm‚	®™Ü“Ê‹¢6afñ‚Ù÷ù½Iç‚K3‘X§t‚+‚´ü1é‚ÕQÕãX©{¨™i‚ë}$VÜÒÑÃó‚º‚Ùºë‚2É´‰yrç€üóigÙ‚$-1"‰‚û5±ÉF%ñaæ·@‚ZûÙGBÜ²ê‚eèµœ‚ŠçTŠlb¶8Êvõ‚q1ô‚‚K„øƒUƒÑ†(ˆZ‹îÜ•Öœ¤¾¬U´RºòÁFÃäÃÕÂ¼ð·#¯§Ÿ?˜k‘½Œâ‰ó†]…DƒÁ‚7‚º‚@‚.œGË£‘‚*Ë?BÆùu&ú‚B&ÚQº[<j~43<TÌ†‚%J‚‚
+{Ã#Ãd‚#÷€ÿØ‚+Œ‚!dÄ’éþË -rŒ,Ã„!:á‹7û‚"	‚ Ô‚;‚#Žca-û$¡*8‚½k·‚ÖBÂ’Ô‚ gÐ‚B‚NÀ‚â€ý=‚ÿh‚!z™4o0¥ RÜ›ÊII¥¶‚ þyn&J‚Žÿ‚üûrp	ç§µî‚ ¿«~‚-‚1‚×‚ç„…K‡ZŠŽè“™-ŸË§@­ö´^¸¤»C»æ¹¨¶F°à©x¢±›Á•óè‹–ˆw†o„”ƒœ‚´ì‚@0‚‚‚G]˜®°ßØtû‚õHØš7‚;€ÿŸ¦ÜÁ©‚
+Åþ‚‚	h„’‚>œÑ¸r¼ˆÀn¢5«„v±€þ‚#gÅ§LæF%ñ33¾¡,‚‚•™‚$*‚ f“€þâàŒÎaÞ®‚
+Zç‚“”Å\²£÷öM€þp¹—uv¼}0#&—‚»ì‚‚ß‰fN)È‚Óš€üðjOôá‚f0^€ý´•&àv-úm¹‚™‚8\ÍƒƒÔ„þ†ö‰6‹ú@•¨›Ñ Ò§|«±¯ü²¹²æ±–®M¨ö£õž˜‘ïŽE‰Þ‡…Jƒhƒ‚2„‚D‚ …‚oŽçY
+Ÿ[s[‚KDc1:*Je~Œvôò‚XJ‚Íß‚Ž€ÿuxjfÊ´Ð‚õ‚ &‚@ªg¼½5$Š/ƒÚ*”¿­Î€ü“i8Íœ‚@w4ñå÷‰‚!‚!‚*~ÎI¯<^Hïy‚ò‚	5%ÜO?RC†Ð~QOà‹JÓ»Ï|‚X¾C§ˆÂžT¯­Úcå‚ ¼€gˆ×ýÝ’b@‚$ØÂ‚	
+[&¹íøC?Ã‚l‚ ‚Çƒ¼…‚‡HŠ½½’–›ÇŸÍ£Š§q©|©/¨H¤ß¡[œé˜z“1.‹
+ˆt…×…ƒ%‚w‚Ç‚AÁû<‚‚‚!o¤ P‚
+"‚Ý·öõ¬›ÃŽ½žÐ‚—e .>%:†Ð`Ýµ‰Íl‚^<ìoï‚‚Œp©™¢†ŸÂ»äÙç‚$:’^‚!îÅ“å€þÖ¬tŸŽ_‚‚€ú¹                                                                                                                                                                                                                                                                                                                                XTENSION= 'BINTABLE'           / binary table extension                         BITPIX  =                    8 / 8-bit bytes                                    NAXIS   =                    2 / 2-dimensional binary table                     NAXIS1  =                    4 / width of table in bytes                        NAXIS2  =                    0 / number of rows in table                        PCOUNT  =                    0 / size of special data area                      GCOUNT  =                    1 / one data group (required keyword)              TFIELDS =                    1 / number of fields in each row                   TTYPE1  = 'C0_shiftstore'      / label for field   1                            TFORM1  = 'J       '           / data format of field: 4-byte INTEGER           TUNIT1  = 'A       '           / physical unit of field                         EXTNAME = 'C0.shiftstore'      / name of this binary table extension            TSTART  =     1507635910.44515 / data are recorded from this time               END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

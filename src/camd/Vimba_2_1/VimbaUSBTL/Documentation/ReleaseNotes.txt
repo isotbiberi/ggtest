@@ -1,0 +1,127 @@
+===========================================================================
+
+  Vimba USB Transport Layer - Release Notes 
+  
+  Version: 1.0.2
+  Date:    2017-Feb-07
+===========================================================================
+
+--------------------------------
+Components and Version Reference  
+--------------------------------
+
+Drivers
+------
+  Vimba USB Driver                                    1.0.0
+
+Vimba GenICam Transport Layer modules
+-----------------------------------
+  USB Transport Layer (VimbaUSBTL.cti)                1.0.2
+
+Tools
+-----
+  Vimba Driver Installer (VimbaDriverInstaller.exe)	  1.1.7*
+  
+---------------------
+Hardware Requirements
+---------------------
+PC or laptop with 1 GHz 32-bit (x86) or 64-bit (x64) processor or better.
+
+ARM board with ARMv7-compatible 32-bit processor (500 MHz or better).
+VFP3 support and Thumb extension are required. 
+Tested boards: ODROID-XU (best performance), BeagleBone Black
+
+ARMv8-compatible 64-bit embedded system, e.g Jetson TX1 with Linux for Tegra X1 R24.2.1.
+
+Additionally, a built-in USB 3.0 controller for PCI Express bus is required.
+
+  Remark:
+  Testing has been performed on host controllers that are based on Intel chip
+  sets and Renesas chip sets. The driver may run on host controllers that
+  are based on chip sets from other vendors, too. Nevertheless for best
+  performance we highly recommend Intel chip sets.
+  However, if there are any problems please feel free to contact our Technical
+  Software Support (see below).
+
+
+---------------------------
+Supported Operating Systems
+---------------------------
+The Vimba USB Transport Layer is designed for the 32-bit or 64-bit Windows 
+operating systems:
+
+   Windows 7
+   Windows 8 and 8.1
+   Windows 10
+   
+   Please note that Windows RT is not supported with this version of 
+   Vimba USB TL.
+
+   Ubuntu (Tested with version 14.04 LTS "Trusty Tahr")
+   Debian (Tested with version 6 "Squeeze")
+   Debian (Tested with version 7 "Wheezy")
+   Fedora (Tested with version 20 "Heisenbug")
+
+   
+Vimba has been tested with the following 32-bit ARM
+operating systems:
+
+   Ubuntu hard-float (Tested with version 14.04 LTS "Trusty Tahr")
+
+
+Tested SOM (system-on-module) with ARMv8 and 64-bit hard-float operating system:
+
+    Vimba was tested on Jetson TX1 with Linux for Tegra X1 R24.2.1. 
+
+Note that R24.2.1 contains Ubuntu 16.04 and several bug fixes. 
+Please do not use its predecessor Tegra X1 R24.2.
+ 
+In most cases, Vimba is also compatible to higher versions. 
+Updates on tested operating systems are published on the Vimba webpage: 
+https://www.alliedvision.com/en/products/software.html
+
+------------
+Installation
+------------            
+The Vimba USB Transport Layer is part of the Vimba SDK. For instructions on how
+to install this module, please refer to the Vimba User Manual.
+
+	
+-------------------------------------------------------
+Correlations with other Allied Vision Software Packages
+-------------------------------------------------------
+Please refer to the Vimba SDK Release Notes.
+
+
+-------------------------------------------------------
+Known issues
+-------------------------------------------------------
+MSI Uninstallation by new Windows 10 dialog "Apps&Features" is not supported by now.
+Please use the old "Programs and Features" dialog.
+
+
+----------------------------------------
+Allied Vision Technical Software Support
+----------------------------------------
+You can reach the Allied Vision Technical Software Support via the
+corresponding contact form for your region:
+
+   Asia Pacific
+   ------------
+        http://www.alliedvision.com/apac/support/contact-support.html 
+   
+   Europe, Middle East and Africa 
+   ------------------------------
+        http://www.alliedvision.com/emea/support/contact-support.html
+  
+   Germany
+   -------
+        http://www.alliedvision.com/de/support/support-kontaktieren.html
+
+   The Americas
+   ------------
+        http://www.alliedvision.com/us/support/contact-support.html
+
+   China
+   ------------
+        http://www.alliedvision.com/cn/support/contact-support.html

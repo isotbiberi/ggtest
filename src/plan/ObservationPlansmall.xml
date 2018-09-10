@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:observationPlan xmlns:ns2="tr.gov.tubitak.uzay.ods.optical.observationPlan">
+    <observationPlan>
+        <ObservationPlanID>20160801_013524</ObservationPlanID>
+        <Information>S01_T_M01_K01_C05</Information>
+        <Slots>
+            <SlotID>SL001</SlotID>
+            <ObjectID>39030U</ObjectID>
+            <StartTime>20160801_013524</StartTime>
+            <EndTime>20160801_013904</EndTime>
+            <Lines>
+                <ImageLine>
+                    <ImageLineID>IL001</ImageLineID>
+                    <Time>20180126_103320_470442874</Time>
+                    <ExposureTime>0.045859732012299294</ExposureTime>
+                    <FrameNumber>168.0</FrameNumber>
+                    <Gain>0</Gain>
+                    <Focus>0</Focus>
+                    <Binning>false</Binning>
+                </ImageLine>
+		<MountLine>
+                    <MountLineID>ML001</MountLineID>
+                    <Time>20180126_114207_470442874</Time>
+                    <Azimuth>163.31043937677293</Azimuth>
+                    <Elevation>14.999113334490485</Elevation>
+                </MountLine>
+
+    	    </Lines>
+        </Slots>
+    </observationPlan>
+</ns2:observationPlan>
+
