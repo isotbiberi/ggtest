@@ -1,7 +1,7 @@
 #include"CameraOperations.h"
 #include <iostream>
 #include <string>
-#include"camd.h"
+//#include"camd.h"
 //#include"FitsOperations.h"
 #include<ctime>
 //#include"LogOperations.h"
@@ -9,7 +9,7 @@ using namespace std;
 
 //static methods predefinition
 static const char* return_from_error_code(int error_code);
-
+/*
 #define THROW_IF_NOT_SUCCESS(command,error_prefix)\
 {									\
   int ret_code = command;						\
@@ -17,7 +17,16 @@ static const char* return_from_error_code(int error_code);
 logStream(MESSAGE_DEBUG) << error_prefix << " "<<return_from_error_code(ret_code)<<sendLog; \
 }\
 }
+*/
 
+
+#define THROW_IF_NOT_SUCCESS(command,error_prefix)\
+{                                                                       \
+  int ret_code = command;                                               \
+  if ( AT_SUCCESS != ret_code ){\
+std::cout << error_prefix << " "<<return_from_error_code(ret_code)<<std::endl; \
+}\
+}
 static const AT_WC* AcquisitionStart = L"AcquisitionStart";
 static const AT_WC* AcquisitionStop = L"AcquisitionStop";
 static const AT_WC* AOIBinning = L"AOIBinning";

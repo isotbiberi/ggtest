@@ -4,7 +4,7 @@
 #include "atcore.h"
 #include "atutility.h"
 #include "logstream.h"
-
+#include "app.h"
 // System headers :
 #include <stdlib.h>
 #include <limits>

@@ -427,5 +427,5 @@ typedef uint32_t rts2_status_t;
 #define DEVICE_TYPE_BB        27
 #define DEVICE_TYPE_REDIS     28
 #define DEVICE_TYPE_THRIFT    29
-
+#define DEVICE_TYPE_GMYM      30
 #endif	 /* __RTS2__STATUS__ */

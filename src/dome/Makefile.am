@@ -1,7 +1,7 @@
 bin_PROGRAMS = rts2-dome-bart rts2-dome-apm rts2-dome-fram \
 	rts2-cupola-mark rts2-cupola-dummy rts2-dome-bootes1a \
 	rts2-dome-bootes1b rts2-dome-zelio rts2-dome-opentpl \
-	rts2-cupola-maxdomeii rts2-cupola-saao
+	rts2-cupola-maxdomeii rts2-cupola-saao rts2-dome-kafka
 
 SUBDIRS = zelio
 
@@ -33,6 +33,12 @@ rts2_dome_opentpl_SOURCES = opentpl.cpp
 
 rts2_dome_ahe_SOURCES = ahe.cpp 
 
+rts2_dome_volo_SOURCES = volo.cpp
+rts2_dome_volo_LDADD =  -lmodbus   @LIB_PTHREAD@  ${LDADD}
+
+rts2_dome_kafka_SOURCES = kafka.cpp
+rts2_dome_kafka_LDADD = -lcurl ${LDADD}
+
 rts2_cupola_maxdomeii_SOURCES = maxdomeii.cpp
 
 rts2_cupola_saao_SOURCES = saao.cpp
@@ -51,7 +57,7 @@ else
 if SUNCYGMAC
 EXTRA_DIST +=  watcher.cpp serial_ahe.c
 else
-bin_PROGRAMS += rts2-cupola-vermes rts2-dome-door-vermes rts2-dome-watcher rts2-dome-ahe
+bin_PROGRAMS += rts2-cupola-vermes rts2-dome-door-vermes rts2-dome-watcher rts2-dome-ahe rts2-dome-volo
 
 noinst_LTLIBRARIES = 
 

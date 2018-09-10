@@ -24,7 +24,13 @@ rts2_scriptexec_LDADD = ${PG_LDADD} @NCURSES_LIBS@
 rts2_scriptor_CXXFLAGS += @LIBPG_CFLAGS@ -I../../include
 rts2_scriptor_LDADD = ${PG_LDADD}
 
-bin_PROGRAMS += rts2-executor rts2-selector rts2-seltest rts2-marchive 
+bin_PROGRAMS += rts2-executor rts2-selector rts2-seltest rts2-marchive rts2-gmym
+
+rts2_gmym_SOURCES = gmym.cpp ObservationPlan.cpp ObservationPlan.h
+rts2_gmym_CXXFLAGS = @MAGIC_CFLAGS@ ${PLAN_STDLIBS} -I../../include
+rts2_gmym_LDADD = @MAGIC_LIBS@ ${PG_LDADD} -lxerces-c
+
+
 
 nodist_rts2_executor_SOURCES = rts2devcliphot.cpp
 rts2_executor_SOURCES = executor.cpp

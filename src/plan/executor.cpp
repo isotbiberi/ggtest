@@ -315,6 +315,10 @@ int Executor::setValue (rts2core::Value *oldValue, rts2core::Value *newValue)
 
 rts2core::DevClient * Executor::createOtherType (rts2core::Connection * conn, int other_device_type)
 {
+logStream(MESSAGE_INFO)<<"createother type calisti "<<conn->getName()<<sendLog;
+
+
+
 	switch (other_device_type)
 	{
 		case DEVICE_TYPE_MOUNT:
@@ -495,6 +499,9 @@ void Executor::postEvent (rts2core::Event * event)
 
 void Executor::deviceReady (rts2core::Connection * conn)
 {
+
+       logStream(MESSAGE_INFO)<<"device ready calisti"<<sendLog;
+
 	if (currentTarget)
 		conn->postEvent (new rts2core::Event (EVENT_SET_TARGET, (void *) currentTarget));
 }

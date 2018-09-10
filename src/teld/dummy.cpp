@@ -47,9 +47,10 @@ class Dummy:public Telescope
 		{
 			rts2core::Configuration *config;
 			config = rts2core::Configuration::instance ();
-			config->loadFile (configFile);
-			setTelLongLat (config->getObserver ()->lng, config->getObserver ()->lat);
-			setTelAltitude (config->getObservatoryAltitude ());
+			config->loadFile ();
+			telLatitude->setValueDouble (config->getObserver ()->lat);
+			telLongitude->setValueDouble (config->getObserver ()->lng);
+			telAltitude->setValueDouble (config->getObservatoryAltitude ());
 			trackingInterval->setValueFloat (0.5);
 			return Telescope::initValues ();
 		}
@@ -105,7 +106,7 @@ class Dummy:public Telescope
 
 		virtual void runTracking ();
 
-		virtual int sky2counts (const double utc1, const double utc2, struct ln_equ_posn *pos, int32_t &ac, int32_t &dc, bool writeValues);
+		virtual int sky2counts (double JD, struct ln_equ_posn *pos, int32_t &ac, int32_t &dc, bool writeValues);
 
 	private:
 
@@ -121,8 +122,6 @@ class Dummy:public Telescope
 
 		rts2core::ValueLong *t_axRa;
 		rts2core::ValueLong *t_axDec;
-  		char *configFile;
-
 };
 
 }
@@ -150,8 +149,6 @@ Dummy::Dummy (int argc, char **argv):Telescope (argc, argv, true, true)
 	dummyPos.dec = 0;
 
 	addOption (OPT_MOVE_FAST, "move", 1, "fast: reach target position fast, else: slow (default: 2 deg/sec)");
-	configFile = NULL;
-	addOption (OPT_CONFIG, "config", 1, "read configuration from file");
 }
 
 int Dummy::processOption (int in_opt)
@@ -162,10 +159,6 @@ int Dummy::processOption (int in_opt)
 			if (!strcmp( "fast", optarg)) move_fast->setValueBool ( true );
 				else move_fast->setValueBool ( false );
 			break;
-		case OPT_CONFIG:
-			configFile = optarg;
-			break;
-
 		default:
 			return Telescope::processOption (in_opt);
 	}
@@ -231,20 +224,14 @@ int Dummy::isMoving ()
 
 void Dummy::runTracking ()
 {
-	double utc1, utc2;
-#ifdef RTS2_LIBERFA
-	getEraUTC (utc1, utc2);
-#else
-	utc1 = ln_get_julian_from_sys () + 2 / 86400.0;
-	utc2 = 0;
-#endif
+	double JD = ln_get_julian_from_sys () + 2 / 86400.0;
 	struct ln_equ_posn target;
 	int32_t t_ac, t_dc;
 
 	t_ac = t_axRa->getValueLong ();
 	t_dc = t_axDec->getValueLong ();
 
-	int ret = calculateTarget (utc1, utc2 + 2 / 86400.0, &target, t_ac, t_dc, true, 0, false);
+	int ret =1;// calculateTarget (JD + 2 / 86400.0, &target, t_ac, t_dc, true, 0, false);
 	if (ret)
 	{
 		setTracking (0);
@@ -255,15 +242,13 @@ void Dummy::runTracking ()
 
 	t_axRa->setValueLong (target.ra * 10000);
 	t_axDec->setValueLong (target.dec * 10000);
-
-	Telescope::runTracking ();
 }
 
-int Dummy::sky2counts (const double utc1, const double utc2, struct ln_equ_posn *pos, int32_t &ac, int32_t &dc, bool writeValues)
+int Dummy::sky2counts (double JD, struct ln_equ_posn *pos, int32_t &ac, int32_t &dc, bool writeValues)
 {
 	ac = pos->ra * 10000;
 	dc = pos->dec * 10000;
-	applyCorrections (pos, utc1, utc2, NULL, writeValues);
+	//applyCorrections (pos, JD, writeValues);
 	if (writeValues)
 		setTelTarget (pos->ra, pos->dec);
 	return 0;

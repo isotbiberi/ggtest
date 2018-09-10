@@ -1,11 +1,129 @@
 pco_camera_grab.log logfile started
-16:12:54 22.05.2017
+11:38:33 15.04.2018
 
-16:12:54.000      3.436ms 0x0000 Open_Cam_Ext: libusb_init done libusb_ctx:0x240a3c0
-16:12:54.000      0.045ms 0x0000 Open_Cam_Ext: libusb version: 01.00.20
-16:12:54.000      0.034ms 0x0000 Open_Cam_Ext: 0 valid usb devices found
-16:12:54.000      0.015ms 0x0000 ERROR Open_Cam_Ext: requested usb device 0x1cb2 number 0 not found
-16:12:54.000      0.221ms 0x0000 ~CPco_com_usb: before Close_Cam()
-16:12:54.000      0.043ms 0x0000 Close_Cam: driver was closed before
-Log ended 16:12.59 22.05.2017
+11:38:33.000      5.074ms 0x0000 Open_Cam_Ext: libusb_init done libusb_ctx:0x24cd2c0
+11:38:33.000      0.034ms 0x0000 Open_Cam_Ext: libusb version: 01.00.20
+11:38:33.000      0.022ms 0x0000 Open_Cam_Ext: PCO USB device found 0x3
+11:38:33.000      0.010ms 0x0000 Open_Cam_Ext: 1 valid usb devices found
+11:38:33.000      0.033ms 0x0000 Open_Cam_Ext: device has SUPER_SPEED capability
+11:38:33.000      0.016ms 0x0000 Open_Cam_Ext: libusb_open done libusb_hdev: 0x24ee090 libusb_ConfigDescr: 0x24e37e0
+11:38:33.000      0.027ms 0x0000 Open_Cam_Ext: libusb_claim_interface done
+11:38:33.000      0.553ms 0x0000 get_endpoints: BulkControlOut found (EP 0x01) 0
+11:38:33.000      0.058ms 0x0000 get_endpoints: ComOutMaxPacketSize 1024
+11:38:33.000      0.016ms 0x0000 get_endpoints: BulkControlIn found (EP 0x81) 1
+11:38:33.000      0.013ms 0x0000 get_endpoints: ComInMaxPacketSize 1024
+11:38:33.000     25.213ms 0x0100 usb_clear_input: nothing to clear
+11:38:33.000      0.043ms 0x0100 scan_camera: scan with GET_CAMERA_TYPE 0
+11:38:33.000      0.011ms 0x0100 Control_Command: start com_in  0x0110 GET_CAMERA_TYPE timeout 200
+11:38:33.000      0.907ms 0x0100 Control_Command: end   com_out 0x0190 size_out 22 err 0x0000
+11:38:33.000      0.039ms 0x0100 scan_camera: successful
+11:38:33.000      0.008ms 0x0100 Control_Command: start com_in  0x0111 GET_CAMERA_DESCRIPTION timeout 200
+11:38:33.000      3.665ms 0x0100 Control_Command: end   com_out 0x0191 size_out 152 err 0x0000
+11:38:33.000      0.040ms 0x0100 Control_Command: start com_in  0x0810 GET_FIRMWARE_VERSIONS timeout 400
+11:38:33.000      5.357ms 0x0100 Control_Command: end   com_out 0x0890 size_out 206 err 0x0000
+11:38:33.000      0.038ms 0x0100 camera mainproz= 0x050e
+11:38:33.000      0.006ms 0x0100 camera mainfpga= 0x0402
+11:38:33.000    626.480ms 0x0100 Open_Cam_Ext: wait done set camera time to 15.05.2018 11:38:34.000833
+11:38:33.000      0.048ms 0x0100 Control_Command: start com_in  0x0b14 SET_DATE_TIME timeout 200
+11:38:33.000      0.861ms 0x0100 Control_Command: end   com_out 0x0b94 size_out 12 err 0x0000
+11:38:33.000      0.031ms 0x0100 Control_Command: start com_in  0x1016 SET_INTERFACE_OUTPUT_FORMAT timeout 200
+11:38:33.000      0.951ms 0x0100 Control_Command: end   com_out 0x10d6 size_out 8 err 0x80031020
+11:38:33.000      0.024ms 0x0100 Open_Cam_Ext: camera without coding
+11:38:33.000      0.010ms 0x0100 Control_Command: start com_in  0x3416 GET_CL_CONFIGURATION timeout 200
+11:38:33.000      0.747ms 0x0100 Control_Command: end   com_out 0x3496 size_out 11 err 0x0000
+11:38:33.000      0.024ms 0x0100 EnableHandshake: found F:80Mhz,L:0x4,D:1,T:0x0
+11:38:33.000      0.011ms 0x0100 Control_Command: start com_in  0x0110 GET_CAMERA_TYPE timeout 200
+11:38:33.000      0.873ms 0x0100 Control_Command: end   com_out 0x0190 size_out 22 err 0x0000
+11:38:33.000      0.024ms 0x0100 PCO_GetCameraType:  camType 0x0260 resp.wInterfaceType 0x0006
+11:38:33.000      0.028ms 0x0000 usb_get_endpoints: BulkControlIn found (EP 0x82) 2
+11:38:33.000      0.009ms 0x0000 get_endpoints: ImageInMaxPacketSize 1024
+11:38:33.000      0.011ms 0x0001 Open_Grabber: GetCoding returned 0
+11:38:33.000      0.010ms 0x0100 Control_Command: start com_in  0x0a10 GET_INFO_STRING timeout 200
+11:38:34.000      1.436ms 0x0100 Control_Command: end   com_out 0x0a90 size_out 44 err 0x0000
+11:38:34.000      0.045ms 0x0100 Control_Command: start com_in  0x0b14 SET_DATE_TIME timeout 200
+11:38:34.000      0.831ms 0x0100 Control_Command: end   com_out 0x0b94 size_out 12 err 0x0000
+11:38:34.000      0.026ms 0x0100 Control_Command: start com_in  0x0610 GET_TEMPERATURE timeout 200
+11:38:34.000      2.157ms 0x0100 Control_Command: end   com_out 0x0690 size_out 10 err 0x0000
+11:38:34.000      0.043ms 0x0100 Control_Command: start com_in  0x0514 GET_RECORDING_STATE timeout 200
+11:38:34.000      0.559ms 0x0100 Control_Command: end   com_out 0x0594 size_out 6 err 0x0000
+11:38:34.000      0.055ms 0x0100 Control_Command: start com_in  0x0310 RESET_SETTINGS_TO_DEFAULT timeout 200
+11:38:34.000      1.095ms 0x0100 Control_Command: end   com_out 0x0390 size_out 4 err 0x0000
+11:38:34.000      0.054ms 0x0100 Control_Command: start com_in  0x0d14 SET_TIMESTAMP_MODE timeout 200
+11:38:34.000      0.608ms 0x0100 Control_Command: end   com_out 0x0d94 size_out 6 err 0x0000
+11:38:34.000      0.054ms 0x0100 Control_Command: start com_in  0x0d12 SET_TIMEBASE timeout 200
+11:38:34.000      0.805ms 0x0100 Control_Command: end   com_out 0x0d92 size_out 8 err 0x0000
+11:38:34.000      0.053ms 0x0100 Control_Command: start com_in  0x0212 SET_DELAY_EXPOSURE_TIME timeout 200
+11:38:34.000      0.983ms 0x0100 Control_Command: end   com_out 0x0292 size_out 12 err 0x0000
+11:38:34.000      0.053ms 0x0100 Control_Command: start com_in  0x0d11 SET_ADC_OPERATION timeout 200
+11:38:34.000      0.693ms 0x0100 Control_Command: end   com_out 0x0d91 size_out 6 err 0x0000
+11:38:34.000      0.053ms 0x0100 Control_Command: start com_in  0x0611 GET_PIXELRATE timeout 200
+11:38:34.000      0.665ms 0x0100 Control_Command: end   com_out 0x0691 size_out 8 err 0x0000
+11:38:34.000      0.072ms 0x0100 Control_Command: start com_in  0x0a15 SET_BIT_ALIGNMENT timeout 200
+11:38:34.000      0.509ms 0x0100 Control_Command: end   com_out 0x0a95 size_out 6 err 0x0000
+11:38:34.000      0.034ms 0x0100 Control_Command: start com_in  0x0a14 ARM_CAMERA timeout 15000
+11:38:34.000    786.209ms 0x0100 Control_Command: end   com_out 0x0a94 size_out 4 err 0x0000
+11:38:34.000      0.077ms 0x0100 Control_Command: start com_in  0x0915 GET_BIT_ALIGNMENT timeout 200
+11:38:34.000      0.784ms 0x0100 Control_Command: end   com_out 0x0995 size_out 6 err 0x0000
+11:38:34.000      0.073ms 0x0100 Control_Command: start com_in  0x0312 GET_TRIGGER_MODE timeout 200
+11:38:34.000      0.697ms 0x0100 Control_Command: end   com_out 0x0392 size_out 6 err 0x0000
+11:38:34.000      0.094ms 0x0100 Control_Command: start com_in  0x0211 GET_ROI timeout 200
+11:38:34.000      0.787ms 0x0100 Control_Command: end   com_out 0x0291 size_out 12 err 0x0000
+11:38:34.000      0.086ms 0x0200 PostArm(0)
+11:38:34.000      0.026ms 0x0200 Get_Camera_Settings: usbpar.MaxNumUsb       0
+11:38:34.000      0.014ms 0x0200 Get_Camera_Settings: usbpar.Clockfrequency  0
+11:38:34.000      0.011ms 0x0200 Get_Camera_Settings: usbpar.Transmit        0x0
+11:38:34.000      0.010ms 0x0200 Get_Camera_Settings: usbpar.UsbConfig       0x0
+11:38:34.000      0.011ms 0x0200 Get_Camera_Settings: usbpar.ImgTransMode    0x0
+11:38:34.000      0.011ms 0x0200 Get_Camera_Settings: cam_colorsensor       0
+11:38:34.000      0.013ms 0x0100 Control_Command: start com_in  0x0c14 GET_TIMESTAMP_MODE timeout 200
+11:38:34.000      0.585ms 0x0100 Control_Command: end   com_out 0x0c94 size_out 6 err 0x0000
+11:38:34.000      0.068ms 0x0200 Get_Camera_Settings: cam_timestampmode     2
+11:38:34.000      0.023ms 0x0100 Control_Command: start com_in  0x0611 GET_PIXELRATE timeout 200
+11:38:34.000      0.664ms 0x0100 Control_Command: end   com_out 0x0691 size_out 8 err 0x0000
+11:38:34.000      0.067ms 0x0200 Get_Camera_Settings: cam_pixelrate         8000000
+11:38:34.000      0.024ms 0x0100 Control_Command: start com_in  0x0a11 GET_DOUBLE_IMAGE_MODE timeout 200
+11:38:34.000      0.646ms 0x0100 Control_Command: end   com_out 0x0a91 size_out 6 err 0x0000
+11:38:34.000      0.067ms 0x0200 Get_Camera_Settings: cam_doublemode        0
+11:38:34.000      0.024ms 0x0100 Control_Command: start com_in  0x1911 GET_NOISE_FILTER_MODE timeout 200
+11:38:34.000      0.683ms 0x0100 Control_Command: end   com_out 0x1991 size_out 6 err 0x0000
+11:38:34.000      0.068ms 0x0200 Get_Camera_Settings: cam_noisefilter       0
+11:38:34.000      0.025ms 0x0100 Control_Command: start com_in  0x0915 GET_BIT_ALIGNMENT timeout 200
+11:38:34.000      0.594ms 0x0100 Control_Command: end   com_out 0x0995 size_out 6 err 0x0000
+11:38:34.000      0.068ms 0x0200 Get_Camera_Settings: cam_align             1
+11:38:34.000      0.024ms 0x0100 Control_Command: start com_in  0x0211 GET_ROI timeout 200
+11:38:34.000      0.733ms 0x0100 Control_Command: end   com_out 0x0291 size_out 12 err 0x0000
+11:38:34.000      0.089ms 0x0200 Get_Camera_Settings: cam_width             4008
+11:38:34.000      0.024ms 0x0200 Get_Camera_Settings: cam_height            2672
+11:38:34.000      0.015ms 0x0200 PostArm: call Set_Grabber_Size(4008,2672)
+11:38:34.000      0.013ms 0x0200 set_actual_size: start w:4008 h:2672
+11:38:34.000      0.011ms 0x0200 set_grabber_size: async packet size 1048576
+11:38:34.000      0.011ms 0x0200 set_grabber_size: async need last size 447232
+11:38:34.000      0.010ms 0x0200 set_grabber_size: use copy buffer
+11:38:34.000      0.011ms 0x0200 set_grabber_size: async transfer num 22
+11:38:34.000      0.027ms 0x0200 set_actual_size: done w:4008 h:2672 lw:4008 bitpix: 14 dmalength:21418752
+11:38:34.000      0.017ms 0x0100 Control_Command: start com_in  0x0514 GET_RECORDING_STATE timeout 200
+11:38:34.000      0.563ms 0x0100 Control_Command: end   com_out 0x0594 size_out 6 err 0x0000
+11:38:34.000      0.072ms 0x0100 Control_Command: start com_in  0x0614 SET_RECORDING_STATE timeout 200
+11:38:34.000      0.716ms 0x0100 Control_Command: end   com_out 0x0694 size_out 6 err 0x0000
+11:38:34.000      0.075ms 0x0100 Control_Command: start com_in  0x1012 GET_COC_RUNTIME timeout 200
+11:38:34.000      4.858ms 0x0100 Control_Command: end   com_out 0x1092 size_out 12 err 0x0000
+11:38:34.000      0.069ms 0x0100 Control_Command: start com_in  0x0514 GET_RECORDING_STATE timeout 200
+11:38:34.000      0.690ms 0x0100 Control_Command: end   com_out 0x0594 size_out 6 err 0x0000
+11:38:34.000      0.069ms 0x0100 Control_Command: start com_in  0x0514 GET_RECORDING_STATE timeout 200
+11:38:34.000      0.474ms 0x0100 Control_Command: end   com_out 0x0594 size_out 6 err 0x0000
+11:38:34.000      0.040ms 0x0100 Control_Command: start com_in  0x0112 GET_DELAY_EXPOSURE_TIME timeout 200
+11:38:34.000      0.816ms 0x0100 Control_Command: end   com_out 0x0192 size_out 12 err 0x0000
+11:38:34.000      0.072ms 0x0100 Control_Command: start com_in  0x1012 GET_COC_RUNTIME timeout 200
+11:38:34.000      4.942ms 0x0100 Control_Command: end   com_out 0x1092 size_out 12 err 0x0000
+11:38:39.000   4235.299ms 0x0200 Close_Grabber: 
+11:38:39.000      0.123ms 0x0000 Close_Grabber: free async_transfer_1 done
+11:38:39.000    129.709ms 0x0000 Close_Grabber: 
+11:38:39.000      0.045ms 0x0000 Close_Grabber: driver was closed before
+11:38:39.000      0.020ms 0x0100 Close_Cam: Close Mutex 0x24fc050
+11:38:39.000    127.873ms 0x0100 Close_Cam: libusb_release_interface 0x24ee090
+11:38:39.000      0.051ms 0x0100 Close_Cam: libusb_close libusb_hdev 0x24ee090
+11:38:39.000      0.016ms 0x0100 Close_Cam: libusb_exit libusb_ctx: 0x24cd2c0
+11:38:39.000      0.072ms 0x0000 ~CPco_com_usb: before Close_Cam()
+11:38:39.000      0.009ms 0x0000 Close_Cam: driver was closed before
+Log ended 11:38.40 15.04.2018
 

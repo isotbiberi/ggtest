@@ -2,7 +2,7 @@
 
 SUBDIRS = urvc2 apogee edtsao si8821 sxccd
 
-bin_PROGRAMS = rts2-camd-miniccd rts2-camd-miniccd-il rts2-camd-dummy rts2-camd-sidecar rts2-camd-azcam rts2-camd-azcam3 rts2-camd-si8821 rts2-camd-zyla rts2-camd-pco rts2-camd-prosilica
+bin_PROGRAMS = rts2-camd-miniccd rts2-camd-miniccd-il rts2-camd-dummy rts2-camd-sidecar rts2-camd-azcam rts2-camd-azcam3 rts2-camd-si8821 rts2-camd-zyla rts2-camd-pco rts2-camd-prosilica rts2-camd-allsky340 rts2-camd-prosilicagt4907 rts2-camd-fliKepler
 
 noinst_HEADERS = ccd_msg.h reflex.h
 
@@ -12,6 +12,11 @@ AM_CXXFLAGS = @NOVA_CFLAGS@ -I../../include
 rts2_camd_miniccd_SOURCES = miniccd.cpp
 
 rts2_camd_miniccd_il_SOURCES = miniccd_il.cpp
+
+rts2_camd_allsky340_SOURCES = allsky340.cpp
+rts2_camd_allsky340_CXXFLAGS = -std=c++11 ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include
+rts2_camd_allsky340_LDADD = -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+
 
 rts2_camd_dummy_SOURCES = dummy.cpp
 rts2_camd_dummy_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include
@@ -32,6 +37,25 @@ rts2_camd_prosilica_SOURCES = prosilica.cpp prosilica/VimbaCPP/Examples/Synchron
 #rts2_camd_prosilica_LDFLAGS = prosilica/VimbaCPP/DynamicLib/x86_64bit/libVimbaCPP.so
 rts2_camd_prosilica_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -Iprosilica/VimbaCPP/Examples/SynchronousGrab/Console/Source/ -Iprosilica/VimbaCPP/Include/ -Iprosilica -Iprosilica/VimbaCPP/Examples
 rts2_camd_prosilica_LDADD = -L.libs/ -lVimbaCPP -lVimbaC -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+
+
+#rts2_camd_prosilicagt4907_SOURCES = prosilicagt4907.cpp Vimba_2_1/VimbaC/Examples/Common/PrintVimbaVersion.c Vimba_2_1/VimbaC/Examples/Common/ErrorCodeToMessage.c Vimba_2_1/VimbaC/Examples/Common/DiscoverGigECameras.c
+#rts2_camd_prosilicagt4907_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -IVimba_2_1 -IVimba_2_1/VimbaC/Examples/Common -IVimba_2_1/VimbaC/Examples
+#rts2_camd_prosilicagt4907_CFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -IVimba_2_1 -IVimba_2_1/VimbaC/Examples/Common -IVimba_2_1/VimbaC/Examples
+#rts2_camd_prosilicagt4907_LDADD = -LVimba_2_1/VimbaC/DynamicLib/x86_64bit/ -L.libs/ -lVimbaCPP -lVimbaC -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+
+rts2_camd_prosilicagt4907_SOURCES = prosilicagt4907.cpp Vimba_2_1/VimbaCPP/Examples/AsynchronousGrab/Console/Source/ApiController.cpp  Vimba_2_1/VimbaCPP/Examples/AsynchronousGrab/Console/Source/FrameObserver.cpp  zyla/FitsOperations.cpp
+rts2_camd_prosilicagt4907_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -IVimba_2_1 -IVimba_2_1/VimbaCPP/Examples/Common -IVimba_2_1/VimbaCPP/Examples -IVimba_2_1/VimbaCPP/Examples/AsynchronousGrab/Console/Source -IVimba_2_1/VimbaImageTransform/Include
+rts2_camd_prosilicagt4907_CFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -IVimba_2_1 -IVimba_2_1/VimbaCPP/Examples/Common -IVimba_2_1/VimbaCPP/Examples
+rts2_camd_prosilicagt4907_LDADD = -LVimba_2_1/VimbaCPP/DynamicLib/x86_64bit/ -L.libs/ -LVimba_2_1/VimbaImageTransform/DynamicLib/x86_64bit -lVimbaCPP -lVimbaC -lVimbaImageTransform -L../../lib/rts2fits -lrts2image ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+
+rts2_camd_fliKepler_SOURCES = fliKepler.cpp zyla/FitsOperations.cpp
+rts2_camd_fliKepler_CXXFLAGS = ${AM_CXXFLAGS} @CFITSIO_CFLAGS@ @MAGIC_CFLAGS@ -I../../include -IfliKepler
+rts2_camd_fliKepler_LDADD = -L.libs/ -L../../lib/rts2fits -lrts2image -lusb-1.0 -lpthread ${LDADD} @CFITSIO_LIBS@ @MAGIC_LIBS@
+rts2_camd_fliKepler_LDFLAGS =  fliKepler/liblibflipro.a 
+
+
+
 
 rts2_camd_sidecar_SOURCES = sidecar.cpp
 

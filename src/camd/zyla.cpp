@@ -55,7 +55,10 @@ private:
             
                 virtual int setValue (rts2core::Value * old_value, rts2core::Value * new_value);
 
-              /*
+                int checkExposureReady ();
+
+                
+                /*
                 static unsigned short* getFits()
                  {
                  
@@ -215,7 +218,12 @@ void Zyla::newThreadCallback(int *p)
 {
 logStream(MESSAGE_INFO)<<"inside thread value parameter is "<<*p<<sendLog;
 
-createFits(cam->getBuffer(),header);
+//createFits(cam->getBuffer(),header);
+for(int k=0;k<=cam->getNumberOfFrames()-1;k++)
+{
+//createFits(cam->getFitsBuffer(k),header);
+}
+
 }
 
 int Zyla::commandAuthorized(rts2core::Connection * conn)
@@ -231,14 +239,40 @@ else logStream(MESSAGE_INFO)<<"Capture should NOT be blocked"<<sendLog;
 */
 
 
+/*
+while(checkExposureReady ()==1)
+{
+logStream(MESSAGE_INFO)<<"waiting for exposure block"<<sendLog;
+logStream (MESSAGE_INFO) << "should ask for exposure block " << (getDeviceBopState () & BOP_EXPOSURE) << " " << (getMasterStateFull () & BOP_EXPOSURE) << " " << (getDeviceBopState () & BOP_TRIG_EXPOSE) << " " << (getMasterStateFull () & BOP_TRIG_EXPOSE) << sendLog;
+logStream(MESSAGE_INFO)<<"get master state full is "<<getMasterStateFull()<<sendLog;
+
+sleep(1);
+}
+*/
+
+logStream(MESSAGE_INFO)<<"waiting for exposure block"<<sendLog;
+logStream (MESSAGE_INFO) << "should ask for exposure block " << (getDeviceBopState () & BOP_EXPOSURE) << " " << (getMasterStateFull () & BOP_EXPOSURE) << " " << (getDeviceBopState () & BOP_TRIG_EXPOSE) << " " << (getMasterStateFull () & BOP_TRIG_EXPOSE) << sendLog;
+logStream(MESSAGE_INFO)<<"get master state full is hex "<<std::hex<<getMasterStateFull()<<sendLog;
+
+
+
+//maskState (BOP_TEL_MOVE,1, "exposure finished");
+//maskState ( CAM_MASK_EXPOSE | BOP_TEL_MOVE, CAM_NOEXPOSURE | CAM_READING,"chip extended readout started");
+//maskState(0,BOP_TEL_MOVE,"block telescope motion");//telescope motion block goruldu
+
+
+//maskState (CAM_MASK_EXPOSE | CAM_MASK_READING | BOP_TEL_MOVE, CAM_NOEXPOSURE | CAM_READING,
+                         //  "chip extended readout started");
+
 logStream(MESSAGE_INFO)<<"fast capture started"<<sendLog;
  double exptime;
  long numberOfExposures; 
 if (conn->paramNextDouble (&exptime) || conn->paramNextLong (&numberOfExposures) || !conn->paramEnd ())
                                 return -2;
- 
+//ust taraftaki if satırı parametre almak icin gerekli???
 logStream(MESSAGE_INFO)<<"exptime is set to  "<<exptime<<"number of exposure is " << numberOfExposures<<sendLog;
 
+/*
 if(blockingExposure ())
 
 logStream(MESSAGE_INFO)<<"exposure is blocked"<<sendLog;
@@ -250,6 +284,10 @@ logStream(MESSAGE_INFO)<<"exposure is NOT blocked"<<sendLog;
 
 logStream(MESSAGE_INFO)<<"device state is "<<std::hex <<getState()<<sendLog;
 
+while(blockingExposure())
+logStream(MESSAGE_INFO)<<"i cant not start expose device state is "<<std::hex <<getState()<<sendLog;
+
+*/
 
 cam->initializeController();
 cam->setExpTime(exptime);
@@ -276,10 +314,23 @@ cam->startAcq();
 
 getHeader();
 
+
+        /*thread kullanmak icin*/
+        int i =1;
+        std::thread t(&Zyla::newThreadCallback,this,&i);
+        t.detach();
+        /*thread kullanmak icin*/
+
+
+
+/*bu kisim threadsiz calisirdi*/
+/*
 for(int k=0;k<=cam->getNumberOfFrames()-1;k++)
 {
 createFits(cam->getFitsBuffer(k),header);
 }
+*/
+/*bu kisim calisirdi*/
 
 cam->stopAcq();
 //logStream(MESSAGE_INFO)<<"inside the main thread"<<i<<sendLog;
@@ -339,6 +390,89 @@ return Camera::commandAuthorized(conn);
 
 
 }
+
+int Zyla::checkExposureReady ()
+{
+        // check if we aren't blocked
+        // we can allow this test as camStartExposure is called only after quedExpNumber was decreased
+        //bool fm = filterMoving ();
+        
+/*
+       if (careBlock == true
+                && (!expType || expType->getValueInteger () == 0)
+                && (
+                        (getDeviceBopState () & BOP_EXPOSURE)
+                        || (getMasterStateFull () & BOP_EXPOSURE)
+                        || (getDeviceBopState () & BOP_TRIG_EXPOSE)
+                        || (getMasterStateFull () & BOP_TRIG_EXPOSE)
+                        || fm
+                        || (focuserMoving && focuserMoving->getValueBool ())
+                ))
+*/
+
+ logStream (MESSAGE_DEBUG) << "check exposure ready calisti " <<sendLog;
+
+
+
+   if ( (
+                        (getDeviceBopState () & BOP_EXPOSURE)
+                        || (getMasterStateFull () & BOP_EXPOSURE)
+                        || (getDeviceBopState () & BOP_TRIG_EXPOSE)
+                        || (getMasterStateFull () & BOP_TRIG_EXPOSE)
+                ))
+
+  
+
+      {
+                // no conflict, as when we are called, quedExpNumber will already be decreased
+/* 
+               quedExpNumber->inc ();
+                sendValueAll (quedExpNumber);
+
+                if (waitingForNotBop->getValueBool () == false)
+                {
+                        waitingForNotBop->setValueBool (true);
+                        sendValueAll (waitingForNotBop);
+                }
+*/                
+     
+
+ logStream (MESSAGE_INFO) << "should ask for exposure block " <<sendLog;
+
+
+              logStream (MESSAGE_INFO) << "should ask for exposure block " << (getDeviceBopState () & BOP_EXPOSURE) << " " << (getMasterStateFull () & BOP_EXPOSURE) << " " << (getDeviceBopState () & BOP_TRIG_EXPOSE) << " " << (getMasterStateFull () & BOP_TRIG_EXPOSE) << sendLog;
+               
+/* 
+                if (!((getDeviceBopState () & BOP_EXPOSURE) || (getMasterStateFull () & BOP_EXPOSURE)) && ((getDeviceBopState () & BOP_TRIG_EXPOSE) || (getMasterStateFull () & BOP_TRIG_EXPOSE))) 
+                        maskState (BOP_WILL_EXPOSE, BOP_WILL_EXPOSE, "device plan to exposure soon", NAN, NAN, exposureConn);
+  */       
+
+
+return 1;
+}
+       
+else
+{
+
+ logStream (MESSAGE_INFO) << "should not ask for exposure block "<<sendLog;
+
+    logStream (MESSAGE_INFO) << "should NOT ask for exposure block " << (getDeviceBopState () & BOP_EXPOSURE) << " " << (getMasterStateFull () & BOP_EXPOSURE) << " " << (getDeviceBopState () & BOP_TRIG_EXPOSE) << " " << (getMasterStateFull () & BOP_TRIG_EXPOSE) << sendLog;
+      
+}
+
+/*
+        if (expType && expType->getValueInteger () != 0 && ((getDeviceBopState () & BOP_TRIG_EXPOSE) || (getMasterStateFull () & BOP_TRIG_EXPOSE)))
+                maskState (BOP_WILL_EXPOSE, BOP_WILL_EXPOSE, "device plan to exposure soon", NAN, NAN, exposureConn);
+
+        return camStartExposureWithoutCheck ();
+                                                
+*/
+
+return 0;
+}
+
+
+
 int Zyla::startExposure()
 {
 

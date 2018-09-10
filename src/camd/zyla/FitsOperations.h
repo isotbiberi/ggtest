@@ -4,8 +4,7 @@
 #include<string.h>
 #include<map>
 #include<string>
-extern int createFits(unsigned short *arr, std::map<std::string,std::pair<std::string,std::string>> header);
-void currentDateTime();
+extern int createFits(unsigned short *arr, std::map<std::string,std::pair<std::string,std::string>> header, std::pair<std::string,std::string> due);
 std::string return_current_time_and_date();
 std::string dateTimeMs();
 struct FitsMetaData {
@@ -13,4 +12,6 @@ struct FitsMetaData {
 	std::string expStartDate;
 	std::string expStopDate;
 };
+uint64_t GetTimeStamp();
+const std::string currentDateTime();
 #endif

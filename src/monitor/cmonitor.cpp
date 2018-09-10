@@ -68,6 +68,8 @@ class Rts2CMonitorCentralConn:public rts2core::ConnCentraldClient
                         in_master_port)
                 {
                         master = in_master;
+                       master->setMasterState (this, WR_MASK);
+                      logStream(MESSAGE_INFO)<< "setmasterstate calisti"<<sendLog;
                 }
 
                 virtual void commandReturn (rts2core::Command * cmd, int in_status)
@@ -116,7 +118,10 @@ rts2core::DevClient * Rts2CMonitor::createOtherType (rts2core::Connection * conn
 {
        logStream(MESSAGE_INFO)<<"createother type calisti "<<conn->getName()<<sendLog; 
        rts2core::DevClient *retC = rts2core::Client::createOtherType (conn, other_device_type);
-       /*
+       
+       //maskState (WEATHER_MASK, BAD_WEATHER, "ismail bad weather yapti");
+
+/*
          if (other_device_type == DEVICE_TYPE_MOUNT && tarArg)
         {
                 struct ln_equ_posn tarPos;
@@ -282,7 +287,9 @@ void Rts2CMonitor::postEvent (rts2core::Event *event)
                 if(!ccdReady)postEvent (new rts2core::Event (EVENT_CCD_READY));
 
                 break;
-                
+               
+               /*
+ 
                 case EVENT_STOP_PROGRAM:
                 endRunLoop ();
 
@@ -293,6 +300,7 @@ void Rts2CMonitor::postEvent (rts2core::Event *event)
 
 
                 break; 
+              */
 
         return;
         }
@@ -310,7 +318,18 @@ int Rts2CMonitor::init ()
 {
 
    logStream (MESSAGE_ERROR) << "init calisti " <<  sendLog;
+    //<<"number of centrald connection is " <<getCentraldConns ()->size ()<<endl;
+ rts2core::connections_t::iterator iter;
 
+      for (iter = getCentraldConns ()->begin (); iter != getCentraldConns ()->end (); iter++)
+        {
+                logStream(MESSAGE_INFO)<<"initi cerisinde connection calisti"<<sendLog;
+             //   setState (BOP_TEL_MOVE, "ismail state deistirdi");
+             //  (*iter)->setState(BOP_TEL_MOVE,"ismail state deistiri");
+               // cout<<"init icerisindeki connection calisti"<<endl;
+               // cout<<"connectin getname is " <<(*iter)->getName ()<<"connection getstateString is "<<(*iter)->getStateString ().c_str ()<<"connection getstate is "<<(*iter)->getState ();
+
+}
         int ret;
         ret = rts2core::Client::init ();
         if (ret)
@@ -355,11 +374,14 @@ void Rts2CMonitor::startAcquisition(long move_expose_number)
 
 logStream(MESSAGE_INFO)<<"Acquisition number is "<<move_expose_number<<sendLog;
 mountConnection->queCommand (new rts2core::Command (this, "altaz 20 20"));
-ccdConnection->queCommand (new rts2core::Command (this, "fast 1 1"));
+//ccdConnection->queCommand (new rts2core::Command (this, "fast 1 1"));
 //sleep(1);
+
+/*calisiyor*/
+/*
 if(move_expose_number < 2)
 postEvent (new rts2core::Event (EVENT_MOVE_EXPOSE_COMPLETED));
-
+*/
 
 //postEvent (new rts2core::Event (EVENT_STOP_PROGRAM));
 
@@ -374,6 +396,31 @@ int Rts2CMonitor::run ()
    logStream (MESSAGE_ERROR) << "run calisti " <<  sendLog;
    int ret =     rts2core::Client::run ();
    if(ret) return ret;
+
+/*
+rts2core::connections_t::iterator iter;
+
+      for (iter = getCentraldConns ()->begin (); iter != getCentraldConns ()->end (); iter++)
+        {
+                logStream(MESSAGE_INFO)<<"run içinde connection calisti"<<sendLog;
+
+               //(*iter)->setState (BOP_TEL_MOVE, "ismail");
+               //master->setMasterState (this, BOP_TEL_MOVE);
+
+
+
+
+               // cout<<"init icerisindeki connection calisti"<<endl;
+                cout<<"connectin getname is " <<(*iter)->getName ()<<"connection getstateString is "<<(*iter)->getStateString ().c_str ()<<"connection getstate is "<<(*iter)->getState ();
+
+             //     (*iter)->setState(WR_MASK,"ismail yazi");    
+
+
+}
+*/
+
+
+
         //createClientConnection("T0");
         //conn->queCommand (new rts2core::Command (this,"altaz 10 10"));
         
